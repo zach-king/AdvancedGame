@@ -26,14 +26,16 @@ public:
 	void setDescription(std::string);
 	std::string getIdentifier();
 	END_CONDITION getCondition();
-	void  addNeighbor(std::string,std::string);
+	void  addNeighbor(std::string, std::string);
+	void clearNeighbors();
+	std::map<std::string, std::string> getNeighbors();
 
 protected:
 	std::string transition;
 	END_CONDITION condition;
 	std::string identifier;
 	std::string description;
-	std::map<std::string,std::string> neighbors;
+	std::map<std::string, std::string> neighbors;
 };
 
 #endif

@@ -48,20 +48,17 @@ int main()
 	//Until Game Termination Condition Do:
 	while(!isGameDone(room,health))
 	{
-
 		//Wipe the GUI clean
 		clearConsole();
 
 		//Perform the game mechanic
 		room = room->execute(map, health);
-
 	}
 
 	//Display End Game State
 	displayGameDone(room,health);
 
 	return 0;
-
 }
 
 
@@ -79,7 +76,7 @@ void splashScreen()
 {
 	std::cout << "ROOM PUZZLE" << std::endl;
 	std::cout << std::endl;
-	std::cout << "Your name here (2015)" << std::endl;
+	std::cout << "Zachary King (2017)" << std::endl;
 	std::cout << "CPSC 4399/4399, Advanced Game Programming, Homework 0" << std::endl;
 	std::cout << "UALR, Computer Science Dept." << std::endl;
 	std::cout << std::endl;
