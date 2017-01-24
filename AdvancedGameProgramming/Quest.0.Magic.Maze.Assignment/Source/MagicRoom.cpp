@@ -24,10 +24,16 @@ Room* MagicRoom::execute(RoomMap *roomMap, int &health)
 	// Get the user input transition
 	std::cin >> transition;
 
-	// Get the name of the next room based off of transition
-	std::string nextRoom = next();
-	if (nextRoom == "")
+	// Validate transition; if invalid,
+	// return same Room, because we didn't move
+	// but to counter health decrement, increment it here.
+	// This keeps us in the same place. Like walking into a wall...
+	if (neighbors.find(transition) == neighbors.end())
+	{
+		health++;
 		return this;
-	else
-		return roomMap->getRoom(nextRoom);
+	}
+
+	// Get the next room
+	return roomMap->findNext(this);
 }

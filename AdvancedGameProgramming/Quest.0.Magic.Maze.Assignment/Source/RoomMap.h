@@ -17,7 +17,6 @@ public:
 	bool Initialize(std::string configFile);
 	Room* findNext(Room*);
 	void randomizeRooms();
-	Room* getRoom(std::string ident);
 
 private:
 	std::map<std::string, RoomFactory*> roomLibrary;
