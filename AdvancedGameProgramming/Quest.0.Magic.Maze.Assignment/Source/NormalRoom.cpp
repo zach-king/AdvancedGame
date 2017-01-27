@@ -9,9 +9,26 @@ Room* NormalRoom::execute(RoomMap *roomMap, int &health)
 	// Health decrements
 	health--;
 
+	// Pick up this Room's item, if it hasn't been picked up yet
+	if (item != "")
+	{
+		roomMap->addItem(item);
+		std::cout << "Picked up an item: '" << item << "'" << std::endl << std::endl;
+		item = "";
+	}
+
 	// Display the screen output
 	std::cout << "View:\t" << description << std::endl;
 	std::cout << "Health: " << health << std::endl << std::endl;
+
+	// Display inventory
+	std::cout << "Inventory:" << std::endl;
+	std::vector<std::string> items = roomMap->getInventory();
+	for (auto itemIter = items.begin(); itemIter != items.end(); ++itemIter)
+	{
+		std::cout << "\t" << *itemIter << std::endl;
+	}
+
 	std::cout << "Available Moves: ";
 	for each (auto neighbor in neighbors)
 	{

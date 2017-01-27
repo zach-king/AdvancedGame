@@ -22,6 +22,37 @@ bool RoomMap::Initialize(std::string configFile)
 	return (LoadLevel(configFile.c_str()));
 }
 
+std::vector<std::string> RoomMap::getInventory()
+{
+	return inventory;
+}
+
+void RoomMap::addItem(std::string itemName)
+{
+	inventory.push_back(itemName);
+}
+
+void RoomMap::disperseInventory()
+{
+	// Iterate over the inventory and place each item
+	// in a random Normal Room that is empty
+	for (auto itemIter = inventory.begin(); itemIter != inventory.end(); ++itemIter)
+	{
+		for (auto room : rooms)
+		{
+			// Originally contained an item and no longer does
+			if (room.second->getCanHaveItem() && room.second->getItem() == "")
+			{
+				// Place the item in the room
+				room.second->setItem(*itemIter);
+			}
+		}
+	}
+
+	// Finished dispersing items, now clear the inventory
+	inventory.clear();
+}
+
 Room* RoomMap::findNext(Room* room)
 {
 	Room* next;

@@ -10,6 +10,8 @@
 #include"ThirdParty\tinyxml\tinystr.h"
 #include"ThirdParty\tinyxml\tinyxml.h"
 
+#include <vector>
+
 class RoomMap
 {
 public:
@@ -17,12 +19,18 @@ public:
 	bool Initialize(std::string configFile);
 	Room* findNext(Room*);
 	void randomizeRooms();
+	std::vector<std::string> getInventory();
+	void addItem(std::string);
+	void disperseInventory();
 
 private:
 	std::map<std::string, RoomFactory*> roomLibrary;
 	std::map<std::string, Room*> rooms;
 
-	//Private XML level loading instructions
+	// Player inventory
+	std::vector<std::string> inventory;
+
+	// Private XML level loading instructions
 	bool RoomMap::LoadLevel(const char* configFile);
 };
 

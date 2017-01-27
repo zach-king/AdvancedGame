@@ -29,6 +29,9 @@ public:
 	void  addNeighbor(std::string, std::string);
 	void clearNeighbors();
 	std::map<std::string, std::string> getNeighbors();
+	bool getCanHaveItem();
+	std::string getItem();
+	void setItem(std::string);
 
 protected:
 	std::string transition;
@@ -36,6 +39,8 @@ protected:
 	std::string identifier;
 	std::string description;
 	std::map<std::string, std::string> neighbors;
+	std::string item;
+	bool canHaveItem;
 };
 
 #endif

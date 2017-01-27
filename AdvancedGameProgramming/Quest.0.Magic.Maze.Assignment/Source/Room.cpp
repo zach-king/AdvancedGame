@@ -9,22 +9,47 @@
 
 Room::Room()
 {
-
+	canHaveItem = false;
+	item = "";
 }
 
 Room::~Room()
 {
+	// Nothing
+}
 
+bool Room::getCanHaveItem()
+{
+	return canHaveItem;
+}
+
+std::string Room::getItem()
+{
+	return item;
+}
+
+void Room::setItem(std::string itemName)
+{
+	item = itemName;
 }
 
 bool Room::Initialize(TiXmlElement *room)
 {
 	// Set the condition from the xml element <Room>. 
-	condition = static_cast<END_CONDITION>(std::stoi(room->Attribute("condition")));
+	int cond;
+	room->QueryIntAttribute("condition", &cond);
+	condition = static_cast<END_CONDITION>(cond);
 
 	// Check validity of XML
 	if (room->Attribute("name") == NULL || room->Attribute("description") == NULL)
 		return false;
+
+	// Check if there is an item attribute, and add it to the room
+	if (room->Attribute("item") != NULL)
+	{
+		item = room->Attribute("item");
+		canHaveItem = true;
+	}
 
 	// Get the name and description from the xml element <Room>
 	identifier = room->Attribute("name");

@@ -39,7 +39,7 @@ int main()
 
 	//Initialize Game State
 	room = map->findNext(room);
-	health = 10;	
+	health = 11;	
 
 	//Splash Screen
 	clearConsole();
