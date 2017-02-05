@@ -31,15 +31,14 @@ int main()
 	//Declare Game Space
 	RoomMap* map = NULL;
 	Room* room = NULL;
-	int health = -1;  //Need to wrap this in somehting
+	int health = 11;  //Need to wrap this in somehting
 
 	//Initialize Resource Management
 	map = new RoomMap();
-	map->Initialize("./Config/puzzle.xml");
+	map->Initialize("./Config/puzzle.xml", health);
 
 	//Initialize Game State
-	room = map->findNext(room);
-	health = 11;	
+	room = map->findNext(room);	
 
 	//Splash Screen
 	clearConsole();

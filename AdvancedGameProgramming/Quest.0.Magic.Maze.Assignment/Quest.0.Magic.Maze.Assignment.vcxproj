@@ -92,6 +92,7 @@
     <ClCompile Include="Source\ThirdParty\tinyxml\tinyxmlparser.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Xml Include="Config\gamesave.xml" />
     <Xml Include="Config\puzzle.xml" />
     <Xml Include="Config\test.xml" />
   </ItemGroup>

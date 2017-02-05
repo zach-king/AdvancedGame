@@ -16,12 +16,16 @@ class RoomMap
 {
 public:
 	RoomMap();
-	bool Initialize(std::string configFile);
+	bool Initialize(std::string configFile, int &health);
 	Room* findNext(Room*);
 	void randomizeRooms();
 	std::vector<std::string> getInventory();
 	void addItem(std::string);
 	void disperseInventory();
+	bool SaveLevel(const char*, int);
+	void setCurrentRoom(Room*);
+	void setStartRoom(Room*);
+	Room* getStartRoom();
 
 private:
 	std::map<std::string, RoomFactory*> roomLibrary;
@@ -31,7 +35,9 @@ private:
 	std::vector<std::string> inventory;
 
 	// Private XML level loading instructions
-	bool RoomMap::LoadLevel(const char* configFile);
+	bool LoadLevel(const char*, int&);
+	Room* startRoom;
+	Room* currentRoom;
 };
 
 #endif

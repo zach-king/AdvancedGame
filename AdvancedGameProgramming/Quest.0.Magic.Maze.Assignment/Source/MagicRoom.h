@@ -7,6 +7,7 @@ class MagicRoom : public Room
 {
 public:
 	virtual Room* execute(RoomMap*, int &);
+	virtual std::string getType();
 };
 
 #endif

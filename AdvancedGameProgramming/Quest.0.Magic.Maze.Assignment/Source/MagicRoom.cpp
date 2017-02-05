@@ -7,21 +7,24 @@
 
 Room* MagicRoom::execute(RoomMap *roomMap, int &health)
 {
+	// Output to player
 	std::cout << "You hear loud grinding sounds and you feel your strength restored!" << std::endl;
+
+	// If player has any items, tell them about their items being dispersed,
+	// and disperse the inventory items randomly
 	if (!roomMap->getInventory().empty())
 	{
 		std::cout << "In the midst of the commotion, your items have been scattered across the dungeon!" << std::endl;
+		roomMap->disperseInventory();
 	}
 
+	// Increment health by 2 and randomize the rooms
 	health += 2;
 	roomMap->randomizeRooms();
 
 	// Display the screen output
 	std::cout << "View:\t" << description << std::endl;
 	std::cout << "Health: " << health << std::endl << std::endl;
-
-	// Randomly disperse the player's items 
-	roomMap->disperseInventory();
 
 	// Display inventory
 	std::cout << "Inventory:" << std::endl;
@@ -36,7 +39,7 @@ Room* MagicRoom::execute(RoomMap *roomMap, int &health)
 	{
 		std::cout << neighbor.first << " ";
 	}
-	std::cout << std::endl << std::endl;
+	std::cout << std::endl << "Enter `p` to save or `o` to load a previous save." << std::endl << std::endl;
 	std::cout << "Select Move: ";
 
 	// Get the user input transition
@@ -49,9 +52,27 @@ Room* MagicRoom::execute(RoomMap *roomMap, int &health)
 	if (neighbors.find(transition) == neighbors.end())
 	{
 		health -= 2;
+
+		// Check for save/load
+		if (transition == "p")
+		{
+			roomMap->SaveLevel("Config/gamesave.xml", health);
+		}
+		else if (transition == "o")
+		{
+			roomMap->Initialize("Config/gamesave.xml", health);
+			return roomMap->getStartRoom();
+		}
 		return this;
 	}
 
 	// Get the next room
-	return roomMap->findNext(this);
+	Room* nextRoom = roomMap->findNext(this);
+	roomMap->setCurrentRoom(nextRoom);
+	return nextRoom;
+}
+
+std::string MagicRoom::getType()
+{
+	return "Magic";
 }

@@ -34,7 +34,7 @@ Room* NormalRoom::execute(RoomMap *roomMap, int &health)
 	{
 		std::cout << neighbor.first << " ";
 	}
-	std::cout << std::endl << std::endl;
+	std::cout << std::endl << "Enter `p` to save or `o` to load a previous save." << std::endl << std::endl;
 	std::cout << "Select Move: ";
 
 	// Get the user input transition
@@ -47,9 +47,29 @@ Room* NormalRoom::execute(RoomMap *roomMap, int &health)
 	if (neighbors.find(transition) == neighbors.end())
 	{
 		health++;
+
+		// Check for save/load
+		if (transition == "p")
+		{
+			roomMap->SaveLevel("Config/gamesave.xml", health);
+		}
+		else if (transition == "o")
+		{
+			roomMap->Initialize("Config/gamesave.xml", health);
+			return roomMap->getStartRoom();
+		}
+
 		return this;
 	}
 
 	// Get the name of the next room based off of transition
-	return roomMap->findNext(this);
+	Room* nextRoom = roomMap->findNext(this);
+	roomMap->setCurrentRoom(nextRoom);
+	return nextRoom;
+}
+
+// Overrode getter for Normal Room type
+std::string NormalRoom::getType()
+{
+	return "Normal";
 }

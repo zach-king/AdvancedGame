@@ -1,0 +1,51 @@
+<Puzzle health="3">
+    <Inventory>
+        <Item name="torch" />
+        <Item name="flint" />
+        <Item name="chalice" />
+        <Item name="rucksack" />
+    </Inventory>
+    <Room type="Normal" condition="3" name="quit" description="Description of quit." item="" />
+    <Room type="Magic" condition="2" name="room1" description="Description of room one." item="">
+        <Neighbor transition="a" target="start" />
+        <Neighbor transition="q" target="quit" />
+        <Neighbor transition="s" target="room4" />
+    </Room>
+    <Room type="Normal" condition="0" name="room2" description="Description of room two." item="compass">
+        <Neighbor transition="q" target="quit" />
+        <Neighbor transition="s" target="room5" />
+    </Room>
+    <Room type="Normal" condition="2" name="room3" description="Description of room three." item="">
+        <Neighbor transition="d" target="room4" />
+        <Neighbor transition="q" target="quit" />
+        <Neighbor transition="s" target="room6" />
+        <Neighbor transition="w" target="start" />
+    </Room>
+    <Room type="Normal" condition="2" name="room4" description="Description of room four." item="" current="yes">
+        <Neighbor transition="a" target="room3" />
+        <Neighbor transition="d" target="room5" />
+        <Neighbor transition="q" target="quit" />
+        <Neighbor transition="s" target="room6" />
+        <Neighbor transition="w" target="room1" />
+    </Room>
+    <Room type="Normal" condition="2" name="room5" description="Description of room five." item="">
+        <Neighbor transition="a" target="room4" />
+        <Neighbor transition="q" target="quit" />
+        <Neighbor transition="s" target="room7" />
+        <Neighbor transition="w" target="room2" />
+    </Room>
+    <Room type="Normal" condition="1" name="room6" description="Description of room six." item="key">
+        <Neighbor transition="a" target="room3" />
+        <Neighbor transition="q" target="quit" />
+        <Neighbor transition="w" target="room4" />
+    </Room>
+    <Room type="Magic" condition="2" name="room7" description="Description of room seven." item="">
+        <Neighbor transition="q" target="quit" />
+        <Neighbor transition="w" target="room5" />
+    </Room>
+    <Room type="Normal" condition="2" name="start" description="Description of start room." item="">
+        <Neighbor transition="d" target="room1" />
+        <Neighbor transition="q" target="quit" />
+        <Neighbor transition="s" target="room3" />
+    </Room>
+</Puzzle>

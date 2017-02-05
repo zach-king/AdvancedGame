@@ -10,28 +10,31 @@
 
 RoomMap::RoomMap()
 {
-	//Nothing
+	// Nothing
 }
 
-bool RoomMap::Initialize(std::string configFile)
+bool RoomMap::Initialize(std::string configFile, int &health)
 {
 	//Build room library and fill with Normal and Magic Room Factories
 	roomLibrary["Normal"] = new NormalRoomFactory();
 	roomLibrary["Magic"] = new MagicRoomFactory();
 
-	return (LoadLevel(configFile.c_str()));
+	return (LoadLevel(configFile.c_str(), health));
 }
 
+// Getter for inventory
 std::vector<std::string> RoomMap::getInventory()
 {
 	return inventory;
 }
 
+// Adds item to inventory
 void RoomMap::addItem(std::string itemName)
 {
 	inventory.push_back(itemName);
 }
 
+// Places items in inventory in a random *empty* Normal room
 void RoomMap::disperseInventory()
 {
 	// Iterate over the inventory and place each item
@@ -40,8 +43,8 @@ void RoomMap::disperseInventory()
 	{
 		for (auto room : rooms)
 		{
-			// Originally contained an item and no longer does
-			if (room.second->getCanHaveItem() && room.second->getItem() == "")
+			// Originally contained an item and no longer does; also not the quit room
+			if (room.second->getType() != "Magic" && room.second->getIdentifier() != "quit" && room.second->getItem() == "")
 			{
 				// Place the item in the room
 				room.second->setItem(*itemIter);
@@ -53,6 +56,7 @@ void RoomMap::disperseInventory()
 	inventory.clear();
 }
 
+// Returns a pointer to next Room based off of transition
 Room* RoomMap::findNext(Room* room)
 {
 	Room* next;
@@ -73,7 +77,10 @@ Room* RoomMap::findNext(Room* room)
 }
 
 
-bool RoomMap::LoadLevel(const char* configFile)
+// Load level based off of XML configuration file.
+// Note: this could be from the regular level file, 
+// or from the savefile.
+bool RoomMap::LoadLevel(const char* configFile, int &health)
 {
 	// Create the XML document object and 
 	// Check if it loaded without trouble
@@ -88,12 +95,36 @@ bool RoomMap::LoadLevel(const char* configFile)
 	TiXmlElement* pRootXML = NULL;
 	TiXmlElement* pRoomXML = NULL;
 
+	// Inventory and item pointers
+	TiXmlElement* pInventXML = NULL;
+	TiXmlElement* pItemXML = NULL;
+
 	// Parse the puzzle XML object; get the root XML element
 	pRootXML = levelConfig.FirstChildElement("Puzzle");
 
 	// If <Puzzle> is not in config file, exit with error
 	if (!pRootXML)
 		return false;
+
+	// Get health if given in the XML
+	if (pRootXML->Attribute("health") != NULL)
+		pRootXML->QueryIntAttribute("health", &health);
+
+	// Parse the inventory out of XML file, if it exists
+	pInventXML = pRootXML->FirstChildElement("Inventory");
+	if (pInventXML)
+	{
+		// Clear the current inventory, since one exists in the config file
+		inventory.clear();
+
+		// Get the first Item element, and parse items, adding them to inventory
+		pItemXML = pInventXML->FirstChildElement("Item");
+		while (pItemXML)
+		{
+			inventory.push_back(pItemXML->Attribute("name"));
+			pItemXML = pItemXML->NextSiblingElement("Item");
+		}
+	}
 
 	// Build the Rooms of the game space.
 	// Parse the first <Room> object from the root object
@@ -123,6 +154,13 @@ bool RoomMap::LoadLevel(const char* configFile)
 		if (!newRoom->Initialize(pRoomXML))
 			return false;
 
+		// Check if this is the current room from the config file
+		if (pRoomXML->Attribute("current") != NULL)
+		{
+			startRoom = newRoom;
+			currentRoom = newRoom;
+		}
+
 		// Store the new Room in our rooms map
 		rooms[newRoom->getIdentifier()] = newRoom;
 
@@ -134,6 +172,88 @@ bool RoomMap::LoadLevel(const char* configFile)
 	return true;
 }
 
+// Save the current state of the game to an XML file
+bool RoomMap::SaveLevel(const char* saveFile, int health)
+{
+	// Build the XML document
+	TiXmlDocument saveDoc;
+
+	// Add the Puzzle element
+	TiXmlElement* root = new TiXmlElement("Puzzle");
+	root->SetAttribute("health", health);
+	saveDoc.LinkEndChild(root);
+
+	// Pointer to be reused for elements
+	TiXmlElement* elem;
+	TiXmlElement* childElem;
+
+	// Add the inventory
+	elem = new TiXmlElement("Inventory");
+	for (auto itemIter = inventory.begin(); itemIter != inventory.end(); ++itemIter)
+	{
+		// Keep making new <Item> elements, with the Item data
+		childElem = new TiXmlElement("Item");
+		childElem->SetAttribute("name", (*itemIter).c_str());
+		elem->LinkEndChild(childElem);
+	}
+	root->LinkEndChild(elem);
+
+	// Add the Room elements
+	for (auto room : rooms)
+	{
+		// Set Room attributes
+		elem = new TiXmlElement("Room");
+		elem->SetAttribute("type", room.second->getType().c_str());
+		elem->SetAttribute("condition", room.second->getCondition());
+		elem->SetAttribute("name", room.second->getIdentifier().c_str());
+		elem->SetAttribute("description", room.second->getDescription().c_str());
+		elem->SetAttribute("item", room.second->getItem().c_str());
+
+		// If current room, indicate such in save file;
+		// This is used for loading later, so the player is 
+		// placed in the room they left off at from the save
+		if (room.second == currentRoom)
+		{
+			elem->SetAttribute("current", "yes");
+		}
+
+		// Create Neighbor children of Room
+		for (auto neigh : room.second->getNeighbors())
+		{
+			childElem = new TiXmlElement("Neighbor");
+			childElem->SetAttribute("transition", neigh.first.c_str());
+			childElem->SetAttribute("target", neigh.second.c_str());
+			elem->LinkEndChild(childElem);
+		}
+		root->LinkEndChild(elem);
+	}
+
+	// Save the XML to file
+	return saveDoc.SaveFile(saveFile);
+}
+
+// Setter for currentRoom
+void RoomMap::setCurrentRoom(Room* pRoom)
+{
+	currentRoom = pRoom;
+}
+
+// Setter for startRoom
+void RoomMap::setStartRoom(Room* pRoom)
+{
+	startRoom = pRoom;
+}
+
+// Getter for startRoom
+Room* RoomMap::getStartRoom()
+{
+	return startRoom;
+}
+
+// Randomize the rooms with the following conditions:
+//		- each room exists only once in map
+//		- doors are two-way (return to prev room with oposite direction)
+//		- quit is always an option
 void RoomMap::randomizeRooms()
 {
 	// Setup the RNG (Random Number Generator)

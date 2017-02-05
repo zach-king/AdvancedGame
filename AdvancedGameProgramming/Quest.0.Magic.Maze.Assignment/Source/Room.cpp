@@ -7,32 +7,31 @@
 #include"ThirdParty\tinyxml\tinystr.h"
 #include"ThirdParty\tinyxml\tinyxml.h"
 
+// Default constructor
 Room::Room()
 {
-	canHaveItem = false;
 	item = "";
 }
 
+// Destructor
 Room::~Room()
 {
 	// Nothing
 }
 
-bool Room::getCanHaveItem()
-{
-	return canHaveItem;
-}
-
+// Item getter
 std::string Room::getItem()
 {
 	return item;
 }
 
+// Item setter
 void Room::setItem(std::string itemName)
 {
 	item = itemName;
 }
 
+// Init room with given XML element
 bool Room::Initialize(TiXmlElement *room)
 {
 	// Set the condition from the xml element <Room>. 
@@ -48,7 +47,6 @@ bool Room::Initialize(TiXmlElement *room)
 	if (room->Attribute("item") != NULL)
 	{
 		item = room->Attribute("item");
-		canHaveItem = true;
 	}
 
 	// Get the name and description from the xml element <Room>
@@ -65,11 +63,14 @@ bool Room::Initialize(TiXmlElement *room)
 	return true;
 }
 
+// Return true if this room has an end condition
 bool Room::finish()
 {
 	return (condition == WIN || condition == LOSE || condition == QUIT);
 }
 
+// Get the string of the name of the next room, from transition
+// or none ("") if the neighbor for that transition DNE
 std::string Room::next()
 {
 	// Return the appropriate Room identifier for the given 
@@ -79,31 +80,43 @@ std::string Room::next()
 	return "";
 }
 
+// Setter for name of room
 void Room::setIdentifier(std::string ident)
 {
 	identifier = ident;
 }
 
+// Setter for description
 void Room::setDescription(std::string desc)
 {
 	description = desc;
 }
 
+// Getter for description
+std::string Room::getDescription()
+{
+	return description;
+}
+
+// Getter for name of room
 std::string Room::getIdentifier()
 {
 	return identifier;
 }
 
+// Getter for condition
 END_CONDITION Room::getCondition()
 {
 	return condition;
 }
 
+// Helper - add a neighbor for a given transition
 void Room::addNeighbor(std::string transition, std::string roomName)
 {
 	neighbors[transition] = roomName;
 }
 
+// Helper - clear out all neighbors (used by roomMap for randomizeRooms())
 void Room::clearNeighbors()
 {
 	// Clear all the neighbors but keep the quit option
@@ -111,6 +124,7 @@ void Room::clearNeighbors()
 	neighbors["q"] = "quit";
 }
 
+// Getter for neighbors
 std::map<std::string, std::string> Room::getNeighbors()
 {
 	return neighbors;
