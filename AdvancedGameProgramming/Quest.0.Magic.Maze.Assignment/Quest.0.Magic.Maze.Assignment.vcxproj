@@ -13,6 +13,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{C42CA014-B164-4540-B883-1AAAEB768DEA}</ProjectGuid>
     <RootNamespace>Hmwk0Solution</RootNamespace>
+    <ProjectName>zcking.quest.0</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
