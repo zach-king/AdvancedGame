@@ -5,7 +5,7 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MyToolbox", "MyToolbox\MyToolbox.vcxproj", "{8738BF3D-4B09-46E7-B3B2-61A24E2C27AB}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Quest.0.Magic.Maze.Assignment", "Quest.0.Magic.Maze.Assignment\Quest.0.Magic.Maze.Assignment.vcxproj", "{C42CA014-B164-4540-B883-1AAAEB768DEA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zcking.quest.0", "zcking.quest.0\zcking.quest.0.vcxproj", "{C42CA014-B164-4540-B883-1AAAEB768DEA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
