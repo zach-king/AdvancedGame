@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<Level1>
+    <GameAsset name="Blue Leever" x="100.0f" y="100.0f" angle="0.0f"/>
+    <GameAsset name="Red Leever" x="0.0f" y="200.0f" angle="0.0f"/>
+    <GameAsset name="Blue Octorok" x="100.0f" y="50.0f" angle="0.0f"/>
+    <GameAsset name="Red Octorok" x="400.0f" y="300.0f" angle="270.0f"/>
+    <GameAsset name="Red Leever" x="-75.0f" y="0.0f" angle="0.0f"/>
+    <GameAsset name="Blue Leever" x="35.0f" y="100.0f" angle="0.0f"/>
+    <GameAsset name="Blue Octorok" x="125.0f" y="40.0f" angle="270.0f"/>
+</Level1>

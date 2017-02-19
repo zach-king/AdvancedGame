@@ -1,5 +1,4 @@
-#ifndef ROOM_H
-#define ROOM_H
+#pragma once
 
 #include<map>
 #include<string>
@@ -42,5 +41,3 @@ protected:
 	std::map<std::string, std::string> neighbors;
 	std::string item;
 };
-
-#endif

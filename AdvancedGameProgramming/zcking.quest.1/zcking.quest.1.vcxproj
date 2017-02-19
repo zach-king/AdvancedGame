@@ -11,18 +11,54 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\ArtAssetLibrary.cpp" />
+    <ClCompile Include="Source\BlueLeever.cpp" />
+    <ClCompile Include="Source\BlueLeeverFactory.cpp" />
+    <ClCompile Include="Source\BlueOctorok.cpp" />
+    <ClCompile Include="Source\BlueOctorokFactory.cpp" />
+    <ClCompile Include="Source\Game.cpp" />
+    <ClCompile Include="Source\GameAssetLibrary.cpp" />
+    <ClCompile Include="Source\GameVec.cpp" />
+    <ClCompile Include="Source\GraphicsDevice.cpp" />
+    <ClCompile Include="Source\InputDevice.cpp" />
+    <ClCompile Include="Source\Object.cpp" />
+    <ClCompile Include="Source\ObjectFactory.cpp" />
+    <ClCompile Include="Source\RedLeever.cpp" />
+    <ClCompile Include="Source\RedLeeverFactory.cpp" />
+    <ClCompile Include="Source\RedOctorok.cpp" />
+    <ClCompile Include="Source\RedOctorokFactory.cpp" />
     <ClCompile Include="Source\Source.cpp" />
+    <ClCompile Include="Source\Texture.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\tinyxml\tinystr.cpp" />
     <ClCompile Include="Source\tinyxml\tinyxml.cpp" />
     <ClCompile Include="Source\tinyxml\tinyxmlerror.cpp" />
     <ClCompile Include="Source\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="Source\View.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Source\ArtAssetLibrary.h" />
+    <ClInclude Include="Source\BlueLeever.h" />
+    <ClInclude Include="Source\BlueLeeverFactory.h" />
+    <ClInclude Include="Source\BlueOctorok.h" />
+    <ClInclude Include="Source\BlueOctorokFactory.h" />
     <ClInclude Include="Source\Definitions.h" />
+    <ClInclude Include="Source\Game.h" />
+    <ClInclude Include="Source\GameAssetLibrary.h" />
+    <ClInclude Include="Source\GameVec.h" />
+    <ClInclude Include="Source\GraphicsDevice.h" />
+    <ClInclude Include="Source\InputDevice.h" />
+    <ClInclude Include="Source\Object.h" />
+    <ClInclude Include="Source\ObjectFactory.h" />
+    <ClInclude Include="Source\RedLeever.h" />
+    <ClInclude Include="Source\RedLeeverFactory.h" />
+    <ClInclude Include="Source\RedOctorok.h" />
+    <ClInclude Include="Source\RedOctorokFactory.h" />
+    <ClInclude Include="Source\Texture.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\tinyxml\tinystr.h" />
     <ClInclude Include="Source\tinyxml\tinyxml.h" />
+    <ClInclude Include="Source\View.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Images\leever_b.png" />
@@ -31,7 +67,9 @@
     <Image Include="Assets\Images\octorok_r.png" />
   </ItemGroup>
   <ItemGroup>
-    <Xml Include="Assets\Config\level1.xml" />
+    <Xml Include="Assets\Config\level1.xml">
+      <SubType>Designer</SubType>
+    </Xml>
     <Xml Include="Assets\Config\level2.xml" />
     <Xml Include="Assets\Config\objects.xml" />
   </ItemGroup>
