@@ -50,3 +50,8 @@ void Object::setAngle(GAME_FLT ang)
 {
 	angle = ang;
 }
+
+GAME_VEC Object::getPosition()
+{
+	return position;
+}

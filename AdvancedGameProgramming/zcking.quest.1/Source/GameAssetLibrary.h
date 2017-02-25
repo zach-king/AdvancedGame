@@ -14,7 +14,7 @@ public:
 	GameAssetLibrary();
 	~GameAssetLibrary();
 	bool Initialize();
-	std::unique_ptr<ObjectFactory> Search(std::string);
+	std::unique_ptr<Object> Search(std::string);
 
 private:
 	std::map<std::string, std::unique_ptr<ObjectFactory>> library;

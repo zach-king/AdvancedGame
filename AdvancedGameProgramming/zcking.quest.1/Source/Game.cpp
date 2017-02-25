@@ -149,11 +149,10 @@ bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile)
 		pObjectXML->QueryFloatAttribute("angle", &angle);
 		
 		// Get the correct object factory
-		std::unique_ptr<ObjectFactory> factory = gLibrary->Search(name);
-		if (factory != nullptr)
+		std::unique_ptr<Object> obj = gLibrary->Search(name);
+		if (obj != nullptr)
 		{
 			// Create the object
-			auto obj = factory->create();
 			obj->Initialize(gDevice->getRenderer(), aLibrary->GetAssetPath(name));
 			obj->setStartPosition(pos);
 			obj->setPosition(pos);
@@ -173,6 +172,10 @@ bool Game::Run()
 	GAME_EVENT event = iDevice->GetEvent();
 	if (event == GAME_QUIT)
 		return true;
+	
+	// Check if we should toggle the mini map
+	if (event == GAME_MAP_TOGGLE)
+		showMiniMap = !showMiniMap;
 
 	// Start the frame's time
 	timer->start();
@@ -191,6 +194,12 @@ bool Game::Run()
 
 	// Draw each object
 	Draw();
+
+	// Draw the mini map if it is toggled
+	if (showMiniMap)
+	{
+		DrawMiniMap();
+	}
 
 	// Present render state
 	gDevice->Present();
@@ -223,5 +232,56 @@ void Game::Draw()
 	for (auto objIter = objects.begin(); objIter != objects.end(); ++objIter)
 	{
 		(*objIter)->Draw(view.get());
+	}
+}
+
+void Game::DrawMiniMap()
+{
+	// Draw the rectangle for the mini map
+	SDL_Renderer* renderer = gDevice->getRenderer();
+
+	SDL_Rect mapRect = {
+		SCREEN_WIDTH - MINI_MAP_WIDTH - MINI_MAP_OFFSET,
+		MINI_MAP_OFFSET,
+		MINI_MAP_WIDTH,
+		MINI_MAP_HEIGHT
+	};
+
+	// Want half-transparent map so set blend mode beforehand;
+	// otherwise the alpha value does nothing
+	SDL_SetRenderDrawBlendMode(renderer, SDL_BLENDMODE_BLEND);
+	SDL_SetRenderDrawColor(renderer, 230, 200, 165, 100);
+	SDL_RenderFillRect(renderer, &mapRect);
+
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 100);
+	SDL_RenderDrawRect(renderer, &mapRect);
+
+	SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+
+	// Iterate over objects/creatures and draw them on the mini map
+	GAME_VEC viewPos = view->getPosition();
+	GAME_VEC objPos;
+	GAME_INT xOffset = (int)(SCREEN_WIDTH / MINI_MAP_WIDTH);
+	GAME_INT yOffset = (int)(SCREEN_HEIGHT / MINI_MAP_HEIGHT);
+	GAME_INT xPos, yPos;
+
+	for (auto objIter = objects.begin(); objIter != objects.end(); ++objIter)
+	{
+		// Get the creature's world map position
+		objPos = objIter->get()->getPosition();
+
+		xPos = (int)((objPos.x - viewPos.x) / xOffset) + (SCREEN_WIDTH - MINI_MAP_WIDTH - MINI_MAP_OFFSET);
+		yPos = (int)((objPos.y + viewPos.y) / yOffset) + MINI_MAP_OFFSET;
+
+		if (xPos <= (SCREEN_WIDTH - MINI_MAP_WIDTH - MINI_MAP_OFFSET) || xPos >= SCREEN_WIDTH - MINI_MAP_OFFSET ||
+			yPos <= MINI_MAP_OFFSET || yPos >= (MINI_MAP_OFFSET + MINI_MAP_HEIGHT))
+			continue;
+
+		// Draw a point for that position, but scaled for the mini map	
+		SDL_RenderDrawPoint(
+			renderer,
+			xPos,
+			yPos
+		);
 	}
 }

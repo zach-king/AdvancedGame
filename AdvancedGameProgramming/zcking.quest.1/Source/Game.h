@@ -32,4 +32,6 @@ private:
 	GAME_FLT gameTime; // maintains overall in-game time
 	std::unique_ptr<View> view;
 	std::vector<std::unique_ptr<Object>> objects;
+	void DrawMiniMap();
+	bool showMiniMap;
 };

@@ -53,19 +53,14 @@ bool View::Update(GAME_FLT change)
 		position.y -= VIEW_SPEED;
 		break;
 	case GAME_LEFT:
-		//angle -= VIEW_SPEED;
 		position.x -= VIEW_SPEED;
 		break;
 	case GAME_RIGHT:
-		//angle += VIEW_SPEED;
 		position.x += VIEW_SPEED;
 		break;
 	case GAME_QUIT:
 		return true;
 	}
-
-	//center.x = cosf(angle);
-	//center.y = sinf(angle);
 
 	return false;
 }

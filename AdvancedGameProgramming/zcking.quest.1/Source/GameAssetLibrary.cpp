@@ -4,6 +4,9 @@
 #include "RedOctorokFactory.h"
 #include "RedLeeverFactory.h"
 
+#include <iterator>
+#include <map>
+
 GameAssetLibrary::GameAssetLibrary()
 {
 
@@ -24,11 +27,11 @@ bool GameAssetLibrary::Initialize()
 	return true;
 }
 
-std::unique_ptr<ObjectFactory> GameAssetLibrary::Search(std::string libName)
+std::unique_ptr<Object> GameAssetLibrary::Search(std::string libName)
 {
-	auto libIter = library.find(libName);
+	std::map<std::string, std::unique_ptr<ObjectFactory>>::iterator libIter = library.find(libName);
 	if (libIter == library.end())
 		return nullptr;
 
-	return std::move(libIter->second);
+	return libIter->second->create();
 }

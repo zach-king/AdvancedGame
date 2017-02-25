@@ -24,6 +24,7 @@ public:
 	void setStartPosition(GAME_VEC);
 	void setPosition(GAME_VEC);
 	void setAngle(GAME_FLT);
+	GAME_VEC getPosition();
 
 protected:
 	SDL_Renderer* renderer;

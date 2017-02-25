@@ -84,7 +84,7 @@ bool GraphicsDevice::Shutdown()
 void GraphicsDevice::Begin()
 {
 	// Render the desert-color background over everything
-	SDL_SetRenderDrawColor(renderer, 237, 201, 175, 255);
+	SDL_SetRenderDrawColor(renderer, 255, 219, 173, 255);
 	SDL_RenderClear(renderer);
 }
 

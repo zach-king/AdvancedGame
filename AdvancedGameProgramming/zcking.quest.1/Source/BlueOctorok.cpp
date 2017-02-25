@@ -31,9 +31,6 @@ void BlueOctorok::Update()
 	static std::uniform_int_distribution<GAME_INT> ud(MIN_OCTOROK_ANGLE, MAX_OCTOROK_ANGLE+1);
 
 	angle -= degToRads((GAME_FLT)(ud(e)));
-
-	position.x += cosf(angle);
-	position.y += sinf(angle);
 }
 
 void BlueOctorok::Draw(View* view)

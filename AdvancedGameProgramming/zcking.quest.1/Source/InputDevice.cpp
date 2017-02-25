@@ -28,11 +28,14 @@ GAME_EVENT InputDevice::GetEvent()
 GAME_EVENT InputDevice::Translate()
 {
 	// Translate Event to GAME_EVENT
+
 	switch (event->type)
 	{
 	case SDL_KEYDOWN:
 		switch (event->key.keysym.sym)
 		{
+		case SDLK_m:
+			return GAME_MAP_TOGGLE;
 		case SDLK_LEFT:
 			return GAME_LEFT;
 		case SDLK_RIGHT:
