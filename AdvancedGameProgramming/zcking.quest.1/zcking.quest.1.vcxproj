@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
       <Configuration>Debug</Configuration>
@@ -18,7 +18,6 @@
     <ClCompile Include="Source\BlueOctorokFactory.cpp" />
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\GameAssetLibrary.cpp" />
-    <ClCompile Include="Source\GameVec.cpp" />
     <ClCompile Include="Source\GraphicsDevice.cpp" />
     <ClCompile Include="Source\InputDevice.cpp" />
     <ClCompile Include="Source\Object.cpp" />
@@ -45,7 +44,6 @@
     <ClInclude Include="Source\Definitions.h" />
     <ClInclude Include="Source\Game.h" />
     <ClInclude Include="Source\GameAssetLibrary.h" />
-    <ClInclude Include="Source\GameVec.h" />
     <ClInclude Include="Source\GraphicsDevice.h" />
     <ClInclude Include="Source\InputDevice.h" />
     <ClInclude Include="Source\Object.h" />
@@ -76,6 +74,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{6D0C0CC1-2E46-41F4-94C1-0F91F125C4A8}</ProjectGuid>
     <RootNamespace>Hmwk1Solution</RootNamespace>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -87,7 +86,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v140</PlatformToolset>
+    <PlatformToolset>v141</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>

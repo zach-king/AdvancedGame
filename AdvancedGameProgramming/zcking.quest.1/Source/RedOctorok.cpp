@@ -29,10 +29,12 @@ void RedOctorok::Update()
 	static std::default_random_engine e(rDev());
 	static std::uniform_int_distribution<GAME_INT> ud(MIN_OCTOROK_ANGLE, MAX_OCTOROK_ANGLE+1);
 
+	// Continue to decrement the angle by a random amount
 	angle -= degToRads((GAME_FLT)(ud(e)));
 
-	position.x += cosf(angle);
-	position.y += sinf(angle);
+	// Move the octorok (not just spin)
+	position.x += cosf(angle); // cos for x component
+	position.y += sinf(angle); // sin for y component
 }
 
 void RedOctorok::Draw(View* view)

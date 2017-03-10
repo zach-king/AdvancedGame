@@ -2,6 +2,7 @@
 
 #include "ObjectFactory.h"
 
+// Blue Octorok Factory
 class BlueOctorokFactory : public ObjectFactory
 {
 public:

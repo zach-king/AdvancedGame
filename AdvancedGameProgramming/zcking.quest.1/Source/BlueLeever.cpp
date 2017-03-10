@@ -10,6 +10,7 @@ BlueLeever::BlueLeever()
 	static std::default_random_engine e(rDev());
 	static std::uniform_int_distribution<GAME_INT> ud(MIN_LEEVER_DISTANCE, MAX_LEEVER_DISTANCE+1);
 
+	// Initialize the members
 	movingUp = false;
 	speed = DEFAULT_LEEVER_SPEED;
 	distance = ud(e);
@@ -23,12 +24,14 @@ BlueLeever::~BlueLeever()
 
 void BlueLeever::Update()
 {
+	// Switch direction when needed
 	if (position.y >= (startPosition.y + distance))
 		movingUp = true;
 	
 	if (position.y <= (startPosition.y - distance))
 		movingUp = false;
 
+	// Based off direction, change position
 	if (movingUp)
 		position.y -= speed; // with graphics window, origin is in top-left so adding to y goes down and vice versa
 	else

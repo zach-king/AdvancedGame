@@ -8,14 +8,17 @@
 class GraphicsDevice
 {
 public:
+	// Constructor and destructor
 	GraphicsDevice(Uint32, Uint32);
 	~GraphicsDevice();
 
+	// Initializer(fullscreen)
 	bool Initialize(bool);
-	bool Shutdown();
+	bool Shutdown(); // Shuts down subsystems and device
 	void Begin();
 	void Present();
 
+	// Getter for the renderer
 	SDL_Renderer* getRenderer();
 
 private:

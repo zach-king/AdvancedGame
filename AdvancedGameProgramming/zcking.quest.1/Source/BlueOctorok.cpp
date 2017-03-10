@@ -30,6 +30,7 @@ void BlueOctorok::Update()
 	static std::default_random_engine e(rDev());
 	static std::uniform_int_distribution<GAME_INT> ud(MIN_OCTOROK_ANGLE, MAX_OCTOROK_ANGLE+1);
 
+	// Continue to decrement the angle by a random amount
 	angle -= degToRads((GAME_FLT)(ud(e)));
 }
 

@@ -10,6 +10,7 @@ RedLeever::RedLeever()
 	static std::default_random_engine e(rDev());
 	static std::uniform_int_distribution<GAME_INT> ud(MIN_LEEVER_DISTANCE, MAX_LEEVER_DISTANCE+1);
 
+	// Initialize the members
 	movingLeft = false;
 	speed = DEFAULT_LEEVER_SPEED;
 	distance = ud(e);
@@ -23,12 +24,14 @@ RedLeever::~RedLeever()
 
 void RedLeever::Update()
 {
+	// Switch direction when needed
 	if (position.x >= (startPosition.x + distance))
 		movingLeft = true;
 
 	if (position.x <= (startPosition.x - distance))
 		movingLeft = false;
 
+	// Based off direction, change position
 	if (movingLeft)
 		position.x -= speed; 
 	else

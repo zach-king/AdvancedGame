@@ -2,6 +2,7 @@
 
 #include "Object.h"
 
+// Red Octorok class
 class RedOctorok : public Object
 {
 public:

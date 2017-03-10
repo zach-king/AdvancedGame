@@ -8,14 +8,20 @@
 class InputDevice
 {
 public:
+	// Default constructor/deconstructor
 	InputDevice();
 	~InputDevice();
 
-	SDL_Event* getEvent();
+	// Intializer (creates the SDL_Event)
 	bool Initialize();
+
+	// Gets a Game Event
 	GAME_EVENT GetEvent();
 
 private:
+	// SDL Event pointer
 	std::unique_ptr<SDL_Event> event;
+
+	// Translates SDL Event to Game Event
 	GAME_EVENT Translate();
 };

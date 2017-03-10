@@ -102,9 +102,6 @@
     <ClCompile Include="Source\ObjectFactory.cpp">
       <Filter>Source Files\Factories</Filter>
     </ClCompile>
-    <ClCompile Include="Source\GameVec.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Timer.h">
@@ -169,9 +166,6 @@
     </ClInclude>
     <ClInclude Include="Source\BlueLeeverFactory.h">
       <Filter>Header Files\Factories</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\GameVec.h">
-      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

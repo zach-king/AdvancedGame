@@ -6,6 +6,7 @@
 
 View::View()
 {
+	// Intialize members
 	iDevice = NULL;
 	position.x = 0;
 	position.y = 0;
@@ -19,6 +20,7 @@ View::~View()
 
 }
 
+// Initialize view members 
 bool View::Initialize(InputDevice* input, GAME_FLT xPos, GAME_FLT yPos)
 {
 	if (input == NULL)
