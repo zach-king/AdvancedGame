@@ -13,29 +13,9 @@ BlueLeever::BlueLeever()
 	movingUp = false;
 	speed = DEFAULT_LEEVER_SPEED;
 	distance = ud(e);
-	angle = 0.0f;
 }
 
 BlueLeever::~BlueLeever()
 {
 
-}
-
-void BlueLeever::Update()
-{
-	if (position.y >= (startPosition.y + distance))
-		movingUp = true;
-	
-	if (position.y <= (startPosition.y - distance))
-		movingUp = false;
-
-	if (movingUp)
-		position.y -= speed; // with graphics window, origin is in top-left so adding to y goes down and vice versa
-	else
-		position.y += speed;
-}
-
-void BlueLeever::Draw(View* view)
-{
-	texture->Draw(renderer, view, position, 0.0f, NULL);
 }

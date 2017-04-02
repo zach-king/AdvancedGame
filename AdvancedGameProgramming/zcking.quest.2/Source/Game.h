@@ -6,9 +6,13 @@
 #include "InputDevice.h"
 #include "Timer.h"
 #include "Definitions.h"
+#include "Component.h"
+#include "Definitions.h"
 
 #include <memory>
 #include <vector>
+
+class Object;
 
 class Game
 {
@@ -31,7 +35,9 @@ private:
 
 	GAME_FLT gameTime; // maintains overall in-game time
 	std::unique_ptr<View> view;
-	std::vector<std::unique_ptr<Object>> objects;
+	std::vector<std::shared_ptr<Object>> objects;
 	void DrawMiniMap();
 	bool showMiniMap;
+
+	std::shared_ptr<Component> CreateComponent(std::string, std::shared_ptr<Object>); // helper for making components
 };

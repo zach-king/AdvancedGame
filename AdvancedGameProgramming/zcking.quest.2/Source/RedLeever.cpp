@@ -13,7 +13,7 @@ RedLeever::RedLeever()
 	movingLeft = false;
 	speed = DEFAULT_LEEVER_SPEED;
 	distance = ud(e);
-	angle = 0.0f;
+	//angle = 0.0f;
 }
 
 RedLeever::~RedLeever()
@@ -21,21 +21,21 @@ RedLeever::~RedLeever()
 
 }
 
-void RedLeever::Update()
-{
-	if (position.x >= (startPosition.x + distance))
-		movingLeft = true;
-
-	if (position.x <= (startPosition.x - distance))
-		movingLeft = false;
-
-	if (movingLeft)
-		position.x -= speed; 
-	else
-		position.x += speed;
-}
-
-void RedLeever::Draw(View* view)
-{
-	texture->Draw(renderer, view, position, 0.0f, NULL);
-}
+//void RedLeever::Update()
+//{
+//	if (position.x >= (startPosition.x + distance))
+//		movingLeft = true;
+//
+//	if (position.x <= (startPosition.x - distance))
+//		movingLeft = false;
+//
+//	if (movingLeft)
+//		position.x -= speed; 
+//	else
+//		position.x += speed;
+//}
+//
+//void RedLeever::Draw(View* view)
+//{
+//	texture->Draw(renderer, view, position, 0.0f, NULL);
+//}

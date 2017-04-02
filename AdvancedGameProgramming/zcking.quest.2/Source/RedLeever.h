@@ -7,8 +7,8 @@ class RedLeever : public Object
 public:
 	RedLeever();
 	~RedLeever();
-	void Update();
-	void Draw(View*);
+	/*void Update();
+	void Draw(View*);*/
 
 private:
 	bool movingLeft; // boolean flag for direction the leever is moving (left or right)

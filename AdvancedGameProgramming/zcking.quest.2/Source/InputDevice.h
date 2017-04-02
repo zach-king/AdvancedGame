@@ -1,7 +1,7 @@
 #pragma once
 
 #include <memory>
-#include <SDL.h>
+#include "SDL.h"
 
 #include "Definitions.h"
 

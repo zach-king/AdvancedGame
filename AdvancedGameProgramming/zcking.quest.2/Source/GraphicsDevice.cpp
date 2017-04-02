@@ -1,11 +1,11 @@
-#include <iostream>
-
 #include "GraphicsDevice.h"
+#include "SpriteComponent.h"
 
 GraphicsDevice::GraphicsDevice(Uint32 width, Uint32 height) : SCREEN_WIDTH(width),
 SCREEN_HEIGHT(height)
 {
 	screen = NULL;
+	renderer = NULL;
 }
 
 GraphicsDevice::~GraphicsDevice()
@@ -31,6 +31,13 @@ bool GraphicsDevice::Initialize(bool fullScreen)
 	{
 		printf("SDL_image could not initialize! SDL_Error: %s\n", IMG_GetError());
 		return false;
+	}
+
+	//Initialize SDL_ttf subsystems
+	if (TTF_Init() == -1)
+	{
+		printf("SDL_ttf could not initialize! SDL_Error: %s\n", TTF_GetError());
+		return(false);
 	}
 
 	if (!fullScreen)
@@ -76,8 +83,10 @@ bool GraphicsDevice::Shutdown()
 	renderer = NULL;
 
 	// Quit subsystems
+	TTF_Quit();
 	IMG_Quit();
 	SDL_Quit();
+
 	return true;
 }
 
@@ -88,14 +97,32 @@ void GraphicsDevice::Begin()
 	SDL_RenderClear(renderer);
 }
 
+void GraphicsDevice::Draw()
+{
+	for (auto sprite : sprites)
+	{
+		sprite->Draw();
+	}
+}
+
 void GraphicsDevice::Present()
 {
 	// Update rendering
 	SDL_RenderPresent(renderer);
 }
 
+void GraphicsDevice::AddSprite(SpriteComponent *sprite)
+{
+	sprites.push_back(sprite);
+}
+
 // Getter for renderer member
 SDL_Renderer* GraphicsDevice::getRenderer()
 {
 	return renderer;
+}
+
+SDL_Window* GraphicsDevice::getWindow()
+{
+	return screen;
 }

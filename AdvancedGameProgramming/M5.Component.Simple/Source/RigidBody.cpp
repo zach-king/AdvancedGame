@@ -13,7 +13,7 @@ void RigidBody::Initialize(b2World* world)
     bd.angle = RW2PWAngle(60.0f);
 
 	//Create Body within Physics World
-	body = world->CreateBody(&bd);  //Register Body with Physics World
+	body = world->CreateBody(&bd);  // Register Body with Physics World
 
 	//Initialize Shape
 	shape.SetAsBox(RW2PW(172.0f/2.0f),RW2PW(116.0f/2.0f)); //Requires half widths of texture size

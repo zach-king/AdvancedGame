@@ -39,28 +39,28 @@ bool View::Initialize(InputDevice* input, GAME_FLT xPos, GAME_FLT yPos)
 
 bool View::Update(GAME_FLT change)
 {
-	// Get event and behave accordingly
-	GAME_EVENT event = iDevice->GetEvent();
+	//// Get event and behave accordingly
+	//GAME_EVENT event = iDevice->GetEvent();
 
-	switch (event)
-	{
-	case GAME_NA:
-		break;
-	case GAME_UP:
-		position.y += VIEW_SPEED;
-		break;
-	case GAME_DOWN:
-		position.y -= VIEW_SPEED;
-		break;
-	case GAME_LEFT:
-		position.x -= VIEW_SPEED;
-		break;
-	case GAME_RIGHT:
-		position.x += VIEW_SPEED;
-		break;
-	case GAME_QUIT:
-		return true;
-	}
+	//switch (event)
+	//{
+	//case GAME_NA:
+	//	break;
+	//case GAME_UP:
+	//	position.y += VIEW_SPEED;
+	//	break;
+	//case GAME_DOWN:
+	//	position.y -= VIEW_SPEED;
+	//	break;
+	//case GAME_LEFT:
+	//	position.x -= VIEW_SPEED;
+	//	break;
+	//case GAME_RIGHT:
+	//	position.x += VIEW_SPEED;
+	//	break;
+	//case GAME_QUIT:
+	//	return true;
+	//}
 
 	return false;
 }

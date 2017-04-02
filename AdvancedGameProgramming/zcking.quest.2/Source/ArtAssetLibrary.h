@@ -1,5 +1,4 @@
-#ifndef ARTASSETLIBRARY_H
-#define ARTASSETLIBRARY_H
+#pragma once
 
 #include "GraphicsDevice.h"
 #include "Texture.h"
@@ -21,5 +20,3 @@ private:
 	std::map<std::string, std::shared_ptr<Texture>> library;
 	GraphicsDevice* gDevice;
 };
-
-#endif

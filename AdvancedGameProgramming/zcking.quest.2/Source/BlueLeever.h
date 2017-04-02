@@ -7,8 +7,8 @@ class BlueLeever : public Object
 public:
 	BlueLeever();
 	~BlueLeever();
-	void Update();
-	void Draw(View*);
+	/*void Update();
+	void Draw(View*);*/
 
 private:
 	bool movingUp; // bool flag for which direction leever is moving (up or down)

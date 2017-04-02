@@ -1,5 +1,4 @@
-#ifndef GAMEASSETLIBRARY_H
-#define GAMEASSETLIBRARY_H
+#pragma once
 
 #include "ObjectFactory.h"
 #include "Object.h"
@@ -19,5 +18,3 @@ public:
 private:
 	std::map<std::string, std::unique_ptr<ObjectFactory>> library;
 };
-
-#endif

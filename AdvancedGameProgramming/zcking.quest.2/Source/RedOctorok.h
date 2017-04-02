@@ -7,8 +7,8 @@ class RedOctorok : public Object
 public:
 	RedOctorok();
 	~RedOctorok();
-	void Update();
-	void Draw(View*);
+	//void Update();
+	//void Draw(View*);
 
 private:
 	GAME_FLT degToRads(GAME_FLT);

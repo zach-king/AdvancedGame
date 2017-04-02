@@ -37,7 +37,7 @@ int main(int argc, char *argv[])
 	//Load Level
 	//========================================
 	//game->Reset();
-	std::string levelConfigFile= "./Assets/Config/level2.xml";
+	std::string levelConfigFile= "./Assets/Config/level1.xml";
 	std::string objectConfigFile = "./Assets/Config/objects.xml";
 	if(!game->LoadLevel(levelConfigFile, objectConfigFile))
 	{
@@ -51,7 +51,7 @@ int main(int argc, char *argv[])
 	bool quit = false;
 
 	//While the user hasn't quit
-	while(!game->Run()){	}
+	while(!game->Run()){ }
 
 	//========================================
 	// Clean-up
@@ -61,5 +61,6 @@ int main(int argc, char *argv[])
 		game = nullptr;
 	}
 
+	system("pause");
 	return 0;
 }

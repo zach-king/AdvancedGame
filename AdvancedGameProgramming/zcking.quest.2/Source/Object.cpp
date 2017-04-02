@@ -1,57 +1,44 @@
 
 #include "Object.h"
 #include "Texture.h"
+#include "Component.h"
 
 #include <memory>
 
 Object::Object()
 {
-	renderer = NULL;
-	texture = NULL;
-	startPosition.x = 0.0f;
-	startPosition.y = 0.0f;
-	position = startPosition;
-	angle = 0.0f;
+	initialized = false;
 }
 
 Object::~Object()
 {
-	renderer = NULL;
-	texture->free();
+	//for(auto comp: components)
+	//{
+	//	comp->OwnerDestroyed();
+	//}
+	//components.clear();
 }
 
-bool Object::Initialize(SDL_Renderer* renderer, std::string path)
+bool Object::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
 {
-	if (renderer == NULL)
-		return false;
+	for (auto comp : components)
+	{
+		if (!comp->Initialize(inits))
+			return false;
+	}
 
-	this->renderer = renderer;
-
-	texture = std::make_unique<Texture>();
-	startPosition.x = 0.0f;
-	startPosition.y = 0.0f;
-	position = startPosition;
-	angle = 0.0f;
-
-	return (texture->load(renderer, path));
+	return true;
 }
 
-void Object::setStartPosition(GAME_VEC vec)
+void Object::AddComponent(std::shared_ptr<Component> component)
 {
-	startPosition = vec;
+	components.push_back(component);
 }
 
-void Object::setPosition(GAME_VEC vec)
+void Object::Update()
 {
-	position = vec;
-}
-
-void Object::setAngle(GAME_FLT ang)
-{
-	angle = ang;
-}
-
-GAME_VEC Object::getPosition()
-{
-	return position;
+	for (auto comp : components)
+	{
+		comp->Update();
+	}
 }

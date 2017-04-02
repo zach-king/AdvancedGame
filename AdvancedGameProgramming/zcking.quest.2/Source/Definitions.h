@@ -1,5 +1,10 @@
 #pragma once
 
+class GraphicsDevice;
+class View;
+
+#include <string>
+
 //Basic Types
 typedef unsigned int	Uint32;
 typedef float			GAME_FLT;
@@ -33,3 +38,15 @@ const GAME_FLT VIEW_SPEED = 2.5f;
 const GAME_INT MINI_MAP_WIDTH = (int)(SCREEN_WIDTH / 5); // scale the map based off screen size
 const GAME_INT MINI_MAP_HEIGHT = (int)(SCREEN_HEIGHT / 5); // make a square map
 const GAME_INT MINI_MAP_OFFSET = 30; // pixels of padding/margin between the map sides and screen sides
+
+// Object Factory Initializers for easy setting of parameters with components
+struct GAME_OBJECTFACTORY_INITIALIZERS
+{
+	std::string texturePath;
+	GAME_VEC position;
+	GAME_FLT angle;
+	bool verticalSlide;
+	bool radius;
+	View* view;
+	GraphicsDevice* gDevice;
+};

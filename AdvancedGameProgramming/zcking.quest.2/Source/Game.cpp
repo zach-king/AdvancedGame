@@ -5,6 +5,12 @@
 #include "Timer.h"
 #include "Definitions.h"
 #include "Game.h"
+#include "BodyComponent.h"
+#include "SpriteComponent.h"
+#include "SlideBehaviorComponent.h"
+#include "CircleBehaviorComponent.h"
+#include "PlayerInputComponent.h"
+#include "GameFunctions.h"
 
 #include "tinyxml\tinyxml.h"
 
@@ -128,6 +134,7 @@ bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile)
 	// Root and object xml pointers
 	pRootXML = NULL;
 	pObjectXML = NULL;
+	TiXmlElement* pComponentXML = NULL;
 
 	// Parse the XML object; get the root XML element
 	pRootXML = gameXml.FirstChildElement();
@@ -140,25 +147,60 @@ bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile)
 	pObjectXML = pRootXML->FirstChildElement("GameAsset");
 	while (pObjectXML != NULL)
 	{
-		// Get the asset attributes and create objects
+		// Get the creature attributes and create objects
 		std::string name = pObjectXML->Attribute("name");
-		GAME_FLT angle;
-		GAME_VEC pos;
-		pObjectXML->QueryFloatAttribute("x", &pos.x);
-		pObjectXML->QueryFloatAttribute("y", &pos.y);
-		pObjectXML->QueryFloatAttribute("angle", &angle);
-		
+
 		// Get the correct object factory
-		std::unique_ptr<Object> obj = gLibrary->Search(name);
-		if (obj != nullptr)
+		std::shared_ptr<Object> obj = std::make_shared<Object>();
+
+		if (obj == nullptr)
+			return false;
+
+		// Initializers struct to be used and reused
+		GAME_OBJECTFACTORY_INITIALIZERS inits;
+		inits.view = view.get();
+		inits.gDevice = gDevice.get();
+
+		pComponentXML = pObjectXML->FirstChildElement("Component");
+		while (pComponentXML != NULL)
 		{
-			// Create the object
-			obj->Initialize(gDevice->getRenderer(), aLibrary->GetAssetPath(name));
-			obj->setStartPosition(pos);
-			obj->setPosition(pos);
-			obj->setAngle(angle);
-			objects.push_back(std::move(obj));
+			// Get component attributes
+			std::string compName = pComponentXML->Attribute("name");
+			std::shared_ptr<Component> comp = CreateComponent(compName, obj);
+			if (comp == nullptr)
+				return false; // failed to create component; unknown component
+
+			// Fill in the initializer data from this component's xml
+			if (compName == "Body")
+			{
+				// Query attributes
+				pComponentXML->QueryFloatAttribute("x", &inits.position.x);
+				pComponentXML->QueryFloatAttribute("y", &inits.position.y);
+				pComponentXML->QueryFloatAttribute("angle", &inits.angle);
+			}
+			else if (compName == "Slide")
+			{
+				// Query Attributes
+				pComponentXML->QueryBoolAttribute("vertical", &inits.verticalSlide);
+			}
+			else if (compName == "Circle")
+			{
+				pComponentXML->QueryBoolAttribute("radius", &inits.radius);
+			}
+			else if (compName == "Sprite")
+			{
+				inits.texturePath = aLibrary->GetAssetPath(name);
+			}
+
+			// Add component
+			obj->AddComponent(comp);
+
+			// Get the next component xml element
+			pComponentXML = pComponentXML->NextSiblingElement();
 		}
+
+		obj->Initialize(inits);
+		objects.push_back(std::move(obj));
 
 		// Get the next game asset element
 		pObjectXML = pObjectXML->NextSiblingElement("GameAsset");
@@ -231,7 +273,7 @@ void Game::Draw()
 	// Calls Draw() on all objects
 	for (auto objIter = objects.begin(); objIter != objects.end(); ++objIter)
 	{
-		(*objIter)->Draw(view.get());
+		(*objIter)->GetComponent<SpriteComponent>()->Draw();
 	}
 }
 
@@ -268,7 +310,9 @@ void Game::DrawMiniMap()
 	for (auto objIter = objects.begin(); objIter != objects.end(); ++objIter)
 	{
 		// Get the creature's world map position
-		objPos = objIter->get()->getPosition();
+		GAME_VEC pos = objIter->get()->GetComponent<BodyComponent>()->getPosition();
+		objPos.x = pos.x;
+		objPos.y = pos.y;
 
 		xPos = (int)((objPos.x - viewPos.x) / xOffset) + (SCREEN_WIDTH - MINI_MAP_WIDTH - MINI_MAP_OFFSET);
 		yPos = (int)((objPos.y + viewPos.y) / yOffset) + MINI_MAP_OFFSET;
@@ -283,5 +327,35 @@ void Game::DrawMiniMap()
 			xPos,
 			yPos
 		);
+	}
+}
+
+// May need to make this unique_ptr ? 
+std::shared_ptr<Component> Game::CreateComponent(std::string compName, std::shared_ptr<Object> parent)
+{
+	if (compName == "Body")
+	{
+		return std::make_shared<BodyComponent>(parent);
+	}
+	else if (compName == "Sprite")
+	{
+		return std::make_shared<SpriteComponent>(parent);
+	}
+	else if (compName == "Slide")
+	{
+		return std::make_shared<SlideBehaviorComponent>(parent);
+	}
+	else if (compName == "Circle")
+	{
+		return std::make_shared<CircleBehaviorComponent>(parent);
+	}
+	else if (compName == "Input")
+	{
+		return std::make_shared<PlayerInputComponent>(parent);
+	}
+	else
+	{
+		// not "in" library
+		return nullptr;
 	}
 }
