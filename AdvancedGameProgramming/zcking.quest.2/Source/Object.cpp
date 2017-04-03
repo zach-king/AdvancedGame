@@ -12,11 +12,11 @@ Object::Object()
 
 Object::~Object()
 {
-	//for(auto comp: components)
-	//{
-	//	comp->OwnerDestroyed();
-	//}
-	//components.clear();
+	for(auto comp: components)
+	{
+		comp->Finish();
+	}
+	components.clear();
 }
 
 bool Object::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
@@ -27,6 +27,7 @@ bool Object::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
 			return false;
 	}
 
+	initialized = true;
 	return true;
 }
 

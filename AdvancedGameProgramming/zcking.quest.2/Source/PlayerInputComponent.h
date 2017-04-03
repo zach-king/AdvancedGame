@@ -2,6 +2,8 @@
 
 #include "Component.h"
 #include "Object.h"
+#include "Definitions.h"
+#include "InputDevice.h"
 
 #include <memory>
 
@@ -17,5 +19,5 @@ public:
 	bool Finish();
 
 protected:
-
+	InputDevice* iDevice;
 };

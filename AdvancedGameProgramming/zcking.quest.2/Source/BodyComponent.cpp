@@ -20,12 +20,15 @@ bool BodyComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initializers)
 {
 	position = initializers.position;
 	angle = initializers.angle;
+	view = initializers.view;
 
 	return true;
 }
 
 std::unique_ptr<Object> BodyComponent::Update()
 {
+	position.x -= view->getPosition().x;
+
 	return nullptr;
 }
 

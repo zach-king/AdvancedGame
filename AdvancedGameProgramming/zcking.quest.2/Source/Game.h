@@ -8,6 +8,7 @@
 #include "Definitions.h"
 #include "Component.h"
 #include "Definitions.h"
+#include "ObjectFactory.h"
 
 #include <memory>
 #include <vector>
@@ -27,10 +28,10 @@ public:
 	void Draw();
 
 private:
-	std::unique_ptr<GameAssetLibrary> gLibrary;
 	std::unique_ptr<ArtAssetLibrary> aLibrary;
 	std::unique_ptr<GraphicsDevice> gDevice;
 	std::unique_ptr<InputDevice> iDevice;
+	std::unique_ptr<ObjectFactory> oFactory;
 	std::unique_ptr<Timer> timer;
 
 	GAME_FLT gameTime; // maintains overall in-game time
@@ -38,6 +39,4 @@ private:
 	std::vector<std::shared_ptr<Object>> objects;
 	void DrawMiniMap();
 	bool showMiniMap;
-
-	std::shared_ptr<Component> CreateComponent(std::string, std::shared_ptr<Object>); // helper for making components
 };

@@ -2,6 +2,7 @@
 
 #include "Component.h"
 #include "View.h"
+#include "BodyComponent.h"
 
 #include <memory>
 
@@ -29,4 +30,6 @@ protected:
 	Texture *texture;
 	GraphicsDevice *gDevice;
 	View *view;
+
+	std::shared_ptr<BodyComponent> body;
 };

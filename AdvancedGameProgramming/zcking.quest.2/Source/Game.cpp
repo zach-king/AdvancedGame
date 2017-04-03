@@ -10,7 +10,6 @@
 #include "SlideBehaviorComponent.h"
 #include "CircleBehaviorComponent.h"
 #include "PlayerInputComponent.h"
-#include "GameFunctions.h"
 
 #include "tinyxml\tinyxml.h"
 
@@ -54,16 +53,27 @@ bool Game::Initialize()
 
 	// Initialize the libraries
 	aLibrary = std::make_unique<ArtAssetLibrary>();
-	aLibrary->Initialize(gDevice.get());
-
-	gLibrary = std::make_unique<GameAssetLibrary>();
-	gLibrary->Initialize();
+	bool loaded = aLibrary->Initialize(gDevice.get());
+	if (!loaded)
+	{
+		printf("Could not initialize the Art Asset Library!\n");
+		exit(1);
+	}
 
 	// Initialize the view
 	view = std::make_unique<View>();
 	if (!view->Initialize(iDevice.get(), 0, 0))
 	{
 		printf("Could not initialize the View object!\n");
+		exit(1);
+	}
+
+	// Initialize the Object factory
+	oFactory = std::make_unique<ObjectFactory>();
+	loaded = oFactory->Initialize(view.get(), gDevice.get(), aLibrary.get(), iDevice.get());
+	if (!loaded)
+	{
+		printf("Could not initialize the Object Factory!\n");
 		exit(1);
 	}
 
@@ -147,60 +157,10 @@ bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile)
 	pObjectXML = pRootXML->FirstChildElement("GameAsset");
 	while (pObjectXML != NULL)
 	{
-		// Get the creature attributes and create objects
-		std::string name = pObjectXML->Attribute("name");
-
-		// Get the correct object factory
-		std::shared_ptr<Object> obj = std::make_shared<Object>();
-
-		if (obj == nullptr)
-			return false;
-
-		// Initializers struct to be used and reused
-		GAME_OBJECTFACTORY_INITIALIZERS inits;
-		inits.view = view.get();
-		inits.gDevice = gDevice.get();
-
-		pComponentXML = pObjectXML->FirstChildElement("Component");
-		while (pComponentXML != NULL)
-		{
-			// Get component attributes
-			std::string compName = pComponentXML->Attribute("name");
-			std::shared_ptr<Component> comp = CreateComponent(compName, obj);
-			if (comp == nullptr)
-				return false; // failed to create component; unknown component
-
-			// Fill in the initializer data from this component's xml
-			if (compName == "Body")
-			{
-				// Query attributes
-				pComponentXML->QueryFloatAttribute("x", &inits.position.x);
-				pComponentXML->QueryFloatAttribute("y", &inits.position.y);
-				pComponentXML->QueryFloatAttribute("angle", &inits.angle);
-			}
-			else if (compName == "Slide")
-			{
-				// Query Attributes
-				pComponentXML->QueryBoolAttribute("vertical", &inits.verticalSlide);
-			}
-			else if (compName == "Circle")
-			{
-				pComponentXML->QueryBoolAttribute("radius", &inits.radius);
-			}
-			else if (compName == "Sprite")
-			{
-				inits.texturePath = aLibrary->GetAssetPath(name);
-			}
-
-			// Add component
-			obj->AddComponent(comp);
-
-			// Get the next component xml element
-			pComponentXML = pComponentXML->NextSiblingElement();
-		}
-
-		obj->Initialize(inits);
-		objects.push_back(std::move(obj));
+		
+		// factory create object and pass xml
+		std::shared_ptr<Object> obj = oFactory->create(pObjectXML);
+		objects.push_back(obj);
 
 		// Get the next game asset element
 		pObjectXML = pObjectXML->NextSiblingElement("GameAsset");
@@ -211,12 +171,11 @@ bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile)
 
 bool Game::Run()
 {
-	GAME_EVENT event = iDevice->GetEvent();
-	if (event == GAME_QUIT)
+	if (iDevice->GetEvent(GAME_QUIT))
 		return true;
 	
 	// Check if we should toggle the mini map
-	if (event == GAME_MAP_TOGGLE)
+	if (iDevice->GetEvent(GAME_MAP_TOGGLE))
 		showMiniMap = !showMiniMap;
 
 	// Start the frame's time
@@ -327,35 +286,5 @@ void Game::DrawMiniMap()
 			xPos,
 			yPos
 		);
-	}
-}
-
-// May need to make this unique_ptr ? 
-std::shared_ptr<Component> Game::CreateComponent(std::string compName, std::shared_ptr<Object> parent)
-{
-	if (compName == "Body")
-	{
-		return std::make_shared<BodyComponent>(parent);
-	}
-	else if (compName == "Sprite")
-	{
-		return std::make_shared<SpriteComponent>(parent);
-	}
-	else if (compName == "Slide")
-	{
-		return std::make_shared<SlideBehaviorComponent>(parent);
-	}
-	else if (compName == "Circle")
-	{
-		return std::make_shared<CircleBehaviorComponent>(parent);
-	}
-	else if (compName == "Input")
-	{
-		return std::make_shared<PlayerInputComponent>(parent);
-	}
-	else
-	{
-		// not "in" library
-		return nullptr;
 	}
 }

@@ -5,6 +5,7 @@
 
 #include <memory>
 
+class View;
 
 class BodyComponent : public Component
 {
@@ -25,4 +26,5 @@ public:
 protected:
 	GAME_VEC position;
 	GAME_FLT angle;
+	View* view;
 };

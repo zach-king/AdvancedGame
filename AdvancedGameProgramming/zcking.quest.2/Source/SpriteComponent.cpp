@@ -31,6 +31,8 @@ bool SpriteComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initializers)
 		return false;
 	view = initializers.view;
 
+	body = _owner->GetComponent<BodyComponent>();
+
 	return true;
 }
 
@@ -46,17 +48,9 @@ bool SpriteComponent::Finish()
 
 void SpriteComponent::Draw()
 {
-	//Convert Physics World Position to Render World Position
-	std::shared_ptr<BodyComponent> body = _owner->GetComponent<BodyComponent>();
-
 	//Extract position and angle
 	GAME_VEC position = body->getPosition();
 	GAME_FLT angle = body->getAngle();
-
-	//GAME_VEC drawPos;
-	//drawPos.x = PW2RW(position.x) - texture->getWidth() / 2.0;
-	//drawPos.y = PW2RW(position.y) - texture->getHeight() / 2.0;
-	//float drawAngle = PW2RWAngle(angle);
 
 	//Render to the Screen
 	texture->Draw(gDevice->getRenderer(), view, position, angle, NULL);
