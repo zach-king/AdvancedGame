@@ -8,6 +8,7 @@
 Object::Object()
 {
 	initialized = false;
+	dead = false;
 }
 
 Object::~Object()
@@ -42,4 +43,22 @@ void Object::Update()
 	{
 		comp->Update();
 	}
+}
+
+void Object::Finish()
+{
+	for (auto comp : components)
+	{
+		comp->Finish();
+	}
+}
+
+bool Object::isDead()
+{
+	return dead;
+}
+
+void Object::setIsDead(bool isDead)
+{
+	dead = isDead;
 }

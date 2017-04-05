@@ -21,6 +21,7 @@
     <ClCompile Include="Source\Object.cpp" />
     <ClCompile Include="Source\ObjectFactory.cpp" />
     <ClCompile Include="Source\PlayerInputComponent.cpp" />
+    <ClCompile Include="Source\ProjectileComponent.cpp" />
     <ClCompile Include="Source\SlideBehaviorComponent.cpp" />
     <ClCompile Include="Source\Source.cpp" />
     <ClCompile Include="Source\SpriteComponent.cpp" />
@@ -45,6 +46,7 @@
     <ClInclude Include="Source\Object.h" />
     <ClInclude Include="Source\ObjectFactory.h" />
     <ClInclude Include="Source\PlayerInputComponent.h" />
+    <ClInclude Include="Source\ProjectileComponent.h" />
     <ClInclude Include="Source\SlideBehaviorComponent.h" />
     <ClInclude Include="Source\SpriteComponent.h" />
     <ClInclude Include="Source\Texture.h" />
@@ -54,17 +56,25 @@
     <ClInclude Include="Source\View.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Assets\Images\arrow.png" />
     <Image Include="Assets\Images\leever_b.png" />
     <Image Include="Assets\Images\leever_r.png" />
+    <Image Include="Assets\Images\link_d.png" />
+    <Image Include="Assets\Images\link_l.png" />
+    <Image Include="Assets\Images\link_r.png" />
+    <Image Include="Assets\Images\link_u.png" />
     <Image Include="Assets\Images\octorok_b.png" />
     <Image Include="Assets\Images\octorok_r.png" />
+    <Image Include="Assets\Images\rock.png" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Assets\Config\level1.xml">
       <SubType>Designer</SubType>
     </Xml>
     <Xml Include="Assets\Config\level2.xml" />
-    <Xml Include="Assets\Config\objects.xml" />
+    <Xml Include="Assets\Config\objects.xml">
+      <SubType>Designer</SubType>
+    </Xml>
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{8B9A7955-78C7-4A11-BCB5-8C0FE5F7B606}</ProjectGuid>

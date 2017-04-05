@@ -27,6 +27,16 @@ public:
 	bool Update();
 	void Draw();
 
+	ArtAssetLibrary* getArtAssetLibrary();
+	GraphicsDevice* getGraphicsDevice();
+	InputDevice* getInputDevice();
+	View* getView();
+	ObjectFactory* getObjectFactory();
+	Timer* getTimer();
+
+	void AddObject(std::shared_ptr<Object>);
+
+
 private:
 	std::unique_ptr<ArtAssetLibrary> aLibrary;
 	std::unique_ptr<GraphicsDevice> gDevice;
@@ -39,4 +49,8 @@ private:
 	std::vector<std::shared_ptr<Object>> objects;
 	void DrawMiniMap();
 	bool showMiniMap;
+
+	void KillDeadObjects();
+
+	bool mapKeyPressed;
 };

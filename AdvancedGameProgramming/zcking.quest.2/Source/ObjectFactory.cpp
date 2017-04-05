@@ -4,6 +4,8 @@
 #include "SlideBehaviorComponent.h"
 #include "CircleBehaviorComponent.h"
 #include "PlayerInputComponent.h"
+#include "ProjectileComponent.h"
+#include "Game.h"
 
 #include <memory>
 
@@ -17,14 +19,11 @@ ObjectFactory::~ObjectFactory()
 
 }
 
-bool ObjectFactory::Initialize(View *view, GraphicsDevice *gDevice, ArtAssetLibrary *aLibrary, InputDevice* iDevice)
+bool ObjectFactory::Initialize(Game* game)
 {
-	this->view = view;
-	this->gDevice = gDevice;
-	this->aLibrary = aLibrary;
-	this->iDevice = iDevice;
+	this->game = game;
 
-	return (view != NULL && gDevice != NULL && aLibrary != NULL && iDevice != NULL);
+	return (game != NULL);
 }
 
 std::shared_ptr<Object> ObjectFactory::create(TiXmlElement *pObjectXML)
@@ -40,11 +39,10 @@ std::shared_ptr<Object> ObjectFactory::create(TiXmlElement *pObjectXML)
 
 	// Initializers struct to be used and reused
 	GAME_OBJECTFACTORY_INITIALIZERS inits;
-	inits.view = view;
-	inits.gDevice = gDevice;
-	inits.iDevice = iDevice;
-	inits.aLibrary = aLibrary;
-	inits.textureId = name;
+	inits.game = this->game;
+
+	// bool for use with querying
+	bool isAnimated;
 
 	TiXmlElement* pComponentXML = pObjectXML->FirstChildElement("Component");
 	while (pComponentXML != NULL)
@@ -74,7 +72,21 @@ std::shared_ptr<Object> ObjectFactory::create(TiXmlElement *pObjectXML)
 		}
 		else if (compName == "Sprite")
 		{
-			inits.texturePath = aLibrary->GetAssetPath(name);
+			// Check if the sprite component has multiple sprites (for animation)
+			pComponentXML->QueryBoolAttribute("animated", &isAnimated);
+			if (isAnimated)
+			{
+				// Loop through Frame elements
+				for (TiXmlElement* frameXML = pComponentXML->FirstChildElement("Frame");
+					frameXML != NULL; frameXML = frameXML->NextSiblingElement("Frame"))
+				{
+					inits.textureIds.push_back(frameXML->Attribute("name"));
+				}
+			}
+			else
+			{
+				inits.textureIds.push_back(name); // if not animated, just one sprite --> id'ed by obj name
+			}
 		}
 
 		// Add component
@@ -107,7 +119,7 @@ std::shared_ptr<Object> ObjectFactory::create(std::vector<std::string> compNames
 
 		obj->AddComponent(comp);
 	}
-
+	
 	// Initialize the object with the passed-in inits 
 	obj->Initialize(inits);
 	return obj;
@@ -135,6 +147,10 @@ std::shared_ptr<Component> ObjectFactory::CreateComponent(std::string compName, 
 	else if (compName == "Input")
 	{
 		return std::make_shared<PlayerInputComponent>(parent);
+	}
+	else if (compName == "Projectile")
+	{
+		return std::make_shared<ProjectileComponent>(parent);
 	}
 	else
 	{

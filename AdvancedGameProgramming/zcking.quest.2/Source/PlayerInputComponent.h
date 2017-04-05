@@ -7,6 +7,8 @@
 
 #include <memory>
 
+class ObjectFactory;
+
 class PlayerInputComponent : public Component
 {
 public:
@@ -20,4 +22,10 @@ public:
 
 protected:
 	InputDevice* iDevice;
+	ObjectFactory* oFactory;
+	GAME_OBJECTFACTORY_INITIALIZERS arrowInits;
+
+	bool canFire;
+	GAME_INT reloadFrames;
+	GAME_FLT fireAngle;
 };

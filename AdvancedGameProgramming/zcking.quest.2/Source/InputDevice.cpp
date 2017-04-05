@@ -32,6 +32,7 @@ void InputDevice::Update()
 	switch (event->type)
 	{
 	case SDL_KEYDOWN:
+		keyFlags[GAME_NA] = false;
 		switch (event->key.keysym.sym)
 		{
 		case SDLK_m:
@@ -60,6 +61,9 @@ void InputDevice::Update()
 			break;
 		case SDLK_d:
 			keyFlags[GAME_EAST] = true;
+			break;
+		case SDLK_SPACE:
+			keyFlags[GAME_FIRE] = true;
 			break;
 		}
 		break;
@@ -93,19 +97,15 @@ void InputDevice::Update()
 		case SDLK_d:
 			keyFlags[GAME_EAST] = false;
 			break;
+		case SDLK_SPACE:
+			keyFlags[GAME_FIRE] = false;
+			break;
 		}
 		break;
 	case SDL_QUIT:
 		keyFlags[GAME_QUIT] = true;
-	default:
-		keyFlags[GAME_NA] = true;
-		return;
 		break;
 	}
-
-	// If didn't return after default: 
-	// Then GAME_NA should be false
-	//keyFlags[GAME_NA] = false;
 }
 
 bool InputDevice::GetEvent(GAME_EVENT ev)

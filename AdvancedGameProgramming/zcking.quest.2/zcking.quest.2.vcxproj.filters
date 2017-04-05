@@ -99,6 +99,9 @@
     <ClCompile Include="Source\CircleBehaviorComponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ProjectileComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Timer.h">
@@ -158,6 +161,9 @@
     <ClInclude Include="Source\GameFunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Source\ProjectileComponent.h">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Images\leever_b.png">
@@ -170,6 +176,24 @@
       <Filter>Resource Files</Filter>
     </Image>
     <Image Include="Assets\Images\octorok_r.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\arrow.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\link_d.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\link_l.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\link_r.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\link_u.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Assets\Images\rock.png">
       <Filter>Resource Files</Filter>
     </Image>
   </ItemGroup>

@@ -16,6 +16,9 @@ public:
 	bool Initialize(GAME_OBJECTFACTORY_INITIALIZERS);
 	void AddComponent(std::shared_ptr<Component>);
 
+	bool isDead();
+	void setIsDead(bool);
+
 	template<class T>
 	std::shared_ptr<T> GetComponent()
 	{
@@ -33,10 +36,12 @@ public:
 	}
 
 	void Update();
+	void Finish();
 
 protected:
 
 	std::vector<std::shared_ptr<Component>> components;
 	bool initialized;
+	bool dead;
 
 };

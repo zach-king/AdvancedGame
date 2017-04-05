@@ -10,6 +10,7 @@
 #include "SlideBehaviorComponent.h"
 #include "CircleBehaviorComponent.h"
 #include "PlayerInputComponent.h"
+#include "ObjectFactory.h"
 
 #include "tinyxml\tinyxml.h"
 
@@ -19,6 +20,7 @@
 Game::Game()
 {
 	gameTime = 0.0f;
+	mapKeyPressed = false;
 }
 
 Game::~Game()
@@ -70,7 +72,7 @@ bool Game::Initialize()
 
 	// Initialize the Object factory
 	oFactory = std::make_unique<ObjectFactory>();
-	loaded = oFactory->Initialize(view.get(), gDevice.get(), aLibrary.get(), iDevice.get());
+	loaded = oFactory->Initialize(this);
 	if (!loaded)
 	{
 		printf("Could not initialize the Object Factory!\n");
@@ -175,8 +177,14 @@ bool Game::Run()
 		return true;
 	
 	// Check if we should toggle the mini map
-	if (iDevice->GetEvent(GAME_MAP_TOGGLE))
+	if (mapKeyPressed && iDevice->GetEvent(GAME_MAP_TOGGLE) == false)
+	{
+		mapKeyPressed = false;
 		showMiniMap = !showMiniMap;
+	}
+	if (iDevice->GetEvent(GAME_MAP_TOGGLE))
+		mapKeyPressed = true;
+
 
 	// Start the frame's time
 	timer->start();
@@ -221,6 +229,8 @@ bool Game::Update()
 	// Calls Update() on all objects and input device
 	iDevice->Update();
 
+	// Kill any dead objects
+	KillDeadObjects();
 
 	for (auto objIter = objects.begin(); objIter != objects.end(); ++objIter)
 	{
@@ -237,6 +247,41 @@ void Game::Draw()
 	{
 		(*objIter)->GetComponent<SpriteComponent>()->Draw();
 	}
+}
+
+ArtAssetLibrary * Game::getArtAssetLibrary()
+{
+	return aLibrary.get();
+}
+
+InputDevice* Game::getInputDevice()
+{
+	return iDevice.get();
+}
+
+GraphicsDevice* Game::getGraphicsDevice()
+{
+	return gDevice.get();
+}
+
+View* Game::getView()
+{
+	return view.get();
+}
+
+ObjectFactory * Game::getObjectFactory()
+{
+	return oFactory.get();
+}
+
+Timer* Game::getTimer()
+{
+	return timer.get();
+}
+
+void Game::AddObject(std::shared_ptr<Object> obj)
+{
+	objects.push_back(obj);
 }
 
 void Game::DrawMiniMap()
@@ -289,5 +334,24 @@ void Game::DrawMiniMap()
 			xPos,
 			yPos
 		);
+	}
+}
+
+void Game::KillDeadObjects()
+{
+	for (auto objIter = objects.begin(); objIter != objects.end();)
+	{
+		if ((*objIter)->isDead())
+		{
+			// Kill the dead object
+			(*objIter)->Finish();
+
+			// Remove the object
+			objIter = objects.erase(objIter);
+		}
+		else
+		{
+			++objIter;
+		}
 	}
 }

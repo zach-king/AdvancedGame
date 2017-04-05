@@ -3,6 +3,7 @@
 #include "Object.h"
 #include "SpriteComponent.h"
 #include "Texture.h"
+#include "Game.h"
 
 #include "SDL.h"
 
@@ -20,7 +21,7 @@ bool BodyComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initializers)
 {
 	position = initializers.position;
 	angle = initializers.angle;
-	view = initializers.view;
+	view = initializers.game->getView();
 
 	return true;
 }
