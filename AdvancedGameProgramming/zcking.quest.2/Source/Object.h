@@ -2,8 +2,9 @@
 
 #include "Definitions.h"
 
-#include<memory>
-#include<vector>
+#include <memory>
+#include <vector>
+#include <string>
 
 class Component;
 
@@ -38,10 +39,14 @@ public:
 	void Update();
 	void Finish();
 
+	std::string getName();
+	void setName(std::string);
+
 protected:
 
 	std::vector<std::shared_ptr<Component>> components;
 	bool initialized;
 	bool dead;
+	std::string name;
 
 };

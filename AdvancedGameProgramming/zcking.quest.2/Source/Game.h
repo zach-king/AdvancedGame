@@ -35,6 +35,7 @@ public:
 	Timer* getTimer();
 
 	void AddObject(std::shared_ptr<Object>);
+	Object* GetObject(std::string);
 
 
 private:

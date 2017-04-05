@@ -37,6 +37,9 @@ std::shared_ptr<Object> ObjectFactory::create(TiXmlElement *pObjectXML)
 	if (obj == nullptr)
 		return false;
 
+	// Set Object name
+	obj->setName(name);
+
 	// Initializers struct to be used and reused
 	GAME_OBJECTFACTORY_INITIALIZERS inits;
 	inits.game = this->game;

@@ -1,5 +1,8 @@
 #include "View.h"
 #include "Definitions.h"
+#include "InputDevice.h"
+#include "Game.h"
+#include "BodyComponent.h"
 
 #include <iostream>
 #include <math.h>
@@ -39,14 +42,30 @@ bool View::Initialize(InputDevice* input, GAME_FLT xPos, GAME_FLT yPos)
 
 bool View::Update(GAME_FLT change)
 {
-	//printf("%f, %f\n", position.x, position.y); // debug
+	
+	// Check player position and move based off our view padding
+	std::shared_ptr<BodyComponent> playerBody = player->GetComponent<BodyComponent>();
+	GAME_VEC playerPos = playerBody->getPosition();
+
+	if (playerPos.x > (position.x + SCREEN_WIDTH - VIEW_PADDING_X))
+		position.x += VIEW_SPEED;
+
+	if (playerPos.x < position.x + VIEW_PADDING_X)
+		position.x -= VIEW_SPEED;
+
+	if (playerPos.y < position.y + VIEW_PADDING_Y)
+		position.y -= VIEW_SPEED;
+
+	if (playerPos.y > position.y + SCREEN_HEIGHT - VIEW_PADDING_Y)
+		position.y += VIEW_SPEED;
+
 
 	// Get event and behave accordingly
 	if (iDevice->GetEvent(GAME_NORTH))
-		position.y += VIEW_SPEED;
+		position.y -= VIEW_SPEED;
 
 	if (iDevice->GetEvent(GAME_SOUTH))
-		position.y -= VIEW_SPEED;
+		position.y += VIEW_SPEED;
 
 	if (iDevice->GetEvent(GAME_EAST))
 		position.x += VIEW_SPEED;
@@ -56,7 +75,7 @@ bool View::Update(GAME_FLT change)
 
 	if (iDevice->GetEvent(GAME_QUIT))
 		return true;
-	//std::cout << position.x;
+
 	return false;
 }
 
@@ -73,4 +92,9 @@ GAME_FLT View::getAngle()
 GAME_VEC View::getCenter()
 {
 	return center;
+}
+
+void View::FindPlayer(Game* game)
+{
+	player = game->GetObject("Link");
 }

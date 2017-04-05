@@ -64,7 +64,7 @@ void Texture::Draw(SDL_Renderer * renderer, View * view, GAME_VEC position, GAME
 	GAME_VEC viewPos = view->getPosition();
 
 	// Make the rendering quad, skewed by the view position
-	SDL_Rect renderQuad = { position.x - viewPos.x, position.y + viewPos.y, width, height };
+	SDL_Rect renderQuad = { position.x - viewPos.x, position.y - viewPos.y, width, height };
 
 	// Set clip rendering dimensions
 	if (clip != NULL)

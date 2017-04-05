@@ -62,3 +62,13 @@ void Object::setIsDead(bool isDead)
 {
 	dead = isDead;
 }
+
+void Object::setName(std::string name)
+{
+	this->name = name;
+}
+
+std::string Object::getName()
+{
+	return name;
+}

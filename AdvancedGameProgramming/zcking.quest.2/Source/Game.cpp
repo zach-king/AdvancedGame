@@ -168,6 +168,8 @@ bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile)
 		pObjectXML = pObjectXML->NextSiblingElement("GameAsset");
 	}
 
+	view->FindPlayer(this);
+
 	return true;
 }
 
@@ -284,6 +286,17 @@ void Game::AddObject(std::shared_ptr<Object> obj)
 	objects.push_back(obj);
 }
 
+Object * Game::GetObject(std::string name)
+{
+	for (auto obj : objects)
+	{
+		if (obj->getName() == name)
+			return obj.get();
+	}
+
+	return NULL;
+}
+
 void Game::DrawMiniMap()
 {
 	// Draw the rectangle for the mini map
@@ -322,7 +335,7 @@ void Game::DrawMiniMap()
 		objPos.y = pos.y;
 
 		xPos = (int)((objPos.x - viewPos.x) / xOffset) + (SCREEN_WIDTH - MINI_MAP_WIDTH - MINI_MAP_OFFSET);
-		yPos = (int)((objPos.y + viewPos.y) / yOffset) + MINI_MAP_OFFSET;
+		yPos = (int)((objPos.y - viewPos.y) / yOffset) + MINI_MAP_OFFSET;
 
 		if (xPos <= (SCREEN_WIDTH - MINI_MAP_WIDTH - MINI_MAP_OFFSET) || xPos >= SCREEN_WIDTH - MINI_MAP_OFFSET ||
 			yPos <= MINI_MAP_OFFSET || yPos >= (MINI_MAP_OFFSET + MINI_MAP_HEIGHT))

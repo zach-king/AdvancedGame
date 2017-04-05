@@ -48,7 +48,12 @@ const GAME_INT MAX_OCTOROK_RADIUS = 3;
 const GAME_FLT DEFAULT_LEEVER_SPEED = 2.0f;
 const GAME_INT MIN_LEEVER_DISTANCE = 0;
 const GAME_INT MAX_LEEVER_DISTANCE = 250;
+
+// View Constants
 const GAME_FLT VIEW_SPEED = 2.5f;
+const GAME_FLT VIEW_PADDING_X = 350.0f; // how close to edge of screen can 
+									  // player get before view moves
+const GAME_FLT VIEW_PADDING_Y = 175.0f;
 
 // Link Constants
 const GAME_FLT LINK_SPEED = 2.0f;
