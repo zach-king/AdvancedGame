@@ -155,6 +155,9 @@
     <ClInclude Include="Source\CircleBehaviorComponent.h">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
+    <ClInclude Include="Source\GameFunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Images\leever_b.png">

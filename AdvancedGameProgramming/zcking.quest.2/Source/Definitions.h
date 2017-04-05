@@ -3,6 +3,7 @@
 class GraphicsDevice;
 class InputDevice;
 class View;
+class ArtAssetLibrary;
 
 #include <string>
 
@@ -43,6 +44,8 @@ enum GAME_EVENT {
 const GAME_FLT PI = 3.14159f;
 const GAME_INT MIN_OCTOROK_ANGLE = 0;
 const GAME_INT MAX_OCTOROK_ANGLE = 5;
+const GAME_INT MIN_OCTOROK_RADIUS = 1;
+const GAME_INT MAX_OCTOROK_RADIUS = 3;
 const GAME_FLT DEFAULT_LEEVER_SPEED = 2.0f;
 const GAME_INT MIN_LEEVER_DISTANCE = 0;
 const GAME_INT MAX_LEEVER_DISTANCE = 250;
@@ -59,6 +62,7 @@ const GAME_INT MINI_MAP_OFFSET = 30; // pixels of padding/margin between the map
 // Object Factory Initializers for easy setting of parameters with components
 struct GAME_OBJECTFACTORY_INITIALIZERS
 {
+	std::string textureId;
 	std::string texturePath;
 	GAME_VEC position;
 	GAME_FLT angle;
@@ -67,4 +71,5 @@ struct GAME_OBJECTFACTORY_INITIALIZERS
 	View* view;
 	GraphicsDevice* gDevice;
 	InputDevice* iDevice;
+	ArtAssetLibrary* aLibrary;
 };

@@ -43,6 +43,8 @@ std::shared_ptr<Object> ObjectFactory::create(TiXmlElement *pObjectXML)
 	inits.view = view;
 	inits.gDevice = gDevice;
 	inits.iDevice = iDevice;
+	inits.aLibrary = aLibrary;
+	inits.textureId = name;
 
 	TiXmlElement* pComponentXML = pObjectXML->FirstChildElement("Component");
 	while (pComponentXML != NULL)

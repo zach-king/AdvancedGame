@@ -2,6 +2,7 @@
 
 #include "Component.h"
 #include "Object.h"
+#include "Definitions.h"
 
 #include <memory>
 
@@ -17,5 +18,8 @@ public:
 	bool Finish();
 
 protected:
-
+	bool vertical;
+	GAME_FLT distance;
+	GAME_VEC startPosition;
+	bool switched;
 };

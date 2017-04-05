@@ -105,7 +105,7 @@ void InputDevice::Update()
 
 	// If didn't return after default: 
 	// Then GAME_NA should be false
-	keyFlags[GAME_NA] = false;
+	//keyFlags[GAME_NA] = false;
 }
 
 bool InputDevice::GetEvent(GAME_EVENT ev)

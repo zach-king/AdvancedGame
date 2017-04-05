@@ -27,7 +27,7 @@ public:
 	Texture* getTexture();
 
 protected:
-	Texture *texture;
+	std::shared_ptr<Texture> texture;
 	GraphicsDevice *gDevice;
 	View *view;
 

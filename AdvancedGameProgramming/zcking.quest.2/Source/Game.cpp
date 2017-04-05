@@ -218,7 +218,10 @@ bool Game::Run()
 
 bool Game::Update()
 {
-	// Calls Update() on all objects
+	// Calls Update() on all objects and input device
+	iDevice->Update();
+
+
 	for (auto objIter = objects.begin(); objIter != objects.end(); ++objIter)
 	{
 		(*objIter)->Update();

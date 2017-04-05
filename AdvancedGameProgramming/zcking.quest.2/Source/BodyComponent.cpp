@@ -27,8 +27,6 @@ bool BodyComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initializers)
 
 std::unique_ptr<Object> BodyComponent::Update()
 {
-	position.x -= view->getPosition().x;
-
 	return nullptr;
 }
 

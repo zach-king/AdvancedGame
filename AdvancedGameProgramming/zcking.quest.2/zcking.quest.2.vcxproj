@@ -39,6 +39,7 @@
     <ClInclude Include="Source\Component.h" />
     <ClInclude Include="Source\Definitions.h" />
     <ClInclude Include="Source\Game.h" />
+    <ClInclude Include="Source\GameFunctions.h" />
     <ClInclude Include="Source\GraphicsDevice.h" />
     <ClInclude Include="Source\InputDevice.h" />
     <ClInclude Include="Source\Object.h" />

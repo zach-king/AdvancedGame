@@ -3,6 +3,7 @@
 #include "GameFunctions.h"
 #include "GraphicsDevice.h"
 #include "Texture.h"
+#include "ArtAssetLibrary.h"
 
 #include <memory>
 
@@ -24,11 +25,11 @@ bool SpriteComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initializers)
 	//Add Sprite to gDevice
 	gDevice->AddSprite(this);
 
-	//Load the Art Asset
-	texture = new Texture();
-	bool loaded = texture->load(gDevice->getRenderer(), initializers.texturePath);
-	if (!loaded)
+	// Get the Art Asset from the library
+	texture = initializers.aLibrary->Search(initializers.textureId);
+	if (texture == nullptr)
 		return false;
+
 	view = initializers.view;
 
 	body = _owner->GetComponent<BodyComponent>();
@@ -58,5 +59,5 @@ void SpriteComponent::Draw()
 
 Texture * SpriteComponent::getTexture()
 {
-	return texture;
+	return texture.get();
 }

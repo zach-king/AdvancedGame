@@ -39,22 +39,24 @@ bool View::Initialize(InputDevice* input, GAME_FLT xPos, GAME_FLT yPos)
 
 bool View::Update(GAME_FLT change)
 {
+	//printf("%f, %f\n", position.x, position.y); // debug
+
 	// Get event and behave accordingly
-	if (iDevice->GetEvent(GAME_UP))
+	if (iDevice->GetEvent(GAME_NORTH))
 		position.y += VIEW_SPEED;
 
-	if (iDevice->GetEvent(GAME_LEFT))
+	if (iDevice->GetEvent(GAME_SOUTH))
 		position.y -= VIEW_SPEED;
 
-	if (iDevice->GetEvent(GAME_RIGHT))
+	if (iDevice->GetEvent(GAME_EAST))
 		position.x += VIEW_SPEED;
 
-	if (iDevice->GetEvent(GAME_LEFT))
+	if (iDevice->GetEvent(GAME_WEST))
 		position.x -= VIEW_SPEED;
 
 	if (iDevice->GetEvent(GAME_QUIT))
 		return true;
-
+	//std::cout << position.x;
 	return false;
 }
 

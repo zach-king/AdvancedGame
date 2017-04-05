@@ -2,6 +2,7 @@
 
 #include "Component.h"
 #include "Object.h"
+#include "Definitions.h"
 
 #include <memory>
 
@@ -17,5 +18,5 @@ public:
 	bool Finish();
 
 protected:
-
+	bool hasRadius;
 };
