@@ -1,11 +1,13 @@
 #pragma once
 
-#include "ObjectFactory.h"
 #include "Object.h"
 #include "Texture.h"
 
 #include <memory>
 #include <map>
+#include <string>
+
+class ObjectFactory;
 
 class GameAssetLibrary
 {

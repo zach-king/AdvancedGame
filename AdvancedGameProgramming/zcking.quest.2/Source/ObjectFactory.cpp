@@ -6,6 +6,8 @@
 #include "PlayerInputComponent.h"
 #include "ProjectileComponent.h"
 #include "Game.h"
+#include "Component.h"
+#include "Object.h"
 
 #include <memory>
 
@@ -99,6 +101,7 @@ std::shared_ptr<Object> ObjectFactory::create(TiXmlElement *pObjectXML)
 		pComponentXML = pComponentXML->NextSiblingElement();
 	}
 
+	// Initialize the object (and all its components)
 	obj->Initialize(inits);
 
 	return obj;
@@ -129,6 +132,7 @@ std::shared_ptr<Object> ObjectFactory::create(std::vector<std::string> compNames
 }
 
 
+// Helper method for creating components based off of their component name
 std::shared_ptr<Component> ObjectFactory::CreateComponent(std::string compName, std::shared_ptr<Object> parent)
 {
 	if (compName == "Body")

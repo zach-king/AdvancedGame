@@ -1,19 +1,17 @@
 #pragma once
 
-#include "GameAssetLibrary.h"
-#include "ArtAssetLibrary.h"
-#include "GraphicsDevice.h"
-#include "InputDevice.h"
-#include "Timer.h"
 #include "Definitions.h"
-#include "Component.h"
-#include "Definitions.h"
+#include "Object.h"
 #include "ObjectFactory.h"
+#include "Component.h"
+#include "InputDevice.h"
+#include "GraphicsDevice.h"
+#include "ArtAssetLibrary.h"
+#include "GameAssetLibrary.h"
+#include "Timer.h"
 
 #include <memory>
 #include <vector>
-
-class Object;
 
 class Game
 {
@@ -27,6 +25,7 @@ public:
 	bool Update();
 	void Draw();
 
+	// Getters
 	ArtAssetLibrary* getArtAssetLibrary();
 	GraphicsDevice* getGraphicsDevice();
 	InputDevice* getInputDevice();
@@ -34,11 +33,14 @@ public:
 	ObjectFactory* getObjectFactory();
 	Timer* getTimer();
 
+	// Add a new object to the vector of objects for the game
 	void AddObject(std::shared_ptr<Object>);
+
+	// Get an object by its string id
 	Object* GetObject(std::string);
 
-
 private:
+	// Devices and libraries
 	std::unique_ptr<ArtAssetLibrary> aLibrary;
 	std::unique_ptr<GraphicsDevice> gDevice;
 	std::unique_ptr<InputDevice> iDevice;
@@ -48,10 +50,9 @@ private:
 	GAME_FLT gameTime; // maintains overall in-game time
 	std::unique_ptr<View> view;
 	std::vector<std::shared_ptr<Object>> objects;
-	void DrawMiniMap();
 	bool showMiniMap;
-
-	void KillDeadObjects();
-
 	bool mapKeyPressed;
+
+	void DrawMiniMap();		// Draws the mini map with SDL
+	void KillDeadObjects(); // Kills any objects with the `dead` flag set
 };

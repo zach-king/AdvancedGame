@@ -3,6 +3,7 @@
 #include "InputDevice.h"
 #include "Game.h"
 #include "BodyComponent.h"
+#include "Object.h"
 
 #include <iostream>
 #include <math.h>
@@ -94,6 +95,7 @@ GAME_VEC View::getCenter()
 	return center;
 }
 
+// Easily find the player after initializations have taken place
 void View::FindPlayer(Game* game)
 {
 	player = game->GetObject("Link");

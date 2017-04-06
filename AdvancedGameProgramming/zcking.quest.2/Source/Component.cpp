@@ -1,5 +1,7 @@
 #include "Component.h"
 
+#include <memory>
+
 Component::Component()
 {
 	// Shoudln't allow for default constructor; component MUST have owner

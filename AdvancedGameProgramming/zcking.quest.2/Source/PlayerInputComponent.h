@@ -1,13 +1,12 @@
 #pragma once
 
-#include "Component.h"
-#include "Object.h"
 #include "Definitions.h"
+#include "Object.h"
+#include "Component.h"
+#include "ObjectFactory.h"
 #include "InputDevice.h"
 
 #include <memory>
-
-class ObjectFactory;
 
 class PlayerInputComponent : public Component
 {
@@ -25,7 +24,8 @@ protected:
 	ObjectFactory* oFactory;
 	GAME_OBJECTFACTORY_INITIALIZERS arrowInits;
 
+	// For advanced shooting of Link's arrows
 	bool canFire;
-	GAME_INT reloadFrames;
+	GAME_INT reloadFrames; // can specify how fast player can shoot
 	GAME_FLT fireAngle;
 };

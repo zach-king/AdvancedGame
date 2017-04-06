@@ -33,6 +33,7 @@ std::unique_ptr<Object> CircleBehaviorComponent::Update()
 	static std::uniform_int_distribution<GAME_INT> ud(MIN_OCTOROK_ANGLE, MAX_OCTOROK_ANGLE + 1);
 	static std::uniform_int_distribution<GAME_INT> randDist(MIN_OCTOROK_RADIUS, MAX_OCTOROK_RADIUS + 1);
 
+	// Get a random distance
 	GAME_FLT distance = (GAME_FLT)(randDist(e));
 
 	// Get the body component and parts
@@ -59,5 +60,5 @@ std::unique_ptr<Object> CircleBehaviorComponent::Update()
 
 bool CircleBehaviorComponent::Finish()
 {
-	return false;
+	return true;
 }

@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Component.h"
-#include "Object.h"
 #include "Definitions.h"
+#include "Object.h"
+#include "Component.h"
 
 #include <memory>
 
@@ -18,5 +18,5 @@ public:
 	bool Finish();
 
 protected:
-	bool hasRadius;
+	bool hasRadius; // if true, move in a circle; if false, just spin in place
 };

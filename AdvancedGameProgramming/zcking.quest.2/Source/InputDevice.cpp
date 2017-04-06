@@ -29,6 +29,7 @@ void InputDevice::Update()
 	// Poll event
 	SDL_PollEvent(event.get());
 	
+	// Set event flags appropriately for keys up and down
 	switch (event->type)
 	{
 	case SDL_KEYDOWN:
@@ -110,5 +111,6 @@ void InputDevice::Update()
 
 bool InputDevice::GetEvent(GAME_EVENT ev)
 {
+	// Get the flag for a particular game event
 	return keyFlags[ev];
 }

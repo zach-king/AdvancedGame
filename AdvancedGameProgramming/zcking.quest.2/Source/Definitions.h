@@ -51,9 +51,9 @@ const GAME_INT MAX_LEEVER_DISTANCE = 250;
 
 // View Constants
 const GAME_FLT VIEW_SPEED = 2.5f;
-const GAME_FLT VIEW_PADDING_X = 350.0f; // how close to edge of screen can 
+const GAME_FLT VIEW_PADDING_X = 150.0f; // how close to edge of screen can 
 									  // player get before view moves
-const GAME_FLT VIEW_PADDING_Y = 175.0f;
+const GAME_FLT VIEW_PADDING_Y = 100.0f;
 
 // Link Constants
 const GAME_FLT LINK_SPEED = 2.0f;

@@ -1,8 +1,10 @@
 #pragma once
 
-#include <memory>
-#include "Object.h"
 #include "Definitions.h"
+
+#include <memory>
+
+class Object;
 
 class Component
 {
@@ -21,5 +23,5 @@ public:
 	virtual bool Finish() = 0;
 
 protected:
-	std::shared_ptr<Object> _owner;
+	std::shared_ptr<Object> _owner; // the object which this component is attached to
 };

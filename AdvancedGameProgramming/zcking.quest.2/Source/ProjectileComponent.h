@@ -1,11 +1,10 @@
 #pragma once
 
-#include "Component.h"
 #include "Definitions.h"
+#include "Object.h"
+#include "Component.h"
 
 #include <memory>
-
-class Object;
 
 class ProjectileComponent : public Component
 {
@@ -20,5 +19,5 @@ public:
 
 protected:
 	GAME_INT lifetime; // how many frames the projectile lives
-	GAME_INT framesPassed;
+	GAME_INT framesPassed; // basically a health counter based on frames
 };

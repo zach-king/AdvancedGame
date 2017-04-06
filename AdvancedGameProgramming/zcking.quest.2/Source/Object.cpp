@@ -13,15 +13,14 @@ Object::Object()
 
 Object::~Object()
 {
-	for(auto comp: components)
-	{
-		comp->Finish();
-	}
+	// Finish all components upon destruction of their owner
+	Finish();
 	components.clear();
 }
 
 bool Object::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
 {
+	// Initialize all components
 	for (auto comp : components)
 	{
 		if (!comp->Initialize(inits))
@@ -34,11 +33,13 @@ bool Object::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
 
 void Object::AddComponent(std::shared_ptr<Component> component)
 {
+	// Add a new component to the components vector
 	components.push_back(component);
 }
 
 void Object::Update()
 {
+	// Update all components
 	for (auto comp : components)
 	{
 		comp->Update();
@@ -47,6 +48,7 @@ void Object::Update()
 
 void Object::Finish()
 {
+	// Finish all components
 	for (auto comp : components)
 	{
 		comp->Finish();
@@ -55,20 +57,24 @@ void Object::Finish()
 
 bool Object::isDead()
 {
+	// Getter for `dead` member
 	return dead;
 }
 
 void Object::setIsDead(bool isDead)
 {
+	// Setter for `dead` member
 	dead = isDead;
 }
 
 void Object::setName(std::string name)
 {
+	// Setter for `name` member
 	this->name = name;
 }
 
 std::string Object::getName()
 {
+	// Getter for `name` member
 	return name;
 }

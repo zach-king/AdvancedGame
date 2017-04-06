@@ -1,12 +1,11 @@
 #pragma once
 
 #include "Definitions.h"
+#include "Object.h"
+#include "Game.h"
+#include "InputDevice.h"
 
 #include <memory>
-
-class Object;
-class Game;
-class InputDevice;
 
 class View
 {

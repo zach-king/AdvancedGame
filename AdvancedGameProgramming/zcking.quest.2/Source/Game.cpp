@@ -168,7 +168,7 @@ bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile)
 		pObjectXML = pObjectXML->NextSiblingElement("GameAsset");
 	}
 
-	view->FindPlayer(this);
+	view->FindPlayer(this); // ask to view to grab a pointer to the player object for its border detection
 
 	return true;
 }
@@ -350,6 +350,7 @@ void Game::DrawMiniMap()
 	}
 }
 
+// Kill any objects with the `dead` flag set
 void Game::KillDeadObjects()
 {
 	for (auto objIter = objects.begin(); objIter != objects.end();)

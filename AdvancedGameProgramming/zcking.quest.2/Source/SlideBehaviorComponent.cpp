@@ -27,6 +27,7 @@ bool SlideBehaviorComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initiali
 	static std::default_random_engine e(rDev());
 	static std::uniform_int_distribution<GAME_INT> ud(MIN_LEEVER_DISTANCE, MAX_LEEVER_DISTANCE + 1);
 
+	// Get random distance to move along
 	distance = ud(e);
 
 	return true;
@@ -72,5 +73,5 @@ std::unique_ptr<Object> SlideBehaviorComponent::Update()
 
 bool SlideBehaviorComponent::Finish()
 {
-	return false;
+	return true;
 }

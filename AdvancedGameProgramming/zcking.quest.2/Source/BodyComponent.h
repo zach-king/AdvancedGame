@@ -2,6 +2,8 @@
 
 #include "Component.h"
 #include "Definitions.h"
+#include "Object.h"
+#include "Component.h"
 
 #include <memory>
 

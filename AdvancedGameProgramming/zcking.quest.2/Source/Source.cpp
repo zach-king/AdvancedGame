@@ -61,6 +61,5 @@ int main(int argc, char *argv[])
 		game = nullptr;
 	}
 
-	system("pause");
 	return 0;
 }

@@ -1,11 +1,12 @@
 #pragma once
 
-#include "View.h"
 #include "Definitions.h"
 
 #include "SDL.h"
 #include "SDL_image.h"
 #include <string>
+
+class View;
 
 class Texture
 {

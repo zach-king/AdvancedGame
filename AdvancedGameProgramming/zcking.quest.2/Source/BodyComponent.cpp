@@ -1,11 +1,13 @@
 #include "BodyComponent.h"
 #include "GameFunctions.h"
-#include "Object.h"
 #include "SpriteComponent.h"
 #include "Texture.h"
 #include "Game.h"
 
 #include "SDL.h"
+
+// Body Component pretty much just stores certain "Physics" attributes for the object it's attached to
+// and those attribtues are used by other components
 
 BodyComponent::BodyComponent() : Component() {}
 
@@ -33,7 +35,8 @@ std::unique_ptr<Object> BodyComponent::Update()
 
 bool BodyComponent::Finish()
 {
-	return false;
+	this->view = NULL;
+	return true;
 }
 
 GAME_VEC BodyComponent::getPosition()

@@ -2,6 +2,7 @@
 #include <math.h>
 
 #include "Texture.h"
+#include "View.h"
 
 Texture::Texture()
 {

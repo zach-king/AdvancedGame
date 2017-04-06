@@ -1,13 +1,8 @@
 #include "SpriteComponent.h"
-#include "BodyComponent.h"
 #include "GameFunctions.h"
 #include "GraphicsDevice.h"
-#include "Texture.h"
 #include "ArtAssetLibrary.h"
 #include "Game.h"
-
-#include <memory>
-#include <map>
 
 SpriteComponent::SpriteComponent() : Component() {}
 
@@ -70,7 +65,8 @@ std::unique_ptr<Object> SpriteComponent::Update()
 
 bool SpriteComponent::Finish()
 {
-	return false;
+	this->gDevice = NULL;
+	return true;
 }
 
 void SpriteComponent::Draw()

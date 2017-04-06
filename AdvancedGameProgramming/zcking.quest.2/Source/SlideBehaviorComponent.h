@@ -1,10 +1,8 @@
 #pragma once
 
-#include "Component.h"
-#include "Object.h"
 #include "Definitions.h"
-
-#include <memory>
+#include "Object.h"
+#include "Component.h"
 
 class SlideBehaviorComponent : public Component
 {
@@ -18,8 +16,8 @@ public:
 	bool Finish();
 
 protected:
-	bool vertical;
-	GAME_FLT distance;
-	GAME_VEC startPosition;
-	bool switched;
+	bool vertical;			// whether or not we should move vertical or horizontal
+	GAME_FLT distance;		// the distance to move (which gets randomized)
+	GAME_VEC startPosition; // stores the starting position so we know when to change direction
+	bool switched;			// flag for help with switching directions
 };

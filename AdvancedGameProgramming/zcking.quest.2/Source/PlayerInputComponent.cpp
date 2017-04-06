@@ -1,8 +1,5 @@
 #include "PlayerInputComponent.h"
 #include "BodyComponent.h"
-#include "Component.h"
-#include "InputDevice.h"
-#include "Definitions.h"
 #include "GameFunctions.h"
 #include "Game.h"
 #include "SpriteComponent.h"
@@ -39,6 +36,7 @@ bool PlayerInputComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initialize
 
 std::unique_ptr<Object> PlayerInputComponent::Update()
 {
+	// Handle player reloading flag and timing
 	if (!canFire)
 	{
 		reloadFrames++;
@@ -46,12 +44,13 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 			canFire = true;
 	}
 
-	// Get the sprite and body components since they'll be changed
+	// Get the sprite and body components since they might be changed
 	std::shared_ptr<SpriteComponent> sprite = _owner->GetComponent<SpriteComponent>();
 	std::shared_ptr<BodyComponent> body = _owner->GetComponent<BodyComponent>();
 	GAME_VEC pos = body->getPosition();
 	GAME_FLT ang = body->getAngle();
 
+	// Left arrow key pressed?
 	if (iDevice->GetEvent(GAME_LEFT))
 	{
 		// Ask for LinkLeft sprite texture change from SC
@@ -115,6 +114,7 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 	// Did Link fire any arrows?
 	if (iDevice->GetEvent(GAME_FIRE) && canFire)
 	{
+		// Initiate need for reload
 		canFire = false;
 		reloadFrames = 0;
 
@@ -132,7 +132,7 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 		compNames.push_back("Sprite");
 		compNames.push_back("Projectile");
 
-		// Create the object
+		// Create the object and add it to the game world
 		std::shared_ptr<Object> arrow = oFactory->create(compNames, arrowInits);
 		arrowInits.game->AddObject(arrow);
 	}
@@ -142,5 +142,8 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 
 bool PlayerInputComponent::Finish()
 {
+	this->iDevice = NULL;
+	this->oFactory = NULL;
+
 	return true;
 }
