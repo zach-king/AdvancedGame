@@ -174,7 +174,7 @@ bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile)
 }
 
 bool Game::Run()
-{
+{	
 	if (iDevice->GetEvent(GAME_QUIT))
 		return true;
 	
