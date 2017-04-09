@@ -167,39 +167,39 @@ bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile)
 
 	// Root and object xml pointers
 	pRootXML = NULL;
-	pObjectXML = NULL;
-	TiXmlElement* pComponentXML = NULL;
+pObjectXML = NULL;
+TiXmlElement* pComponentXML = NULL;
 
-	// Parse the XML object; get the root XML element
-	pRootXML = gameXml.FirstChildElement();
+// Parse the XML object; get the root XML element
+pRootXML = gameXml.FirstChildElement();
 
-	// If is not in config file, exit with error
-	if (pRootXML == NULL)
-		return false;
+// If is not in config file, exit with error
+if (pRootXML == NULL)
+return false;
 
-	// Parse the game assets out of XML file
-	pObjectXML = pRootXML->FirstChildElement("GameAsset");
-	while (pObjectXML != NULL)
-	{
-		
-		// factory create object and pass xml
-		std::shared_ptr<Object> obj = oFactory->create(pObjectXML);
-		objects.push_back(obj);
+// Parse the game assets out of XML file
+pObjectXML = pRootXML->FirstChildElement("GameAsset");
+while (pObjectXML != NULL)
+{
 
-		// Get the next game asset element
-		pObjectXML = pObjectXML->NextSiblingElement("GameAsset");
-	}
+	// factory create object and pass xml
+	std::shared_ptr<Object> obj = oFactory->create(pObjectXML);
+	objects.push_back(obj);
 
-	view->FindPlayer(this); // ask to view to grab a pointer to the player object for its border detection
+	// Get the next game asset element
+	pObjectXML = pObjectXML->NextSiblingElement("GameAsset");
+}
 
-	return true;
+view->FindPlayer(this); // ask to view to grab a pointer to the player object for its border detection
+
+return true;
 }
 
 bool Game::Run()
 {
 	if (iDevice->GetEvent(GAME_QUIT))
 		return true;
-	
+
 	// Check if we should toggle the mini map
 	if (mapKeyPressed && iDevice->GetEvent(GAME_MAP_TOGGLE) == false)
 	{
@@ -253,6 +253,7 @@ bool Game::Update()
 	// Kill any dead objects
 	KillDeadObjects();
 
+	// Update all objects
 	for (auto objIter = objects.begin(); objIter != objects.end(); ++objIter)
 	{
 		(*objIter)->Update();
@@ -263,6 +264,14 @@ bool Game::Update()
 
 	// Update physics device
 	pDevice->Update(timer->getTicks());
+
+	// Add any new objects that were created at runtime
+	for (auto objIter = newObjects.begin(); objIter != newObjects.end(); ++objIter)
+	{
+		objects.push_back((*objIter));
+	}
+	// And the clear the newObjects list
+	newObjects.clear();
 
 	return true;
 }
@@ -313,7 +322,7 @@ PhysicsDevice* Game::getPhysicsDevice()
 
 void Game::AddObject(std::shared_ptr<Object> obj)
 {
-	objects.push_back(obj);
+	newObjects.push_back(obj); // push to the vector of new objects to be added before next update
 }
 
 Object * Game::GetObject(std::string name)

@@ -69,7 +69,7 @@
       <Frame name="LinkRight"/>
       <Frame name="LinkDown"/>
     </Component>
-    <Component name="Body" x="300.0f" y="200.0f" angle="0.0f" type="kinematic"
+    <Component name="Body" x="300.0f" y="200.0f" angle="0.0f" type="dynamic"
                shape="circle" density="1.0f" friction="0.3f" restitution="18.0f"
                angular_damping="10.0f" linear_damping="1.0f"/>
     <Component name="Input"/>

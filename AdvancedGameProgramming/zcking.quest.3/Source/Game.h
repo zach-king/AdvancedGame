@@ -58,4 +58,7 @@ private:
 
 	void DrawMiniMap();		// Draws the mini map with SDL
 	void KillDeadObjects(); // Kills any objects with the `dead` flag set
+	
+	// Helper queue for adding new objects at runtime without screwing with iterators
+	std::vector<std::shared_ptr<Object>> newObjects;
 };

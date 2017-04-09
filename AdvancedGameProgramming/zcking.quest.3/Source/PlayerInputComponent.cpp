@@ -134,6 +134,13 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 		arrowInits.arrow_life = ARROW_LIFETIME;
 		arrowInits.position = pos;
 		arrowInits.angle = fireAngle;
+		arrowInits.bodyType = GAME_DYNAMIC;
+		arrowInits.bodyShape = GAME_RECTANGLE;
+		arrowInits.bodyDensity = 0.5f;
+		arrowInits.bodyFriction = 0.0f;
+		arrowInits.bodyRestitution = 1.0f;
+		arrowInits.bodyAngDamping = 0.0f;
+		arrowInits.bodyLinDamping = 0.0f;
 		arrowInits.textureIds.push_back("Arrow");
 
 		// Push the necessary component names (object factory will create and initialize)
