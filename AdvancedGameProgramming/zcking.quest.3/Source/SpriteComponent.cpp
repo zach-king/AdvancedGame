@@ -41,6 +41,7 @@ bool SpriteComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initializers)
 	}
 
 	view = initializers.game->getView();
+	pDevice = initializers.game->getPhysicsDevice();
 
 	return true;
 }
@@ -71,9 +72,8 @@ bool SpriteComponent::Finish()
 void SpriteComponent::Draw()
 {
 	//Extract position and angle
-	auto body = _owner->GetComponent<BodyComponent>();
-	GAME_VEC position = body->getPosition();
-	GAME_FLT angle = body->getAngle();
+	GAME_VEC position = pDevice->GetPosition(_owner.get());
+	GAME_FLT angle = pDevice->GetAngle(_owner.get());
 
 	//Render to the Screen
 	currentTexture->Draw(gDevice->getRenderer(), view, position, angle, NULL);

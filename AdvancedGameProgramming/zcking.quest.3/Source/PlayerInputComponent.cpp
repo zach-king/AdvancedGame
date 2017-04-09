@@ -26,6 +26,7 @@ bool PlayerInputComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initialize
 {
 	iDevice = initializers.game->getInputDevice();
 	oFactory = initializers.game->getObjectFactory();
+	pDevice = initializers.game->getPhysicsDevice();
 
 	arrowInits = initializers;
 	canFire = true;
@@ -58,7 +59,9 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 			sprite->SetTexture("LinkLeft");
 
 		// Adjust Position
-		pos.x -= LINK_SPEED;
+		GAME_VEC force = { -1 * LINK_SPEED, 0 };
+		pDevice->SetLinearImpulse(_owner.get(),
+			force, VEC_ZERO);
 		fireAngle = 270;
 	}
 
@@ -69,7 +72,9 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 			sprite->SetTexture("LinkRight");
 
 		// Adjust Position
-		pos.x += LINK_SPEED;
+		GAME_VEC force = { 1 * LINK_SPEED, 0 };
+		pDevice->SetLinearImpulse(_owner.get(),
+			force, VEC_ZERO);
 		fireAngle = 90;
 	}
 
@@ -80,7 +85,9 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 			sprite->SetTexture("LinkUp");
 
 		// Adjust Position
-		pos.y -= LINK_SPEED;
+		GAME_VEC force = { 0, -1 * LINK_SPEED };
+		pDevice->SetLinearImpulse(_owner.get(),
+			force, VEC_ZERO);
 		fireAngle = 0;
 	}
 
@@ -91,7 +98,9 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 			sprite->SetTexture("LinkDown");
 
 		// Adjust Position
-		pos.y += LINK_SPEED;
+		GAME_VEC force = { 0, 1 * LINK_SPEED };
+		pDevice->SetLinearImpulse(_owner.get(),
+			force, VEC_ZERO);
 		fireAngle = 180;
 	}
 

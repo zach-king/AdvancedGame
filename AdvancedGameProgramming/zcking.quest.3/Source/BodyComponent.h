@@ -4,6 +4,7 @@
 #include "Definitions.h"
 #include "Object.h"
 #include "Component.h"
+#include "PhysicsDevice.h"
 
 #include <memory>
 
@@ -29,4 +30,5 @@ protected:
 	GAME_VEC position;
 	GAME_FLT angle;
 	View* view;
+	PhysicsDevice* pDevice;
 };

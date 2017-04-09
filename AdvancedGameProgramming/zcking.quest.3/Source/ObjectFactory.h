@@ -29,6 +29,10 @@ protected:
 	// Helper for making components
 	std::shared_ptr<Component> CreateComponent(std::string, std::shared_ptr<Object>); 
 
+	// Helper for parsing 
+	GAME_BODY_TYPE ParseBodyType(std::string bdType);
+	GAME_OBJECT_SHAPE ParseBodyShape(std::string bdShape);
+
 	// Pointer for one-time storage of game class (for grabbing the libraries and devices)
 	Game* game;
 };

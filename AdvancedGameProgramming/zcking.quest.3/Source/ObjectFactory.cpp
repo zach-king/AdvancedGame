@@ -7,6 +7,7 @@
 #include "ProjectileComponent.h"
 #include "Game.h"
 #include "Component.h"
+#include "Definitions.h"
 #include "Object.h"
 
 #include <memory>
@@ -65,6 +66,13 @@ std::shared_ptr<Object> ObjectFactory::create(TiXmlElement *pObjectXML)
 			pComponentXML->QueryFloatAttribute("x", &inits.position.x);
 			pComponentXML->QueryFloatAttribute("y", &inits.position.y);
 			pComponentXML->QueryFloatAttribute("angle", &inits.angle);
+			inits.bodyType = ParseBodyType(pComponentXML->Attribute("type"));
+			inits.bodyShape = ParseBodyShape(pComponentXML->Attribute("shape"));
+			pComponentXML->QueryFloatAttribute("density", &inits.bodyDensity);
+			pComponentXML->QueryFloatAttribute("friction", &inits.bodyFriction);
+			pComponentXML->QueryFloatAttribute("restitution", &inits.bodyRestitution);
+			pComponentXML->QueryFloatAttribute("angular_damping", &inits.bodyAngDamping);
+			pComponentXML->QueryFloatAttribute("linear_damping", &inits.bodyLinDamping);
 		}
 		else if (compName == "Slide")
 		{
@@ -164,4 +172,26 @@ std::shared_ptr<Component> ObjectFactory::CreateComponent(std::string compName, 
 		// not "in" library
 		return nullptr;
 	}
+}
+
+GAME_BODY_TYPE ObjectFactory::ParseBodyType(std::string bdType)
+{
+	if (bdType == "dynamic")
+		return GAME_DYNAMIC;
+	else if (bdType == "kinematic")
+		return GAME_KINEMATIC;
+	else if (bdType == "static")
+		return GAME_STATIC;
+
+	return GAME_STATIC; // default to static
+}
+
+GAME_OBJECT_SHAPE ObjectFactory::ParseBodyShape(std::string bdShape)
+{
+	if (bdShape == "rectangle")
+		return GAME_RECTANGLE;
+	else if (bdShape == "circle")
+		return GAME_CIRCLE;
+
+	return GAME_CIRCLE; // default to circle
 }

@@ -19,20 +19,24 @@ BodyComponent::~BodyComponent()
 {
 }
 
-bool BodyComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initializers)
+bool BodyComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
 {
-	position = initializers.position;
-	angle = initializers.angle;
-	view = initializers.game->getView();
+	position = inits.position;
+	angle = inits.angle;
+	view = inits.game->getView();
 
-	auto pDevice = initializers.game->getPhysicsDevice();
-	pDevice->CreateFixture(
+	this->pDevice = inits.game->getPhysicsDevice();
+	this->pDevice->CreateFixture(
 		_owner,
 		position,
 		angle,
-		GAME_DYNAMIC,
-		GAME_CIRCLE,
-		1.0, 1.0, 0.1, 0.1, 0.1
+		inits.bodyType,
+		inits.bodyShape, 
+		inits.bodyDensity,
+		inits.bodyFriction,
+		inits.bodyRestitution,
+		inits.bodyAngDamping,
+		inits.bodyLinDamping
 		);
 
 
@@ -52,20 +56,20 @@ bool BodyComponent::Finish()
 
 GAME_VEC BodyComponent::getPosition()
 {
-	return position;
+	return pDevice->GetPosition(_owner.get());
 }
 
 void BodyComponent::setPosition(GAME_VEC pos)
 {
-	position = pos;
+	pDevice->SetTransform(_owner.get(), pos, pDevice->GetAngle(_owner.get()));
 }
 
 float BodyComponent::getAngle()
 {
-	return angle;
+	return pDevice->GetAngle(_owner.get());
 }
 
 void BodyComponent::setAngle(GAME_FLT ang)
 {
-	angle = ang;
+	pDevice->SetAngle(_owner.get(), ang);
 }

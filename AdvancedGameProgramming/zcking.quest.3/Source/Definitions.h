@@ -42,6 +42,19 @@ enum GAME_EVENT {
 	GAME_QUIT
 }; 
 
+// Physics enums
+enum GAME_OBJECT_SHAPE {
+	GAME_RECTANGLE,
+	GAME_CIRCLE
+};
+
+enum GAME_BODY_TYPE {
+	GAME_STATIC,		// doesn't move
+	GAME_KINEMATIC,		// moves but not really going to be affected
+	GAME_DYNAMIC		// interacts with other objects
+};
+
+
 //Constants
 const GAME_FLT PI = 3.14159f;
 const GAME_INT MIN_OCTOROK_ANGLE = 0;
@@ -80,15 +93,17 @@ struct GAME_OBJECTFACTORY_INITIALIZERS
 	bool radius;
 	Game* game;
 	GAME_INT arrow_life;
+	GAME_BODY_TYPE bodyType;
+	GAME_OBJECT_SHAPE bodyShape;
+	GAME_FLT bodyDensity;
+	GAME_FLT bodyFriction;
+	GAME_FLT bodyRestitution;
+	GAME_FLT bodyAngDamping;
+	GAME_FLT bodyLinDamping;
 };
 
-enum GAME_OBJECT_SHAPE {
-	GAME_RECTANGLE,
-	GAME_CIRCLE
-};
-
-enum GAME_BODY_TYPE {
-	GAME_STATIC,		// doesn't move
-	GAME_KINEMATIC,		// moves but not really going to be affected
-	GAME_DYNAMIC		// interacts with other objects
-};
+const GAME_VEC VEC_LEFT = { -1.0f, 0.0f };
+const GAME_VEC VEC_RIGHT = { 1.0f, 0.0f };
+const GAME_VEC VEC_UP = { 0.0f, 1.0f };
+const GAME_VEC VEC_DOWN = { 0.0f, -1.0f };
+const GAME_VEC VEC_ZERO = { 0.0f, 0.0f };

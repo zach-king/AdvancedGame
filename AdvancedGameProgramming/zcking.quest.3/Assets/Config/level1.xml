@@ -2,39 +2,66 @@
 <Level1>
   <GameAsset name="Blue Leever">
     <Component name="Sprite" animated="false"> </Component>   
-    <Component name="Body" x="100.0f" y="100.0f" angle="0.0f"/>
+    <Component name="Body" x="100.0f" y="100.0f" angle="0.0f" type="dynamic" 
+               shape="rectangle" density="2.0f" friction="0.9f" 
+               restitution="4.0f" angular_damping="5.0f" linear_damping="0.1f"/>
     <Component name="Slide" vertical="true"/>
   </GameAsset>
+  
+    
   <GameAsset name="Red Leever">
     <Component name="Sprite" animated="false"></Component>
-    <Component name="Body" x="0.0f" y="200.0f" angle="0.0f"/>
+    <Component name="Body" x="0.0f" y="200.0f" angle="0.0f" type="dynamic" 
+               shape="rectangle" density="2.0f" friction="0.9f" 
+               restitution="4.0f" angular_damping="5.0f" linear_damping="0.1f"/>
     <Component name="Slide" vertical="false"/>
   </GameAsset>  
+  
+    
   <GameAsset name="Blue Octorok">
     <Component name="Sprite" animated="false"> </Component>
-    <Component name="Body" x="100.0f" y="50.0f" angle="0.0f"/>
+    <Component name="Body" x="100.0f" y="50.0f" angle="0.0f" type="dynamic"
+               shape="circle" density="13.0f" friction="0.9f" restitution="4.0f"
+               angular_damping="20.0f" linear_damping="0.0f"/>
     <Component name="Circle" radius="true"/>
   </GameAsset>
+  
+  
   <GameAsset name="Red Octorok">
     <Component name="Sprite" animated="false"> </Component>
-    <Component name="Body" x="400.0f" y="300.0f" angle="270.0f"/>
+    <Component name="Body" x="400.0f" y="300.0f" angle="270.0f" type="dynamic"
+               shape="circle" density="13.0f" friction="0.9f" restitution="4.0f"
+               angular_damping="20.0f" linear_damping="0.0f"/>
     <Component name="Circle" radius="false"/>
   </GameAsset>
+  
+  
   <GameAsset name="Red Leever" >
     <Component name="Sprite" animated="false"></Component>
-    <Component name="Body" x="-75.0f" y="0.0f" angle="0.0f"/>
+    <Component name="Body" x="-75.0f" y="0.0f" angle="0.0f" type="dynamic" 
+               shape="rectangle" density="2.0f" friction="0.9f" 
+               restitution="4.0f" angular_damping="5.0f" linear_damping="0.1f"/>
     <Component name="Slide" vertical="false"/>
   </GameAsset>
+  
+  
   <GameAsset name="Blue Leever" >
     <Component name="Sprite" animated="false"></Component>
-    <Component name="Body" x="35.0f" y="100.0f" angle="0.0f"/>
+    <Component name="Body" x="35.0f" y="100.0f" angle="0.0f" type="dynamic" 
+               shape="rectangle" density="2.0f" friction="0.9f" 
+               restitution="4.0f" angular_damping="5.0f" linear_damping="0.1f"/>
     <Component name="Slide" vertical="true"/>
   </GameAsset>
+  
+  
   <GameAsset name="Blue Octorok" >
     <Component name="Sprite" animated="false"></Component>
-    <Component name="Body" x="125.0f" y="40.0f" angle="270.0f"/>
+    <Component name="Body" x="125.0f" y="40.0f" angle="270.0f" type="dynamic"
+               shape="circle" density="13.0f" friction="0.9f" restitution="4.0f"
+               angular_damping="20.0f" linear_damping="0.0f"/>
     <Component name="Circle" radius="true"/>
   </GameAsset>
+  
   <GameAsset name="Link">
     <Component name="Sprite" animated="true">
       <Frame name="LinkUp" />
@@ -42,7 +69,17 @@
       <Frame name="LinkRight"/>
       <Frame name="LinkDown"/>
     </Component>
-    <Component name="Body" x="300.0f" y="200.0f" angle="0.0f"/>
+    <Component name="Body" x="300.0f" y="200.0f" angle="0.0f" type="dynamic"
+               shape="circle" density="1.0f" friction="0.3f" restitution="18.0f"
+               angular_damping="10.0f" linear_damping="1.0f"/>
     <Component name="Input"/>
+  </GameAsset>
+
+
+  <GameAsset name="Rock">
+    <Component name="Sprite" animated="false" />
+    <Component name="Body" x="310.0f" y="250.0f" angle="0.0f" type="static"
+               shape="circle" density="25.0f" friction="0.0f" restitution="20.0f"
+               angular_density="0.0f" linear_density="0.0f" />
   </GameAsset>
 </Level1>

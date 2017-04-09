@@ -43,4 +43,5 @@ protected:
 	std::map<std::string, std::shared_ptr<Texture>> textures; // all stored textures (only has one if not animated)
 	GraphicsDevice *gDevice;				// Pointer to graphics device for drawing textures
 	View *view;								// Need view to pass in for drawing, so use this for one-time store
+	PhysicsDevice* pDevice;
 };

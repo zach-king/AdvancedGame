@@ -10,4 +10,5 @@
   <Creature name="LinkRight" sprite="./Assets/Images/link_r.png"/>
   <Creature name="LinkLeft" sprite="./Assets/Images/link_l.png"/>
   <Creature name="Arrow" sprite="./Assets/Images/arrow.png"/>
+  <Creature name="Rock" sprite="./Assets/Images/rock.png"/>
 </Objects>
