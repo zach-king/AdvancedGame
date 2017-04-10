@@ -31,12 +31,13 @@ bool BodyComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
 		position,
 		angle,
 		inits.bodyType,
-		inits.bodyShape, 
+		inits.bodyShape,
 		inits.bodyDensity,
 		inits.bodyFriction,
 		inits.bodyRestitution,
 		inits.bodyAngDamping,
-		inits.bodyLinDamping
+		inits.bodyLinDamping,
+		inits.bodyIsBullet
 		);
 
 
@@ -51,6 +52,7 @@ std::unique_ptr<Object> BodyComponent::Update()
 bool BodyComponent::Finish()
 {
 	this->view = NULL;
+	pDevice->RemoveObject(_owner.get());
 	return true;
 }
 

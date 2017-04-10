@@ -3,6 +3,7 @@
 #include "Definitions.h"
 #include "Object.h"
 #include "Component.h"
+#include "PhysicsDevice.h"
 
 #include <memory>
 
@@ -19,4 +20,5 @@ public:
 
 protected:
 	bool hasRadius; // if true, move in a circle; if false, just spin in place
+	PhysicsDevice* pDevice;
 };

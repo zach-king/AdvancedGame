@@ -48,16 +48,16 @@ bool View::Update(GAME_FLT change)
 	std::shared_ptr<BodyComponent> playerBody = player->GetComponent<BodyComponent>();
 	GAME_VEC playerPos = playerBody->getPosition();
 
-	if (playerPos.x > (position.x + SCREEN_WIDTH - VIEW_PADDING_X))
+	if (playerPos.x >= (position.x + SCREEN_WIDTH - VIEW_PADDING_X))
 		position.x += VIEW_SPEED;
 
-	if (playerPos.x < position.x + VIEW_PADDING_X)
+	if (playerPos.x <= position.x + VIEW_PADDING_X)
 		position.x -= VIEW_SPEED;
 
-	if (playerPos.y < position.y + VIEW_PADDING_Y)
+	if (playerPos.y <= position.y + VIEW_PADDING_Y)
 		position.y -= VIEW_SPEED;
 
-	if (playerPos.y > position.y + SCREEN_HEIGHT - VIEW_PADDING_Y)
+	if (playerPos.y >= position.y + SCREEN_HEIGHT - VIEW_PADDING_Y)
 		position.y += VIEW_SPEED;
 
 

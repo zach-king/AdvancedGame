@@ -1,5 +1,6 @@
 #include "SlideBehaviorComponent.h"
 #include "BodyComponent.h"
+#include "Game.h"
 
 #include <random>
 #include <memory>
@@ -21,6 +22,7 @@ bool SlideBehaviorComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initiali
 {
 	vertical = initializers.verticalSlide;
 	startPosition = initializers.position;
+	pDevice = initializers.game->getPhysicsDevice();
 
 	// Setup the RNG (Random Number Generator)
 	static std::random_device rDev;
@@ -55,18 +57,19 @@ std::unique_ptr<Object> SlideBehaviorComponent::Update()
 			switched = false;
 	}
 
-	// Based off direction, change position
+	// Based off direction, change velocity
+	GAME_VEC velocity;
 	if (vertical && switched)
-		pos.y -= DEFAULT_LEEVER_SPEED; // with graphics window, origin is in top-left so adding to y goes down and vice versa
+		velocity = { 0, -1 * DEFAULT_LEEVER_SPEED };
 	else if (vertical && !switched)
-		pos.y += DEFAULT_LEEVER_SPEED;
+		velocity = { 0, DEFAULT_LEEVER_SPEED };
 	else if (!vertical && switched)
-		pos.x -= DEFAULT_LEEVER_SPEED;
+		velocity = { -1 * DEFAULT_LEEVER_SPEED, 0 };
 	else if (!vertical && !switched)
-		pos.x += DEFAULT_LEEVER_SPEED;
+		velocity = { 1 * DEFAULT_LEEVER_SPEED, 0 };
 
 	// Now apply this modified position to the body component
-	body->setPosition(pos);
+	pDevice->SetLinearVelocity(_owner.get(), velocity);
 
 	return nullptr;
 }

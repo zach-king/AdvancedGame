@@ -37,7 +37,7 @@ bool PhysicsDevice::CreateFixture(
 	GAME_OBJECT_SHAPE objectShape, 
 	GAME_FLT density, GAME_FLT friction, 
 	GAME_FLT restitution, GAME_FLT angularDamping, 
-	GAME_FLT linearDamping)
+	GAME_FLT linearDamping, bool bullet)
 {
 	// Make a body definition
 	std::unique_ptr<b2BodyDef> bd(std::make_unique<b2BodyDef>());
@@ -48,8 +48,7 @@ bool PhysicsDevice::CreateFixture(
 
 	bd->userData = object.get();
 
-	//bd->bullet = true; // tell box2d to do faster calculations for fast objects
-		// for future stuff if needed
+	bd->bullet = bullet; // tell box2d to do faster calculations for fast objects
 
 	// Set body type
 	switch (bodyType)
@@ -102,6 +101,16 @@ bool PhysicsDevice::CreateFixture(
 	// Create and add the fixture from the shape to the body
 	body->CreateFixture(&shapefd);
 
+	return true;
+}
+
+bool PhysicsDevice::RemoveObject(Object * object)
+{
+	b2Body* bd = findBody(object);
+	if (bd == NULL)
+		return false;
+
+	world->DestroyBody(bd);
 	return true;
 }
 

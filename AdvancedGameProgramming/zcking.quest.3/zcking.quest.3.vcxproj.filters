@@ -72,9 +72,6 @@
     <ClCompile Include="Source\InputDevice.cpp">
       <Filter>Source Files\Devices &amp; Libraries</Filter>
     </ClCompile>
-    <ClCompile Include="Source\ArtAssetLibrary.cpp">
-      <Filter>Source Files\Devices &amp; Libraries</Filter>
-    </ClCompile>
     <ClCompile Include="Source\View.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -105,6 +102,9 @@
     <ClCompile Include="Source\PhysicsDevice.cpp">
       <Filter>Source Files\Devices &amp; Libraries</Filter>
     </ClCompile>
+    <ClCompile Include="Source\AssetLibrary.cpp">
+      <Filter>Source Files\Devices &amp; Libraries</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Timer.h">
@@ -114,9 +114,6 @@
       <Filter>Header Files\Devices &amp; Libraries</Filter>
     </ClInclude>
     <ClInclude Include="Source\tinyxml\tinyxml.h">
-      <Filter>Header Files\Devices &amp; Libraries</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\ArtAssetLibrary.h">
       <Filter>Header Files\Devices &amp; Libraries</Filter>
     </ClInclude>
     <ClInclude Include="Source\GraphicsDevice.h">
@@ -170,6 +167,9 @@
     <ClInclude Include="Source\PhysicsDevice.h">
       <Filter>Header Files\Devices &amp; Libraries</Filter>
     </ClInclude>
+    <ClInclude Include="Source\AssetLibrary.h">
+      <Filter>Header Files\Devices &amp; Libraries</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Assets\Images\leever_b.png">
@@ -211,6 +211,9 @@
       <Filter>Resource Files</Filter>
     </Xml>
     <Xml Include="Assets\Config\objects.xml">
+      <Filter>Resource Files</Filter>
+    </Xml>
+    <Xml Include="Assets\Config\physics.xml">
       <Filter>Resource Files</Filter>
     </Xml>
   </ItemGroup>

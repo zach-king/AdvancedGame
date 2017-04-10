@@ -59,7 +59,7 @@ bool ProjectileComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
 
 	// Apply the linear force (but first position the arrow "in front" of spawner)
 	body->setPosition(pos);
-	pDevice->SetLinearImpulse(_owner.get(), force, VEC_ZERO);
+	pDevice->SetLinearVelocity(_owner.get(), force);
 
 	return true;
 }

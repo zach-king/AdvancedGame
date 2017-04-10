@@ -59,9 +59,9 @@ enum GAME_BODY_TYPE {
 const GAME_FLT PI = 3.14159f;
 const GAME_INT MIN_OCTOROK_ANGLE = 0;
 const GAME_INT MAX_OCTOROK_ANGLE = 3;
-const GAME_INT MIN_OCTOROK_RADIUS = 1;
-const GAME_INT MAX_OCTOROK_RADIUS = 3;
-const GAME_FLT DEFAULT_LEEVER_SPEED = 1.0f;
+const GAME_INT MIN_OCTOROK_RADIUS = 10;
+const GAME_INT MAX_OCTOROK_RADIUS = 20;
+const GAME_FLT DEFAULT_LEEVER_SPEED = 2.0f;
 const GAME_INT MIN_LEEVER_DISTANCE = 0;
 const GAME_INT MAX_LEEVER_DISTANCE = 250;
 
@@ -72,10 +72,10 @@ const GAME_FLT VIEW_PADDING_X = 150.0f; // how close to edge of screen can
 const GAME_FLT VIEW_PADDING_Y = 100.0f;
 
 // Link Constants
-const GAME_FLT LINK_SPEED = 2.0f;
-const GAME_INT ARROW_LIFETIME = 50; // measured in frames.
-const GAME_INT ARROW_SPEED = 3.0f;
-const GAME_INT FIRE_RATE = 60; // my own custom thing so can't machine gun the arrows (measured in frames)
+const GAME_FLT LINK_SPEED = 4.5f;
+const GAME_INT ARROW_LIFETIME = 100; // measured in frames.
+const GAME_INT ARROW_SPEED = 8.0f;
+const GAME_INT FIRE_RATE = 90; // my own custom thing so can't machine gun the arrows (measured in frames)
 
 // Mini Map Constants
 const GAME_INT MINI_MAP_WIDTH = (int)(SCREEN_WIDTH / 5); // scale the map based off screen size
@@ -100,6 +100,7 @@ struct GAME_OBJECTFACTORY_INITIALIZERS
 	GAME_FLT bodyRestitution;
 	GAME_FLT bodyAngDamping;
 	GAME_FLT bodyLinDamping;
+	bool bodyIsBullet;
 };
 
 const GAME_VEC VEC_LEFT = { -1.0f, 0.0f };

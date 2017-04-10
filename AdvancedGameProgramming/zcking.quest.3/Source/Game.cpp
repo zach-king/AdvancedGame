@@ -1,5 +1,5 @@
 #include "GameAssetLibrary.h"
-#include "ArtAssetLibrary.h"
+#include "AssetLibrary.h"
 #include "GraphicsDevice.h"
 #include "InputDevice.h"
 #include "Timer.h"
@@ -64,19 +64,9 @@ bool Game::Initialize()
 		printf("Physics Device could not initialize!\n");
 		exit(1);
 	}
-	
-	GAME_VEC vTopLeft, vTopRight, vBottomLeft, vBottomRight;
-	vTopLeft.x		= 0;			vTopLeft.y		= 0;
-	vTopRight.x		= SCREEN_WIDTH; vTopRight.y		= 0;
-	vBottomLeft.x = 0;				vBottomLeft.y	= SCREEN_HEIGHT;
-	vBottomRight.x = SCREEN_WIDTH;	vBottomRight.y	= SCREEN_HEIGHT;
-	pDevice->CreateEdge(vTopLeft, vTopRight);
-	pDevice->CreateEdge(vTopRight, vBottomRight);
-	pDevice->CreateEdge(vBottomRight, vBottomLeft);
-	pDevice->CreateEdge(vBottomLeft, vTopLeft);
 
 	// Initialize the libraries
-	aLibrary = std::make_unique<ArtAssetLibrary>();
+	aLibrary = std::make_unique<AssetLibrary>();
 	bool loaded = aLibrary->Initialize(gDevice.get());
 	if (!loaded)
 	{
@@ -121,40 +111,14 @@ void Game::Reset()
 	}
 }
 
-bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile)
+bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile, std::string physicsXmlFile)
 {
-	// Create the XML document object and 
-	// Check if it loaded without trouble
-	TiXmlDocument artXml(artXmlFile.c_str());
-	if (!artXml.LoadFile())
+	if (!aLibrary->InitializeLibraries(artXmlFile, physicsXmlFile))
 	{
-		printf("Unable to load art XML file %s! Tiny XML Error: %s\n", artXmlFile.c_str(), artXml.ErrorDesc());
+		printf("Unable to initialize the Asset Library from XML File!\n");
 		return false;
 	}
 
-	// Root and object xml pointers
-	TiXmlElement* pRootXML = NULL;
-	TiXmlElement* pObjectXML = NULL;
-
-	// Parse the XML object; get the root XML element
-	pRootXML = artXml.FirstChildElement("Objects");
-
-	// If is not in config file, exit with error
-	if (pRootXML == NULL)
-		return false;
-
-	// Parse the art assets out of XML file
-	pObjectXML = pRootXML->FirstChildElement("Creature");
-	while (pObjectXML != NULL)
-	{
-		// Get the creature attributes and add to art asset library
-		aLibrary->AddAsset(pObjectXML->Attribute("name"), pObjectXML->Attribute("sprite"));
-
-		// Get the next creature element
-		pObjectXML = pObjectXML->NextSiblingElement("Creature");
-	}
-
-	//---------------------------------------------------
 
 	// Create the XML document object and 
 	// Check if it loaded without trouble
@@ -166,33 +130,32 @@ bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile)
 	}
 
 	// Root and object xml pointers
-	pRootXML = NULL;
-pObjectXML = NULL;
-TiXmlElement* pComponentXML = NULL;
+	TiXmlElement* pRootXML = NULL;
+	TiXmlElement* pObjectXML = NULL;
+	TiXmlElement* pComponentXML = NULL;
 
-// Parse the XML object; get the root XML element
-pRootXML = gameXml.FirstChildElement();
+	// Parse the XML object; get the root XML element
+	pRootXML = gameXml.FirstChildElement();
 
-// If is not in config file, exit with error
-if (pRootXML == NULL)
-return false;
+	// If is not in config file, exit with error
+	if (pRootXML == NULL)
+		return false;
 
-// Parse the game assets out of XML file
-pObjectXML = pRootXML->FirstChildElement("GameAsset");
-while (pObjectXML != NULL)
-{
+	// Parse the game assets out of XML file
+	pObjectXML = pRootXML->FirstChildElement("GameAsset");
+	while (pObjectXML != NULL)
+	{
+		// factory create object and pass xml
+		std::shared_ptr<Object> obj = oFactory->create(pObjectXML);
+		objects.push_back(obj);
 
-	// factory create object and pass xml
-	std::shared_ptr<Object> obj = oFactory->create(pObjectXML);
-	objects.push_back(obj);
+		// Get the next game asset element
+		pObjectXML = pObjectXML->NextSiblingElement("GameAsset");
+	}
 
-	// Get the next game asset element
-	pObjectXML = pObjectXML->NextSiblingElement("GameAsset");
-}
+	view->FindPlayer(this); // ask to view to grab a pointer to the player object for its border detection
 
-view->FindPlayer(this); // ask to view to grab a pointer to the player object for its border detection
-
-return true;
+	return true;
 }
 
 bool Game::Run()
@@ -285,7 +248,7 @@ void Game::Draw()
 	}
 }
 
-ArtAssetLibrary * Game::getArtAssetLibrary()
+AssetLibrary * Game::getAssetLibrary()
 {
 	return aLibrary.get();
 }

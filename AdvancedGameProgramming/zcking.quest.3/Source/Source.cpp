@@ -39,7 +39,8 @@ int main(int argc, char *argv[])
 	//game->Reset();
 	std::string levelConfigFile= "./Assets/Config/level1.xml";
 	std::string objectConfigFile = "./Assets/Config/objects.xml";
-	if(!game->LoadLevel(levelConfigFile, objectConfigFile))
+	std::string physicsConfigFile = "./Assets/Config/physics.xml";
+	if(!game->LoadLevel(levelConfigFile, objectConfigFile, physicsConfigFile))
 	{
 		printf( "Game could not load level %s: ", levelConfigFile.c_str());
 		exit(1);

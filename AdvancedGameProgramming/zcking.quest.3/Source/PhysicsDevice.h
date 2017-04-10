@@ -25,8 +25,10 @@ public:
 		GAME_FLT friction,
 		GAME_FLT restitution,		// how bouncy
 		GAME_FLT angularDamping,	// with spin, how quick to slow down
-		GAME_FLT linearDamping		// same as angular, but with linear movement
+		GAME_FLT linearDamping,		// same as angular, but with linear movement
+		bool bullet
 		);
+	bool RemoveObject(Object* object);
 
 	bool CreateEdge(GAME_VEC, GAME_VEC);
 

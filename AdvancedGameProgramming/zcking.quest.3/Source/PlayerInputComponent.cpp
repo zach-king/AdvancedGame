@@ -52,6 +52,7 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 	GAME_FLT ang = body->getAngle();
 
 	// Left arrow key pressed?
+	GAME_VEC velocity = VEC_ZERO;
 	if (iDevice->GetEvent(GAME_LEFT))
 	{
 		// Ask for LinkLeft sprite texture change from SC
@@ -59,9 +60,7 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 			sprite->SetTexture("LinkLeft");
 
 		// Adjust Position
-		GAME_VEC force = { -1 * LINK_SPEED, 0 };
-		pDevice->SetLinearImpulse(_owner.get(),
-			force, VEC_ZERO);
+		velocity = { -1 * LINK_SPEED, 0 };
 		fireAngle = 270;
 	}
 
@@ -72,9 +71,7 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 			sprite->SetTexture("LinkRight");
 
 		// Adjust Position
-		GAME_VEC force = { 1 * LINK_SPEED, 0 };
-		pDevice->SetLinearImpulse(_owner.get(),
-			force, VEC_ZERO);
+		velocity = { 1 * LINK_SPEED, 0 };
 		fireAngle = 90;
 	}
 
@@ -85,9 +82,7 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 			sprite->SetTexture("LinkUp");
 
 		// Adjust Position
-		GAME_VEC force = { 0, -1 * LINK_SPEED };
-		pDevice->SetLinearImpulse(_owner.get(),
-			force, VEC_ZERO);
+		velocity = { 0, -1 * LINK_SPEED };
 		fireAngle = 0;
 	}
 
@@ -98,11 +93,11 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 			sprite->SetTexture("LinkDown");
 
 		// Adjust Position
-		GAME_VEC force = { 0, 1 * LINK_SPEED };
-		pDevice->SetLinearImpulse(_owner.get(),
-			force, VEC_ZERO);
+		velocity = { 0, 1 * LINK_SPEED };
 		fireAngle = 180;
 	}
+
+	pDevice->SetLinearVelocity(_owner.get(), velocity);
 
 	// Old Movement Code (for regular assignment)
 	/*if (iDevice->GetEvent(GAME_UP))
@@ -141,6 +136,7 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 		arrowInits.bodyRestitution = 1.0f;
 		arrowInits.bodyAngDamping = 0.0f;
 		arrowInits.bodyLinDamping = 0.0f;
+		arrowInits.bodyIsBullet = true;
 		arrowInits.textureIds.push_back("Arrow");
 
 		// Push the necessary component names (object factory will create and initialize)

@@ -6,7 +6,7 @@
 #include "Component.h"
 #include "InputDevice.h"
 #include "GraphicsDevice.h"
-#include "ArtAssetLibrary.h"
+#include "AssetLibrary.h"
 #include "GameAssetLibrary.h"
 #include "Timer.h"
 #include "PhysicsDevice.h"
@@ -21,13 +21,13 @@ public:
 	~Game();
 	bool Initialize();
 	void Reset();
-	bool LoadLevel(std::string, std::string);
+	bool LoadLevel(std::string, std::string, std::string);
 	bool Run();
 	bool Update();
 	void Draw();
 
 	// Getters
-	ArtAssetLibrary* getArtAssetLibrary();
+	AssetLibrary* getAssetLibrary();
 	GraphicsDevice* getGraphicsDevice();
 	InputDevice* getInputDevice();
 	View* getView();
@@ -43,7 +43,7 @@ public:
 
 private:
 	// Devices and libraries
-	std::unique_ptr<ArtAssetLibrary> aLibrary;
+	std::unique_ptr<AssetLibrary> aLibrary;
 	std::unique_ptr<GraphicsDevice> gDevice;
 	std::unique_ptr<InputDevice> iDevice;
 	std::unique_ptr<ObjectFactory> oFactory;

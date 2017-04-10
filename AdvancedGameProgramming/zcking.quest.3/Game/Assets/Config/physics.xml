@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Physics>
+  <BodyInfo object="Link" type="dynamic" shape="circle" density="1.0f" friction="0.3f" restitution="18.0f" angular_damping="10.0f" linear_damping="1.0f" bullet="false" />
+  <BodyInfo object="Blue Leever" type="dynamic" shape="rectangle" density="2.0f" friction="0.9f" restitution="4.0f" angular_damping="5.0f" linear_damping="0.1f" bullet="false" />
+  <BodyInfo object="Red Leever" type="dynamic" shape="rectangle" density="2.0f" friction="0.9f" restitution="4.0f" angular_damping="5.0f" linear_damping="0.1f" bullet="false" />
+  <BodyInfo object="Rock" type="static" shape="circle" density="25.0f" friction="0.0f" restitution="20.0f" angular_damping="20.0f" linear_damping="0.0f" bullet="false"/>
+  <BodyInfo object="Blue Octorok" type="dynamic" shape="circle" density="130f" friction="0.9f" restitution="4.0f" angular_damping="4.0f" linear_damping="20.0f" bullet="false" />
+  <BodyInfo object="Red Octorok" type="dynamic" shape="circle" density="130f" friction="0.9f" restitution="4.0f" angular_damping="4.0f" linear_damping="20.0f" bullet="false"/>
+  <BodyInfo object="Arrow" type="dynamic" shape="rectangle" density="0.5f" friction="0.0f" restitution="1.0f" angular_damping="1.0f" linear_damping="0.0f" bullet="true"/>
+</Physics>

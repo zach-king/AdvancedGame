@@ -1,6 +1,7 @@
 #include "CircleBehaviorComponent.h"
 #include "BodyComponent.h"
 #include "GameFunctions.h"
+#include "Game.h"
 
 #include <random>
 #include <memory>
@@ -21,6 +22,7 @@ CircleBehaviorComponent::~CircleBehaviorComponent()
 bool CircleBehaviorComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initializers)
 {
 	hasRadius = initializers.radius;
+	pDevice = initializers.game->getPhysicsDevice();
 
 	return true;
 }
@@ -39,21 +41,20 @@ std::unique_ptr<Object> CircleBehaviorComponent::Update()
 	// Get the body component and parts
 	std::shared_ptr<BodyComponent> body = _owner->GetComponent<BodyComponent>();
 	GAME_FLT ang = body->getAngle();
-	GAME_VEC pos = body->getPosition();
 
 	// Adjust the angle by random amount
 	ang -= ud(e);
 
-	// Check if spinning or moving in circle
+	// Apply linear and angular velocities 
 	if (hasRadius)
 	{
-		// Modify the position too
-		pos.x += distance * cosf(degToRads(ang - 90)); // cos for x component
-		pos.y += distance * sinf(degToRads(ang - 90)); // sin for y component
-		body->setPosition(pos); // apply modified position
-	}
+		GAME_VEC velocity;
+		velocity.x = distance * cosf(degToRads(ang - 90));
+		velocity.y = distance * sinf(degToRads(ang - 90));
 
-	body->setAngle(ang); // apply modified angle
+		pDevice->SetLinearVelocity(_owner.get(), velocity);
+	}
+	pDevice->SetAngularVelocity(_owner.get(), MAX_OCTOROK_ANGLE);
 
 	return nullptr;
 }

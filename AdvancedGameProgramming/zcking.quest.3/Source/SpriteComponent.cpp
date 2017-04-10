@@ -1,7 +1,6 @@
 #include "SpriteComponent.h"
 #include "GameFunctions.h"
 #include "GraphicsDevice.h"
-#include "ArtAssetLibrary.h"
 #include "Game.h"
 #include "BodyComponent.h"
 
@@ -29,7 +28,7 @@ bool SpriteComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initializers)
 	for (std::string textId : textureIds)
 	{
 		// Add to textures map
-		std::shared_ptr<Texture> tex = initializers.game->getArtAssetLibrary()->Search(textId);
+		std::shared_ptr<Texture> tex = initializers.game->getAssetLibrary()->SearchTexture(textId);
 		if (tex == nullptr)
 			return false;
 
