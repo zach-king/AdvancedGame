@@ -5,6 +5,7 @@
 #include "CircleBehaviorComponent.h"
 #include "PlayerInputComponent.h"
 #include "ProjectileComponent.h"
+#include "HealthComponent.h"
 #include "Game.h"
 #include "Component.h"
 #include "Definitions.h"
@@ -97,6 +98,12 @@ std::shared_ptr<Object> ObjectFactory::create(TiXmlElement *pObjectXML)
 				inits.textureIds.push_back(name); // if not animated, just one sprite --> id'ed by obj name
 			}
 		}
+		else if (compName == "Health")
+		{
+			int hp;
+			pComponentXML->QueryIntAttribute("max", &hp);
+			inits.health = hp;
+		}
 
 		// Add component
 		obj->AddComponent(comp);
@@ -163,6 +170,10 @@ std::shared_ptr<Component> ObjectFactory::CreateComponent(std::string compName, 
 	else if (compName == "Projectile")
 	{
 		return std::make_shared<ProjectileComponent>(parent);
+	}
+	else if (compName == "Health")
+	{
+		return std::make_shared<HealthComponent>(parent);
 	}
 	else
 	{

@@ -5,7 +5,6 @@
   <ArtAsset name="Red Octorok" sprite="./Assets/Images/octorok_r.png"/>
   <ArtAsset name="Blue Octorok" sprite="./Assets/Images/octorok_b.png"/>
   <ArtAsset name="LinkDown" sprite="./Assets/Images/link_d.png"/>
-  <ArtAsset name="LinkDown" sprite="./Assets/Images/link_d.png"/>
   <ArtAsset name="LinkUp" sprite="./Assets/Images/link_u.png"/>
   <ArtAsset name="LinkRight" sprite="./Assets/Images/link_r.png"/>
   <ArtAsset name="LinkLeft" sprite="./Assets/Images/link_l.png"/>

@@ -1,6 +1,7 @@
 #include "PhysicsDevice.h"
 #include "GameFunctions.h"
 #include "SpriteComponent.h"
+#include "ContactListener.h"
 
 PhysicsDevice::PhysicsDevice()
 {
@@ -19,6 +20,10 @@ bool PhysicsDevice::Initialize()
 	world = std::make_shared<b2World>(gravity);
 	if (world == nullptr)
 		return false;
+
+	// Make contact listener and add it to the world
+	ContactListener* cl = new ContactListener;
+	world->SetContactListener(cl);
 
 	return true;
 }

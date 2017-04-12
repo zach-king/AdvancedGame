@@ -49,5 +49,4 @@ protected:
 	bool initialized; // whether or not initialized yet
 	bool dead;		  // whether or not this object is dead (tells game to kill it)
 	std::string name; // name identifier
-
 };

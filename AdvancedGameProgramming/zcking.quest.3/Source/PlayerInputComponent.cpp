@@ -146,6 +146,7 @@ std::unique_ptr<Object> PlayerInputComponent::Update()
 
 		// Create the object and add it to the game world
 		std::shared_ptr<Object> arrow = oFactory->create(compNames, arrowInits);
+		arrow->setName("Arrow");
 		arrowInits.game->AddObject(arrow);
 	}
 

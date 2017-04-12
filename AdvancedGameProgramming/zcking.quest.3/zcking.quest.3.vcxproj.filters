@@ -105,6 +105,12 @@
     <ClCompile Include="Source\AssetLibrary.cpp">
       <Filter>Source Files\Devices &amp; Libraries</Filter>
     </ClCompile>
+    <ClCompile Include="Source\ContactListener.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HealthComponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\Timer.h">
@@ -169,6 +175,12 @@
     </ClInclude>
     <ClInclude Include="Source\AssetLibrary.h">
       <Filter>Header Files\Devices &amp; Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ContactListener.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HealthComponent.h">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

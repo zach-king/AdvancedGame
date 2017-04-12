@@ -75,6 +75,7 @@ const GAME_FLT VIEW_PADDING_Y = 100.0f;
 const GAME_FLT LINK_SPEED = 4.5f;
 const GAME_INT ARROW_LIFETIME = 100; // measured in frames.
 const GAME_INT ARROW_SPEED = 8.0f;
+const GAME_INT ARROW_DAMAGE = 50;
 const GAME_INT FIRE_RATE = 90; // my own custom thing so can't machine gun the arrows (measured in frames)
 
 // Mini Map Constants
@@ -101,6 +102,7 @@ struct GAME_OBJECTFACTORY_INITIALIZERS
 	GAME_FLT bodyAngDamping;
 	GAME_FLT bodyLinDamping;
 	bool bodyIsBullet;
+	GAME_INT health;
 };
 
 const GAME_VEC VEC_LEFT = { -1.0f, 0.0f };

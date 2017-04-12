@@ -4,6 +4,7 @@
     <Component name="Sprite" animated="false"> </Component>   
     <Component name="Body" x="100.0f" y="100.0f" angle="0.0f"/>
     <Component name="Slide" vertical="true"/>
+    <Component name="Health" max="100"/>
   </GameAsset>
   
     
@@ -11,13 +12,15 @@
     <Component name="Sprite" animated="false"></Component>
     <Component name="Body" x="0.0f" y="200.0f" angle="0.0f"/>
     <Component name="Slide" vertical="false"/>
+    <Component name="Health" max="100"/>
   </GameAsset>  
   
     
   <GameAsset name="Blue Octorok">
     <Component name="Sprite" animated="false"> </Component>
-    <Component name="Body" x="100.0f" y="50.0f" angle="0.0f"/>
+    <Component name="Body" x="380.0f" y="50.0f" angle="0.0f"/>
     <Component name="Circle" radius="true"/>
+    <Component name="Health" max="100"/>
   </GameAsset>
   
   
@@ -25,6 +28,7 @@
     <Component name="Sprite" animated="false"> </Component>
     <Component name="Body" x="400.0f" y="300.0f" angle="270.0f"/>
     <Component name="Circle" radius="false"/>
+    <Component name="Health" max="100"/>
   </GameAsset>
   
   
@@ -32,6 +36,7 @@
     <Component name="Sprite" animated="false"></Component>
     <Component name="Body" x="-75.0f" y="0.0f" angle="0.0f"/>
     <Component name="Slide" vertical="false"/>
+    <Component name="Health" max="100"/>
   </GameAsset>
   
   
@@ -39,6 +44,7 @@
     <Component name="Sprite" animated="false"></Component>
     <Component name="Body" x="35.0f" y="100.0f" angle="0.0f"/>
     <Component name="Slide" vertical="true"/>
+    <Component name="Health" max="100"/>
   </GameAsset>
   
   
@@ -46,6 +52,7 @@
     <Component name="Sprite" animated="false"></Component>
     <Component name="Body" x="125.0f" y="40.0f" angle="270.0f"/>
     <Component name="Circle" radius="true"/>
+    <Component name="Health" max="100"/>
   </GameAsset>
   
   <GameAsset name="Link">
@@ -57,6 +64,7 @@
     </Component>
     <Component name="Body" x="300.0f" y="200.0f" angle="0.0f"/>
     <Component name="Input"/>
+    <Component name="Health" max="100"/>
   </GameAsset>
 
 
