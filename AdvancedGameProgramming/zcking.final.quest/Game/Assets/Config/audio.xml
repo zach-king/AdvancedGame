@@ -1,0 +1,7 @@
+<?xml version="1.0" ?>
+<Audio>
+  <Clip name="Level1" bg="true" path="./Assets/Audio/level1.ogg" />
+  <Clip name="Level2" bg="true" path="./Assets/Audio/level2.ogg" />
+  <Clip name="Death" bg="true" path="./Assets/Audio/death.ogg" />
+  <Clip name="PlayerShoot" bg="false" path="./Assets/Audio/playershoot.wav" />
+</Audio>

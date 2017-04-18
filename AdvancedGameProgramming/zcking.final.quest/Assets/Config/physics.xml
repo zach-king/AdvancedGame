@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Physics>
+  <BodyInfo object="Player" type="dynamic" shape="rectangle" density="1.0f" friction="0.3f" restitution="0.0f" angular_damping="10.0f" linear_damping="1.0f" bullet="false" rotate="false"/>
+  <BodyInfo object="Black Pirate" type="dynamic" shape="circle" density="2.0f" friction="0.9f" restitution="4.0f" angular_damping="5.0f" linear_damping="0.0f" bullet="false" rotate="false"/>
+  <BodyInfo object="Red Pirate" type="dynamic" shape="circle" density="2.0f" friction="0.9f" restitution="4.0f" angular_damping="5.0f" linear_damping="0.0f" bullet="false" rotate="false"/>
+  <BodyInfo object="Asteroid" type="kinematic" shape="circle" density="25.0f" friction="0.0f" restitution="20.0f" angular_damping="0.0f" linear_damping="0.0f" bullet="false" rotate="true"/>
+  <BodyInfo object="Plasma Bullet" type="dynamic" shape="rectangle" density="0.5f" friction="0.0f" restitution="1.0f" angular_damping="1.0f" linear_damping="0.0f" bullet="true" rotate="false"/>
+</Physics>

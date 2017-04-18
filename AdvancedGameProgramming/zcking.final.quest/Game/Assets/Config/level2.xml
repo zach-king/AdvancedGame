@@ -1,0 +1,65 @@
+<?xml version="1.0" ?>
+<Level1 music="Level2">
+
+  <GameAsset name="Red Pirate" >
+    <Component name="Sprite" animated="false"></Component>
+    <Component name="Body" x="175.0f" y="125.0f" angle="0.0f"/>
+    <Component name="LinearMove" speed="6.0f"/>
+    <Component name="Health" max="100"/>
+  </GameAsset>
+
+
+  <GameAsset name="Black Pirate" >
+    <Component name="Sprite" animated="false"></Component>
+    <Component name="Body" x="125.0f" y="100.0f" angle="180.0f"/>
+    <Component name="LinearMove" speed="5.0f"/>
+    <Component name="Health" max="200"/>
+  </GameAsset>
+
+
+  <GameAsset name="Black Pirate" >
+    <Component name="Sprite" animated="false"></Component>
+    <Component name="Body" x="425.0f" y="150.0f" angle="180.0f"/>
+    <Component name="LinearMove" speed="5.0f"/>
+    <Component name="Health" max="200"/>
+  </GameAsset>
+
+  <GameAsset name="Player">
+    <Component name="Sprite" animated="false">
+      <!--<Frame name="LinkUp" />
+      <Frame name="LinkLeft"/>
+      <Frame name="LinkRight"/>
+      <Frame name="LinkDown"/>  change these and uncomment, and set animated to true for animation-->
+    </Component>
+    <Component name="Body" x="300.0f" y="500.0f" angle="0.0f"/>
+    <Component name="Input"/>
+    <Component name="Health" max="100" />
+  </GameAsset>
+
+
+  <GameAsset name="Asteroid">
+    <Component name="Sprite" animated="false" />
+    <Component name="Body" x="100.0f" y="185.0f" angle="0.0f" />
+    <Component name="LinearMove" speed="2.5f"/>
+    <Component name="Spin" />
+    <Component name="Health" max="400"/>
+  </GameAsset>
+
+
+  <GameAsset name="Asteroid">
+    <Component name="Sprite" animated="false" />
+    <Component name="Body" x="320.0f" y="100.0f" angle="0.0f" />
+    <Component name="LinearMove" speed="2.5f"/>
+    <Component name="Spin" />
+    <Component name="Health" max="400"/>
+  </GameAsset>
+
+
+  <GameAsset name="Asteroid">
+    <Component name="Sprite" animated="false" />
+    <Component name="Body" x="520.0f" y="200.0f" angle="0.0f" />
+    <Component name="LinearMove" speed="2.5f"/>
+    <Component name="Spin" />
+    <Component name="Health" max="400"/>
+  </GameAsset>
+</Level1>

@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<Objects>
+  <ArtAsset name="Asteroid" sprite="./Assets/Images/asteroid.png"/>
+  <ArtAsset name="Black Pirate" sprite="./Assets/Images/black_enemy.png"/>
+  <ArtAsset name="Red Pirate" sprite="./Assets/Images/red_enemy.png"/>
+  <ArtAsset name="Plasma Bullet" sprite="./Assets/Images/plasma_bullet.png"/>
+  <ArtAsset name="Player" sprite="./Assets/Images/playership.png"/>
+</Objects>

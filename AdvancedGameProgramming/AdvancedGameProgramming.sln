@@ -23,6 +23,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "M4.SDL.Box2D.Joint", "M4.Bo
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zcking.quest.3", "zcking.quest.3\zcking.quest.3.vcxproj", "{52829AD6-9910-42EC-A700-FD118D79C952}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "zcking.final.quest", "zcking.final.quest\zcking.final.quest.vcxproj", "{4FC98506-241E-492B-A209-10115B111140}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "M7.SDL.Mixer.Simple", "M7.Rich.Media\M7.SDL.Mixer.Simple\M7.SDL.Mixer.Simple.vcxproj", "{8FDB64FF-E5EB-4C7E-8AAA-CDB79E2DB993}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -93,6 +97,18 @@ Global
 		{52829AD6-9910-42EC-A700-FD118D79C952}.Release|x64.ActiveCfg = Release|Win32
 		{52829AD6-9910-42EC-A700-FD118D79C952}.Release|x86.ActiveCfg = Release|Win32
 		{52829AD6-9910-42EC-A700-FD118D79C952}.Release|x86.Build.0 = Release|Win32
+		{4FC98506-241E-492B-A209-10115B111140}.Debug|x64.ActiveCfg = Debug|Win32
+		{4FC98506-241E-492B-A209-10115B111140}.Debug|x86.ActiveCfg = Debug|Win32
+		{4FC98506-241E-492B-A209-10115B111140}.Debug|x86.Build.0 = Debug|Win32
+		{4FC98506-241E-492B-A209-10115B111140}.Release|x64.ActiveCfg = Release|Win32
+		{4FC98506-241E-492B-A209-10115B111140}.Release|x86.ActiveCfg = Release|Win32
+		{4FC98506-241E-492B-A209-10115B111140}.Release|x86.Build.0 = Release|Win32
+		{8FDB64FF-E5EB-4C7E-8AAA-CDB79E2DB993}.Debug|x64.ActiveCfg = Debug|Win32
+		{8FDB64FF-E5EB-4C7E-8AAA-CDB79E2DB993}.Debug|x86.ActiveCfg = Debug|Win32
+		{8FDB64FF-E5EB-4C7E-8AAA-CDB79E2DB993}.Debug|x86.Build.0 = Debug|Win32
+		{8FDB64FF-E5EB-4C7E-8AAA-CDB79E2DB993}.Release|x64.ActiveCfg = Release|Win32
+		{8FDB64FF-E5EB-4C7E-8AAA-CDB79E2DB993}.Release|x86.ActiveCfg = Release|Win32
+		{8FDB64FF-E5EB-4C7E-8AAA-CDB79E2DB993}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

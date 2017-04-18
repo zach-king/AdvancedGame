@@ -1,0 +1,263 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Source\BodyComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Component.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PlayerInputComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ProjectileComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SpriteComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AssetLibrary.cpp">
+      <Filter>Source\Devices and Libraries</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\GraphicsDevice.cpp">
+      <Filter>Source\Devices and Libraries</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\InputDevice.cpp">
+      <Filter>Source\Devices and Libraries</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\PhysicsDevice.cpp">
+      <Filter>Source\Devices and Libraries</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Texture.cpp">
+      <Filter>Source\Devices and Libraries</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Game.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Object.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ObjectFactory.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Source.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Timer.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\tinyxml\tinystr.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\tinyxml\tinyxml.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\tinyxml\tinyxmlerror.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\tinyxml\tinyxmlparser.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\LinearMoveComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\SpinComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ContactListener.cpp">
+      <Filter>Source\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\HealthComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\AudioDevice.cpp">
+      <Filter>Source\Devices and Libraries</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Source\BodyComponent.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PlayerInputComponent.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ProjectileComponent.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SpriteComponent.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Component.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AssetLibrary.h">
+      <Filter>Headers\Devices and Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\InputDevice.h">
+      <Filter>Headers\Devices and Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GraphicsDevice.h">
+      <Filter>Headers\Devices and Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\PhysicsDevice.h">
+      <Filter>Headers\Devices and Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Texture.h">
+      <Filter>Headers\Devices and Libraries</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Definitions.h">
+      <Filter>Headers\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Game.h">
+      <Filter>Headers\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\GameFunctions.h">
+      <Filter>Headers\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Object.h">
+      <Filter>Headers\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ObjectFactory.h">
+      <Filter>Headers\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\Timer.h">
+      <Filter>Headers\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\tinyxml\tinystr.h">
+      <Filter>Headers\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\tinyxml\tinyxml.h">
+      <Filter>Headers\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\LinearMoveComponent.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\SpinComponent.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ContactListener.h">
+      <Filter>Headers\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\HealthComponent.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\AudioDevice.h">
+      <Filter>Headers\Devices and Libraries</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="Assets\Config\level1.xml">
+      <Filter>Resources\Config</Filter>
+    </Xml>
+    <Xml Include="Assets\Config\objects.xml">
+      <Filter>Resources\Config</Filter>
+    </Xml>
+    <Xml Include="Assets\Config\physics.xml">
+      <Filter>Resources\Config</Filter>
+    </Xml>
+    <Xml Include="Assets\Config\audio.xml">
+      <Filter>Resources\Config</Filter>
+    </Xml>
+    <Xml Include="Assets\Config\level2.xml">
+      <Filter>Resources\Config</Filter>
+    </Xml>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Headers">
+      <UniqueIdentifier>{5f08c35c-ab7f-485d-b369-61d7f97b1957}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source">
+      <UniqueIdentifier>{23570866-fb2e-42b5-9dbf-d4e817926867}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{bcdcbb19-5315-4373-b188-052c81878f7a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Components">
+      <UniqueIdentifier>{daea87dc-f95e-4df0-b20a-9b2f5ae21c88}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Devices and Libraries">
+      <UniqueIdentifier>{48451e26-8f0c-4adc-962b-f365c20d02af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Headers\Game">
+      <UniqueIdentifier>{acaf0add-b242-47fe-a625-8381db8781e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Components">
+      <UniqueIdentifier>{832bc30d-af3f-4305-8cb3-ab0390cb9ff8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Devices and Libraries">
+      <UniqueIdentifier>{fe73489b-9453-4322-850d-450233f5f933}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Game">
+      <UniqueIdentifier>{ceb8fc05-9ab4-4cd8-928c-20cc9cd9ce28}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Audio">
+      <UniqueIdentifier>{afb893bc-5e26-4ef4-bd5d-3357b722a409}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Images">
+      <UniqueIdentifier>{14bcf579-50ab-4e7f-aea5-cb9f2e6430c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resources\Config">
+      <UniqueIdentifier>{8924aa62-b74f-4e30-b2c3-7188f33c5252}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="Assets\Images\asteroid.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\black_enemy.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\plasma_bullet.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\playership.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\red_enemy.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\Audio\boss.ogg">
+      <Filter>Resources\Audio</Filter>
+    </None>
+    <None Include="Assets\Audio\credits.ogg">
+      <Filter>Resources\Audio</Filter>
+    </None>
+    <None Include="Assets\Audio\death.ogg">
+      <Filter>Resources\Audio</Filter>
+    </None>
+    <None Include="Assets\Audio\finished.ogg">
+      <Filter>Resources\Audio</Filter>
+    </None>
+    <None Include="Assets\Audio\finished_long.ogg">
+      <Filter>Resources\Audio</Filter>
+    </None>
+    <None Include="Assets\Audio\intro.ogg">
+      <Filter>Resources\Audio</Filter>
+    </None>
+    <None Include="Assets\Audio\level1.ogg">
+      <Filter>Resources\Audio</Filter>
+    </None>
+    <None Include="Assets\Audio\level2.ogg">
+      <Filter>Resources\Audio</Filter>
+    </None>
+    <None Include="Assets\Audio\level3.ogg">
+      <Filter>Resources\Audio</Filter>
+    </None>
+    <None Include="Assets\Audio\level4.ogg">
+      <Filter>Resources\Audio</Filter>
+    </None>
+    <None Include="Assets\Audio\level5.ogg">
+      <Filter>Resources\Audio</Filter>
+    </None>
+    <None Include="Assets\Audio\start.ogg">
+      <Filter>Resources\Audio</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="Assets\Audio\playershoot.wav">
+      <Filter>Resources\Audio</Filter>
+    </Media>
+  </ItemGroup>
+</Project>
