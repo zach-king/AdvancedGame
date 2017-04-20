@@ -6,9 +6,6 @@
 
 #include "SDL.h"
 
-// Body Component pretty much just stores certain "Physics" attributes for the object it's attached to
-// and those attribtues are used by other components
-
 BodyComponent::BodyComponent() : Component() 
 {
 }
@@ -27,7 +24,7 @@ bool BodyComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
 	angle = inits.angle;
 
 	this->pDevice = inits.game->getPhysicsDevice();
-	this->pDevice->CreateFixture(
+	bool success = this->pDevice->CreateFixture(
 		_owner,
 		position,
 		angle,
@@ -39,7 +36,8 @@ bool BodyComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
 		inits.bodyAngDamping,
 		inits.bodyLinDamping,
 		inits.bodyIsBullet,
-		inits.bodyRotates
+		inits.bodyRotates,
+		inits.category
 		);
 
 

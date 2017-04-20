@@ -1,7 +1,14 @@
 <?xml version="1.0" ?>
-<Level1 music="Level2">
+<Level1 music="Level2" next="./Assets/Config/boss.xml">
 
-  <GameAsset name="Red Pirate" >
+  <GameAsset name="Win">
+    <Component name="Sprite" animated="false"></Component>
+    <Component name="Body" x="0.0f" y="-100.0f" angle="0.0f"/>
+    <Component name="LinearMove" speed="2.5f"/>
+  </GameAsset>
+  
+  
+  <GameAsset name="Red Pirate">
     <Component name="Sprite" animated="false"></Component>
     <Component name="Body" x="175.0f" y="125.0f" angle="0.0f"/>
     <Component name="LinearMove" speed="6.0f"/>
@@ -9,7 +16,7 @@
   </GameAsset>
 
 
-  <GameAsset name="Black Pirate" >
+  <GameAsset name="Black Pirate">
     <Component name="Sprite" animated="false"></Component>
     <Component name="Body" x="125.0f" y="100.0f" angle="180.0f"/>
     <Component name="LinearMove" speed="5.0f"/>
@@ -17,7 +24,7 @@
   </GameAsset>
 
 
-  <GameAsset name="Black Pirate" >
+  <GameAsset name="Black Pirate">
     <Component name="Sprite" animated="false"></Component>
     <Component name="Body" x="425.0f" y="150.0f" angle="180.0f"/>
     <Component name="LinearMove" speed="5.0f"/>
@@ -34,6 +41,7 @@
     <Component name="Body" x="300.0f" y="500.0f" angle="0.0f"/>
     <Component name="Input"/>
     <Component name="Health" max="100" />
+    <Component name="TriggerNextLevel" />
   </GameAsset>
 
 

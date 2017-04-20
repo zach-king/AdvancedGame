@@ -4,6 +4,7 @@
 #include "PlayerInputComponent.h"
 #include "ProjectileComponent.h"
 #include "LinearMoveComponent.h"
+#include "TriggerNextLevelComponet.h"
 #include "HealthComponent.h"
 #include "SpinComponent.h"
 #include "Game.h"
@@ -159,6 +160,8 @@ std::shared_ptr<Component> ObjectFactory::CreateComponent(std::string compName, 
 		return std::make_shared<SpinComponent>(parent);
 	else if (compName == "Health")
 		return std::make_shared<HealthComponent>(parent);
+	else if (compName == "TriggerNextLevel")
+		return std::make_shared<TriggerNextLevelComponent>(parent);
 	else
 		return nullptr; // not in library
 }

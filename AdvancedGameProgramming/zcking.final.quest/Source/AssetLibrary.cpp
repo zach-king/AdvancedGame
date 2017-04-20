@@ -79,6 +79,7 @@ bool AssetLibrary::InitializeLibraries(std::string artXmlFile, std::string physi
 		pObjectXML->QueryFloatAttribute("linear_damping", &inits.bodyLinDamping);
 		pObjectXML->QueryBoolAttribute("bullet", &inits.bodyIsBullet);
 		pObjectXML->QueryBoolAttribute("rotate", &inits.bodyRotates);
+		inits.category = pObjectXML->Attribute("category");
 
 		// Add the data to the library
 		std::string objName = pObjectXML->Attribute("object");
@@ -152,6 +153,7 @@ bool AssetLibrary::SearchPhysics(std::string objName, GAME_OBJECTFACTORY_INITIAL
 	inits->bodyAngDamping = tmpInits.bodyAngDamping;
 	inits->bodyLinDamping = tmpInits.bodyLinDamping;
 	inits->bodyIsBullet = tmpInits.bodyIsBullet;
+	inits->category = tmpInits.category;
 	return true;
 }
 

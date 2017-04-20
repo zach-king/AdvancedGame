@@ -49,6 +49,10 @@ public:
 	GAME_INT GetScore();
 
 	void setGameOver(bool);
+	void setWon(bool);
+	void setProgress(bool);
+
+	void NextLevel();
 
 private:
 	// Devices and libraries
@@ -65,6 +69,7 @@ private:
 
 	void KillDeadObjects(); // Kills any objects with the `dead` flag set
 	void DrawUI(); // Draw the User Interface / HUD
+	bool LoadLevel(std::string gameXmlFile); // overload for just loading a new game file (for next levels)
 	
 	// Global font to use with text rendering
 	TTF_Font *font;
@@ -74,7 +79,13 @@ private:
 
 	// Is game over?
 	bool gameOver;
+	bool won;
+	bool progress; // should progress to next level?
 	
 	// Player's score
 	GAME_INT score;
+
+	// Level to go to after current one is complete
+	std::string nextLevelPath;
+	std::string artFile, gameFile, physicsFile, audioFile;
 };

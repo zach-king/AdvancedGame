@@ -5,4 +5,5 @@
   <ArtAsset name="Red Pirate" sprite="./Assets/Images/red_enemy.png"/>
   <ArtAsset name="Plasma Bullet" sprite="./Assets/Images/plasma_bullet.png"/>
   <ArtAsset name="Player" sprite="./Assets/Images/playership.png"/>
+  <ArtAsset name="Win" sprite="./Assets/Images/station.png"/>
 </Objects>

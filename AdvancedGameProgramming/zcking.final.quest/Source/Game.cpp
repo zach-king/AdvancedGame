@@ -21,6 +21,7 @@ Game::Game()
 	gameTime = 0.0f;
 	gameOver = false;
 	score = 0;
+	won = false;
 }
 
 Game::~Game()
@@ -102,12 +103,27 @@ bool Game::Initialize()
 
 void Game::Reset()
 {
+	won = false;
+	progress = false;
+	gameOver = false;
+
+	for (auto objIter = objects.begin(); objIter != objects.end(); ++objIter)
+	{
+			// Kill the dead object
+			(*objIter)->Finish();
+	}
+
 	// Destroy all objects
 	objects.clear();
 }
 
 bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile, std::string physicsXmlFile, std::string audioXmlFile)
 {
+	artFile = artXmlFile;
+	gameFile = gameXmlFile;
+	physicsFile = physicsXmlFile;
+	audioFile = audioXmlFile;
+
 	if (!aLibrary->InitializeLibraries(artXmlFile, physicsXmlFile))
 	{
 		printf("Unable to initialize the Asset Library from XML File!\n");
@@ -144,6 +160,55 @@ bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile, std::strin
 	if (pRootXML == NULL)
 		return false;
 
+	// Grab the "next level" path from xml
+	nextLevelPath = pRootXML->Attribute("next");
+
+	// Parse the game assets out of XML file
+	std::string musicClip = pRootXML->Attribute("music"); // the background music to play
+
+	pObjectXML = pRootXML->FirstChildElement("GameAsset");
+	while (pObjectXML != NULL)
+	{
+		// factory create object and pass xml
+		std::shared_ptr<Object> obj = oFactory->create(pObjectXML);
+		objects.push_back(obj);
+
+		// Get the next game asset element
+		pObjectXML = pObjectXML->NextSiblingElement("GameAsset");
+	}
+
+	// Start playing the background music
+	aDevice->setBackgroundMusic(musicClip);
+
+	return true;
+}
+
+bool Game::LoadLevel(std::string gameXmlFile)
+{
+	// Create the XML document object and 
+	// Check if it loaded without trouble
+	TiXmlDocument gameXml(gameXmlFile.c_str());
+	if (!gameXml.LoadFile())
+	{
+		printf("Unable to load game XML file %s! Tiny XML Error: %s\n", gameXmlFile.c_str(), gameXml.ErrorDesc());
+		return false;
+	}
+
+	// Root and object xml pointers
+	TiXmlElement* pRootXML = NULL;
+	TiXmlElement* pObjectXML = NULL;
+	TiXmlElement* pComponentXML = NULL;
+
+	// Parse the XML object; get the root XML element
+	pRootXML = gameXml.FirstChildElement();
+
+	// If is not in config file, exit with error
+	if (pRootXML == NULL)
+		return false;
+
+	// Grab the "next level" path from xml
+	nextLevelPath = pRootXML->Attribute("next");
+
 	// Parse the game assets out of XML file
 	std::string musicClip = pRootXML->Attribute("music"); // the background music to play
 
@@ -166,8 +231,15 @@ bool Game::LoadLevel(std::string gameXmlFile, std::string artXmlFile, std::strin
 
 bool Game::Run()
 {
+	// Check if user wants to quit
 	if (iDevice->GetEvent(GAME_QUIT))
 		return true;
+
+	// Check if should play "Win" music
+	if (won && !aDevice->isPlayingMusic("Win"))
+	{
+		aDevice->setBackgroundMusic("Win");
+	}
 
 
 	// Start the frame's time
@@ -175,6 +247,13 @@ bool Game::Run()
 
 	// Clear the viewport for next render
 	gDevice->Begin();
+
+	// Check if should progress to next level or not (should be done before next update)
+	if (progress)
+	{
+		NextLevel();
+		return false;
+	}
 
 	// Update each object
 	Update();
@@ -221,6 +300,7 @@ bool Game::Update()
 	{
 		objects.push_back((*objIter));
 	}
+
 	// And the clear the newObjects list
 	newObjects.clear();
 
@@ -229,14 +309,14 @@ bool Game::Update()
 
 void Game::Draw()
 {
-	// Draw the UI
-	DrawUI();
-
 	// Calls Draw() on all objects
 	for (auto objIter = objects.begin(); objIter != objects.end(); ++objIter)
 	{
 		(*objIter)->GetComponent<SpriteComponent>()->Draw();
 	}
+
+	// Draw the UI
+	DrawUI();
 }
 
 AssetLibrary * Game::getAssetLibrary()
@@ -316,6 +396,10 @@ void Game::DrawUI()
 	// Draw the UI
 	SDL_Color textColor = { 255, 255, 255, 255 };
 
+	//-----------------------------------------------------------------------------------------
+	//				Game Over UI
+	//-----------------------------------------------------------------------------------------
+
 	// Show "Game Over" if game is over
 	int width = 0, height = 0;
 	if (gameOver)
@@ -327,6 +411,20 @@ void Game::DrawUI()
 
 		SDL_RenderCopy(gDevice->getRenderer(), gameOverTex, NULL, &renderQuad);
 	}
+
+	//-----------------------------------------------------------------------------------------
+	//				You Won UI
+	//-----------------------------------------------------------------------------------------
+	if (won)
+	{
+		SDL_Texture* wonTex = SDL_CreateTextureFromSurface(gDevice->getRenderer(), TTF_RenderText_Solid(font, "Level Complete", textColor));
+
+		SDL_QueryTexture(wonTex, NULL, NULL, &width, &height);
+		SDL_Rect renderQuad = { (SCREEN_WIDTH / 2) - (width / 2), (SCREEN_HEIGHT / 2) - height, width, height };
+
+		SDL_RenderCopy(gDevice->getRenderer(), wonTex, NULL, &renderQuad);
+	}
+
 
 	//---------------------------------------------------------------------------------------
 	//				HEALTH UI
@@ -386,4 +484,21 @@ void Game::AddScore(GAME_INT sc)
 GAME_INT Game::GetScore()
 {
 	return score;
+}
+
+void Game::setWon(bool hasWon)
+{
+	won = hasWon;
+}
+
+void Game::NextLevel()
+{
+	// Reset and load the next level
+	this->Reset();
+	this->LoadLevel(nextLevelPath);
+}
+
+void Game::setProgress(bool prog)
+{
+	progress = prog;
 }

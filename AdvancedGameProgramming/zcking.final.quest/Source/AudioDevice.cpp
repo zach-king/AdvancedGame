@@ -109,3 +109,13 @@ bool AudioDevice::PlayClip(std::string clipName, int loops)
 
 	return true;
 }
+
+bool AudioDevice::isPlayingMusic()
+{
+	return Mix_PlayingMusic();
+}
+
+bool AudioDevice::isPlayingMusic(std::string musicName)
+{
+	return (backgroundMusic == musicLibrary[musicName] && Mix_PlayingMusic());
+}

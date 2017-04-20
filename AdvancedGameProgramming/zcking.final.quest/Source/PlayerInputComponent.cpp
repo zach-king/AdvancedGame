@@ -29,6 +29,7 @@ bool PlayerInputComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS initialize
 	oFactory = initializers.game->getObjectFactory();
 	pDevice = initializers.game->getPhysicsDevice();
 	aDevice = initializers.game->getAudioDevice();
+	aLibrary = initializers.game->getAssetLibrary();
 
 	arrowInits = initializers;
 	canFire = true;
@@ -103,21 +104,8 @@ void PlayerInputComponent::Update()
 
 	pDevice->SetLinearVelocity(_owner.get(), velocity);
 
-	// Old Movement Code (for regular assignment)
-	/*if (iDevice->GetEvent(GAME_UP))
-	{
-		pos.x += LINK_SPEED * sinf(degToRads(ang));
-		pos.y -= LINK_SPEED * cosf(degToRads(ang));
-	}
-
-	if (iDevice->GetEvent(GAME_DOWN))
-	{
-		pos.x -= LINK_SPEED * sinf(degToRads(ang));
-		pos.y += LINK_SPEED * cosf(degToRads(ang));
-	}*/
-
 	//body->setPosition(pos);
-	//body->setAngle(ang);  // old; for regular movement
+	body->setAngle(0);  // keep player fixed at this angle (otherwise, rotates on collision)
 
 	// Did Link fire any arrows?
 	if (iDevice->GetEvent(GAME_FIRE) && canFire)
@@ -133,14 +121,10 @@ void PlayerInputComponent::Update()
 		arrowInits.arrow_life = ARROW_LIFETIME;
 		arrowInits.position = pos;
 		arrowInits.angle = fireAngle;
-		arrowInits.bodyType = GAME_DYNAMIC;
-		arrowInits.bodyShape = GAME_RECTANGLE;
-		arrowInits.bodyDensity = 0.5f;
-		arrowInits.bodyFriction = 0.0f;
-		arrowInits.bodyRestitution = 1.0f;
-		arrowInits.bodyAngDamping = 0.0f;
-		arrowInits.bodyLinDamping = 0.0f;
-		arrowInits.bodyIsBullet = true;
+		
+		// Load other physics stuff from library
+		aLibrary->SearchPhysics("Plasma Bullet", &arrowInits);
+
 		arrowInits.textureIds.push_back("Plasma Bullet");
 
 		// Push the necessary component names (object factory will create and initialize)
@@ -162,6 +146,8 @@ bool PlayerInputComponent::Finish()
 {
 	this->iDevice = NULL;
 	this->oFactory = NULL;
+	this->aDevice = NULL;
+	this->aLibrary = NULL;
 
 	return true;
 }

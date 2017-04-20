@@ -73,6 +73,12 @@
     <ClCompile Include="Source\AudioDevice.cpp">
       <Filter>Source\Devices and Libraries</Filter>
     </ClCompile>
+    <ClCompile Include="Source\OffScreenComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\TriggerNextLevelComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\BodyComponent.h">
@@ -144,6 +150,12 @@
     <ClInclude Include="Source\AudioDevice.h">
       <Filter>Headers\Devices and Libraries</Filter>
     </ClInclude>
+    <ClInclude Include="Source\OffScreenComponent.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TriggerNextLevelComponet.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Assets\Config\level1.xml">
@@ -159,6 +171,12 @@
       <Filter>Resources\Config</Filter>
     </Xml>
     <Xml Include="Assets\Config\level2.xml">
+      <Filter>Resources\Config</Filter>
+    </Xml>
+    <Xml Include="Assets\Config\boss.xml">
+      <Filter>Resources\Config</Filter>
+    </Xml>
+    <Xml Include="Assets\Config\credits.xml">
       <Filter>Resources\Config</Filter>
     </Xml>
   </ItemGroup>
@@ -214,6 +232,9 @@
       <Filter>Resources\Images</Filter>
     </Image>
     <Image Include="Assets\Images\red_enemy.png">
+      <Filter>Resources\Images</Filter>
+    </Image>
+    <Image Include="Assets\Images\station.png">
       <Filter>Resources\Images</Filter>
     </Image>
   </ItemGroup>

@@ -29,7 +29,8 @@ public:
 		GAME_FLT angularDamping,	// with spin, how quick to slow down
 		GAME_FLT linearDamping,		// same as angular, but with linear movement
 		bool bullet,
-		bool rotates
+		bool rotates,
+		std::string category
 		);
 	bool RemoveObject(Object* object);
 

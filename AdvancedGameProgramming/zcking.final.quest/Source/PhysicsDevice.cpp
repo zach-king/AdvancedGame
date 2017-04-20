@@ -42,7 +42,7 @@ bool PhysicsDevice::CreateFixture(
 	GAME_OBJECT_SHAPE objectShape, 
 	GAME_FLT density, GAME_FLT friction, 
 	GAME_FLT restitution, GAME_FLT angularDamping, 
-	GAME_FLT linearDamping, bool bullet, bool rotates)
+	GAME_FLT linearDamping, bool bullet, bool rotates, std::string category)
 {
 	// Make a body definition
 	std::unique_ptr<b2BodyDef> bd(std::make_unique<b2BodyDef>());
@@ -78,6 +78,7 @@ bool PhysicsDevice::CreateFixture(
 	b2Body* body = world->CreateBody(bd.release());
 	body->SetAngularDamping(angularDamping);
 	body->SetLinearDamping(linearDamping);
+	body->SetFixedRotation(!rotates);
 
 	// Create fixture definition
 	b2FixtureDef shapefd;
@@ -88,8 +89,8 @@ bool PhysicsDevice::CreateFixture(
 	{
 	case GAME_RECTANGLE:
 		pShape.SetAsBox(
-			RW2PW(tex->getWidth() / 2.0f),
-			RW2PW(tex->getHeight() / 2.0f)
+			RW2PW(tex->getWidth()),
+			RW2PW(tex->getHeight())
 		);
 		shapefd.shape = &pShape;
 		break;
@@ -103,6 +104,33 @@ bool PhysicsDevice::CreateFixture(
 	shapefd.density = density;
 	shapefd.friction = friction;
 	shapefd.restitution = restitution;
+	
+	// Collision attributes
+	if (category == "player")
+	{
+		shapefd.filter.categoryBits = CATEGORY_PLAYER;
+		shapefd.filter.maskBits = MASK_PLAYER;
+	}
+	else if (category == "enemy")
+	{
+		shapefd.filter.categoryBits = CATEGORY_ENEMY;
+		shapefd.filter.maskBits = MASK_ENEMY;
+	}
+	else if (category == "obstacle")
+	{
+		shapefd.filter.categoryBits = CATEGORY_OBSTACLE;
+		shapefd.filter.maskBits = MASK_OBSTACLE;
+	}
+	else if (category == "playerbullet")
+	{
+		shapefd.filter.categoryBits = CATEGORY_PLAYERBULLET;
+		shapefd.filter.maskBits = MASK_PLAYERBULLET;
+	}
+	else if (category == "game")
+	{
+		shapefd.filter.categoryBits = CATEGORY_GAME;
+		shapefd.filter.maskBits = MASK_GAME;
+	}
 
 	// Create and add the fixture from the shape to the body
 	body->CreateFixture(&shapefd);

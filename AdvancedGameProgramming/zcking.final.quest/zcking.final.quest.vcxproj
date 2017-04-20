@@ -23,6 +23,7 @@
     <ClCompile Include="Source\LinearMoveComponent.cpp" />
     <ClCompile Include="Source\Object.cpp" />
     <ClCompile Include="Source\ObjectFactory.cpp" />
+    <ClCompile Include="Source\OffScreenComponent.cpp" />
     <ClCompile Include="Source\PhysicsDevice.cpp" />
     <ClCompile Include="Source\PlayerInputComponent.cpp" />
     <ClCompile Include="Source\ProjectileComponent.cpp" />
@@ -35,6 +36,7 @@
     <ClCompile Include="Source\tinyxml\tinyxml.cpp" />
     <ClCompile Include="Source\tinyxml\tinyxmlerror.cpp" />
     <ClCompile Include="Source\tinyxml\tinyxmlparser.cpp" />
+    <ClCompile Include="Source\TriggerNextLevelComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\AssetLibrary.h" />
@@ -51,6 +53,7 @@
     <ClInclude Include="Source\LinearMoveComponent.h" />
     <ClInclude Include="Source\Object.h" />
     <ClInclude Include="Source\ObjectFactory.h" />
+    <ClInclude Include="Source\OffScreenComponent.h" />
     <ClInclude Include="Source\PhysicsDevice.h" />
     <ClInclude Include="Source\PlayerInputComponent.h" />
     <ClInclude Include="Source\ProjectileComponent.h" />
@@ -60,9 +63,12 @@
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\tinyxml\tinystr.h" />
     <ClInclude Include="Source\tinyxml\tinyxml.h" />
+    <ClInclude Include="Source\TriggerNextLevelComponet.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Assets\Config\audio.xml" />
+    <Xml Include="Assets\Config\boss.xml" />
+    <Xml Include="Assets\Config\credits.xml" />
     <Xml Include="Assets\Config\level1.xml">
       <SubType>Designer</SubType>
     </Xml>
@@ -78,6 +84,7 @@
     <Image Include="Assets\Images\plasma_bullet.png" />
     <Image Include="Assets\Images\playership.png" />
     <Image Include="Assets\Images\red_enemy.png" />
+    <Image Include="Assets\Images\station.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Audio\boss.ogg" />

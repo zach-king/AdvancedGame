@@ -7,6 +7,7 @@
 #include "InputDevice.h"
 #include "PhysicsDevice.h"
 #include "AudioDevice.h"
+#include "AssetLibrary.h"
 
 #include <memory>
 
@@ -26,6 +27,7 @@ protected:
 	ObjectFactory* oFactory;
 	PhysicsDevice* pDevice;
 	AudioDevice* aDevice;
+	AssetLibrary* aLibrary;
 	GAME_OBJECTFACTORY_INITIALIZERS arrowInits;
 
 	// For advanced shooting of Link's arrows

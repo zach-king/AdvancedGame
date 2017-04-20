@@ -32,7 +32,7 @@ bool ProjectileComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
 
 	// Force vector
 	GAME_VEC force = VEC_DOWN;
-	pos.y -= 40; // position in front of player
+	//pos.y -= 60; // position in front of player
 
 	// Magnify the force vector by arrow speed
 	force.x *= ARROW_SPEED;

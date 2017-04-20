@@ -4,4 +4,7 @@
   <Clip name="Level2" bg="true" path="./Assets/Audio/level2.ogg" />
   <Clip name="Death" bg="true" path="./Assets/Audio/death.ogg" />
   <Clip name="PlayerShoot" bg="false" path="./Assets/Audio/playershoot.wav" />
+  <Clip name="Win" bg="true" path="./Assets/Audio/finished.ogg" />
+  <Clip name="Credits" bg="true" path="./Assets/Audio/credits.ogg" />
+  <Clip name="Boss" bg="true" path="./Assets/Audio/boss.ogg" />
 </Audio>

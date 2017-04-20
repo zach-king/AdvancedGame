@@ -26,8 +26,10 @@ void ContactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold
 	// Check if player collided with anything
 	if (aName == "Player" || bName == "Player")
 	{
+
 		if (aName == "Player")
 		{
+			// Check if player hit an object that would take health from player
 			if (bName.find("Pirate") != std::string::npos ||
 				bName.find("Asteroid") != std::string::npos)
 			{
@@ -37,9 +39,15 @@ void ContactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold
 				// Object get's destroyed
 				objectB->setIsDead(true);
 			}
+			else if (bName == "Win")
+			{
+				// Player hit the win object, so win the game
+				game->setWon(true);
+			}
 		}
 		else
 		{
+			// Check if player hit an object that would take health from player
 			if (aName.find("Pirate") != std::string::npos ||
 				aName.find("Asteroid") != std::string::npos)
 			{
@@ -48,6 +56,11 @@ void ContactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold
 
 				// Object get's destroyed
 				objectA->setIsDead(true);
+			}
+			else if (aName == "Win")
+			{
+				// Player hit the win object, so win the game
+				game->setWon(true);
 			}
 		}
 		return;
