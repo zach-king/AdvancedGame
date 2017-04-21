@@ -96,6 +96,8 @@ struct GAME_OBJECTFACTORY_INITIALIZERS
 	bool bodyRotates;
 	std::string category;
 	GAME_VEC force;
+	std::string text;
+	int line;
 };
 
 // normal vector constants

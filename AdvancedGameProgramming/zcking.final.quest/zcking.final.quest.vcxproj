@@ -33,6 +33,7 @@
     <ClCompile Include="Source\SpinComponent.cpp" />
     <ClCompile Include="Source\SpriteComponent.cpp" />
     <ClCompile Include="Source\StrafeAIComponent.cpp" />
+    <ClCompile Include="Source\TextComponent.cpp" />
     <ClCompile Include="Source\Texture.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\tinyxml\tinystr.cpp" />
@@ -65,6 +66,7 @@
     <ClInclude Include="Source\SpinComponent.h" />
     <ClInclude Include="Source\SpriteComponent.h" />
     <ClInclude Include="Source\StrafeAIComponent.h" />
+    <ClInclude Include="Source\TextComponent.h" />
     <ClInclude Include="Source\Texture.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\tinyxml\tinystr.h" />

@@ -88,6 +88,9 @@
     <ClCompile Include="Source\ShootAIComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\TextComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\BodyComponent.h">
@@ -172,6 +175,9 @@
       <Filter>Headers\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\ShootAIComponent.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\TextComponent.h">
       <Filter>Headers\Components</Filter>
     </ClInclude>
   </ItemGroup>

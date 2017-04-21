@@ -29,6 +29,9 @@ public:
 	void Draw();
 	void Present();
 
+	void DrawText(std::string, int);
+	void setFont(std::string, int);
+
 private:
 	// Window(s) to display graphics
 	SDL_Window* screen;
@@ -37,6 +40,9 @@ private:
 	// Parameters
 	const Uint32 SCREEN_WIDTH;
 	const Uint32 SCREEN_HEIGHT;
+
+	// Global font to use with text rendering
+	TTF_Font *font;
 
 	// Renderers
 	std::vector<SpriteComponent *> sprites;

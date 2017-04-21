@@ -92,6 +92,7 @@ bool Game::Initialize()
 		printf("Failed to open font %s. SDL_ttf Error: %s\n", fontPath.c_str(), TTF_GetError());
 		return false;
 	}
+	gDevice->setFont("./Assets/Fonts/BitstreamVeraSerifRoman.ttf", 18);
 
 	return true;
 }
@@ -307,7 +308,9 @@ void Game::Draw()
 	// Calls Draw() on all objects
 	for (auto objIter = objects.begin(); objIter != objects.end(); ++objIter)
 	{
-		(*objIter)->GetComponent<SpriteComponent>()->Draw();
+		auto sc = (*objIter)->GetComponent<SpriteComponent>();
+		if (sc != nullptr)
+			sc->Draw();
 	}
 
 	// Draw the UI

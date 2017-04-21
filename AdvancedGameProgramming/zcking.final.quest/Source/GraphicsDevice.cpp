@@ -1,6 +1,7 @@
 #include "GraphicsDevice.h"
 #include "SpriteComponent.h"
 #include "SDL_mixer.h"
+#include "SDL_ttf.h"
 
 GraphicsDevice::GraphicsDevice(Uint32 width, Uint32 height) : SCREEN_WIDTH(width),
 SCREEN_HEIGHT(height)
@@ -136,4 +137,21 @@ SDL_Renderer* GraphicsDevice::getRenderer()
 SDL_Window* GraphicsDevice::getWindow()
 {
 	return screen;
+}
+
+void GraphicsDevice::DrawText(std::string text, int yMod)
+{
+	SDL_Color textColor = { 255, 255, 255, 255 };
+
+	int width, height;
+	SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, TTF_RenderText_Solid(font, text.c_str(), textColor));
+	SDL_QueryTexture(tex, NULL, NULL, &width, &height);
+
+	SDL_Rect renderQuad = { (SCREEN_WIDTH / 2) - (width / 2), (SCREEN_HEIGHT / 3) + (height * yMod), width, height };
+	SDL_RenderCopy(renderer, tex, NULL, &renderQuad);
+}
+
+void GraphicsDevice::setFont(std::string path, int size)
+{
+	font = TTF_OpenFont(path.c_str(), size);
 }

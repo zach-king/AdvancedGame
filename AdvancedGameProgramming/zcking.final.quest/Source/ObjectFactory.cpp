@@ -8,6 +8,7 @@
 #include "TriggerNextLevelComponet.h"
 #include "DestroyOffScreen.h"
 #include "HealthComponent.h"
+#include "TextComponent.h"
 #include "StrafeAIComponent.h"
 #include "SpinComponent.h"
 #include "Game.h"
@@ -110,6 +111,11 @@ std::shared_ptr<Object> ObjectFactory::create(TiXmlElement *pObjectXML)
 		{
 			pComponentXML->QueryFloatAttribute("speed", &inits.speed);
 		}
+		else if (compName == "Text")
+		{
+			inits.text = pComponentXML->GetText();
+			pComponentXML->QueryIntAttribute("line", &inits.line);
+		}
 
 		// Add component
 		obj->AddComponent(comp);
@@ -175,6 +181,8 @@ std::shared_ptr<Component> ObjectFactory::CreateComponent(std::string compName, 
 		return std::make_shared<StrafeAIComponent>(parent);
 	else if (compName == "ShootAI")
 		return std::make_shared<ShootAIComponent>(parent);
+	else if (compName == "Text")
+		return std::make_shared<TextComponent>(parent);
 	else
 		return nullptr; // not in library
 }

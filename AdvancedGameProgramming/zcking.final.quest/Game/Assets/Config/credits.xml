@@ -1,12 +1,34 @@
 <?xml version="1.0" ?>
-<Level1 music="Credits">
+<Level music="Credits" next="">
   <GameAsset name="Credits">
-    <Component name="Text">
-      Credits:
-      -------------------------
-      Programming: Zachary King
-      Level Design: Zachary King
-      
-    </Component>
+    <Component name="Text" line="1">--------[ Credits ]--------</Component>
   </GameAsset>
-</Level1>
+
+  <GameAsset name="Credits">
+    <Component name="Text" line="3">--[ Lead Development ]--</Component>
+  </GameAsset>
+
+  <GameAsset name="Credits">
+    <Component name="Text" line="4">Programming: Zachary King</Component>
+  </GameAsset>
+  
+  <GameAsset name="Credits">
+    <Component name="Text" line="5">Level Design: Zachary King</Component>
+  </GameAsset>
+
+  <GameAsset name="Credits">
+    <Component name="Text" line="7">--[ Art and Music ]--</Component>
+  </GameAsset>
+
+  <GameAsset name="Credits">
+    <Component name="Text" line="8">Space Station Sprite: MillionthVector"</Component>
+  </GameAsset>
+
+  <GameAsset name="Credits">
+    <Component name="Text" line="9">Spaceship Sprites: Seif Mohsen</Component>
+  </GameAsset>
+
+  <GameAsset name="Credits">
+    <Component name="Text" line="10">Music: Jan21"</Component>
+  </GameAsset>
+</Level>
