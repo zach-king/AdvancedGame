@@ -89,6 +89,8 @@
     <Image Include="Assets\Images\black_enemy.png" />
     <Image Include="Assets\Images\plasma_bullet.png" />
     <Image Include="Assets\Images\playership.png" />
+    <Image Include="Assets\Images\playership_left.png" />
+    <Image Include="Assets\Images\playership_right.png" />
     <Image Include="Assets\Images\red_enemy.png" />
     <Image Include="Assets\Images\station.png" />
   </ItemGroup>

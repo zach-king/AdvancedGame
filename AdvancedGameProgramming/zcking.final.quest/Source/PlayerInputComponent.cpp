@@ -58,9 +58,9 @@ void PlayerInputComponent::Update()
 	GAME_VEC velocity = VEC_ZERO;
 	if (iDevice->GetEvent(GAME_LEFT))
 	{
-		// Ask for LinkLeft sprite texture change from SC
-		/*if (sprite->getTextureId() != "LinkLeft")
-			sprite->SetTexture("LinkLeft");*/
+		// Ask for PlayerLeft sprite texture change from SC
+		if (sprite->getTextureId() != "PlayerLeft")
+			sprite->SetTexture("PlayerLeft");
 
 		// Adjust Position
 		if (pos.x > 0)
@@ -69,20 +69,26 @@ void PlayerInputComponent::Update()
 
 	if (iDevice->GetEvent(GAME_RIGHT))
 	{
-		// Ask for LinkLeft sprite texture change from SC
-		/*if (sprite->getTextureId() != "LinkRight")
-			sprite->SetTexture("LinkRight");*/
+		// Ask for PlayerRight sprite texture change from SC
+		if (sprite->getTextureId() != "PlayerRight")
+			sprite->SetTexture("PlayerRight");
 
 		// Adjust Position
 		if (pos.x <= SCREEN_WIDTH - _owner->GetComponent<SpriteComponent>()->getTexture()->getWidth())
 			velocity.x += (1 * LINK_SPEED);
 	}
 
+	if (!iDevice->GetEvent(GAME_RIGHT) && !iDevice->GetEvent(GAME_LEFT))
+	{
+		if (sprite->getTextureId() != "Player")
+			sprite->SetTexture("Player");
+	}
+
 	if (iDevice->GetEvent(GAME_UP))
 	{
-		// Ask for LinkLeft sprite texture change from SC
-		/*if (sprite->getTextureId() != "LinkUp")
-			sprite->SetTexture("LinkUp");*/
+		// Ask for PlayerUp sprite texture change from SC
+		if (sprite->getTextureId() != "PlayerUp")
+			sprite->SetTexture("PlayerUp");
 
 		// Adjust Position (if within move zone)
 		if (pos.y <= SCREEN_HEIGHT && pos.y >= (SCREEN_HEIGHT - PLAYER_ZONE_HEIGHT))
@@ -93,10 +99,6 @@ void PlayerInputComponent::Update()
 
 	if (iDevice->GetEvent(GAME_DOWN))
 	{
-		// Ask for LinkLeft sprite texture change from SC
-		/*if (sprite->getTextureId() != "LinkDown")
-			sprite->SetTexture("LinkDown");*/
-
 		// Adjust Position
 		if (pos.y <= SCREEN_HEIGHT - _owner->GetComponent<SpriteComponent>()->getTexture()->getHeight())
 			velocity.y += (1 * LINK_SPEED);

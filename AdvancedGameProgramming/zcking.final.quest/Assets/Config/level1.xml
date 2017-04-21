@@ -103,11 +103,11 @@
   
   
   <GameAsset name="Player">
-    <Component name="Sprite" animated="false">
-      <!--<Frame name="LinkUp" />
-      <Frame name="LinkLeft"/>
-      <Frame name="LinkRight"/>
-      <Frame name="LinkDown"/>  change these and uncomment, and set animated to true for animation-->
+    <Component name="Sprite" animated="true">
+      <Frame name="Player" />
+      <Frame name="PlayerLeft"/>
+      <Frame name="PlayerRight"/>
+      <Frame name="PlayerUp" />
     </Component>
     <Component name="Body" x="300.0f" y="400.0f" angle="0.0f"/>
     <Component name="Input"/>
