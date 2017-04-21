@@ -93,11 +93,6 @@ bool Game::Initialize()
 		return false;
 	}
 
-	// Add Physics borders to edge of screen (none on top because enemies move past it and player's InputComponent blocks it anyway)
-	pDevice->CreateEdge({ PLAYER_SIDE_PADDING, 0 }, { PLAYER_SIDE_PADDING, SCREEN_HEIGHT - 16 }); // left side
-	//pDevice->CreateEdge({ PLAYER_SIDE_PADDING, SCREEN_HEIGHT - 16}, { SCREEN_WIDTH - PLAYER_SIDE_PADDING, SCREEN_HEIGHT - 16}); // bottom
-	pDevice->CreateEdge({ SCREEN_WIDTH - 16, SCREEN_HEIGHT - 16 }, { SCREEN_WIDTH - 16, 0 }); // right
-
 	return true;
 }
 

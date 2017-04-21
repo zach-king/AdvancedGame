@@ -44,6 +44,14 @@ void ContactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold
 				// Player hit the win object, so win the game
 				game->setWon(true);
 			}
+			else if (bName == "Enemy Bullet")
+			{
+				// Player takes damage
+				objectA->GetComponent<HealthComponent>()->TakeDamage(ENEMY_BULLET_DAMAGE);
+
+				// Object get's destroyed
+				objectB->setIsDead(true);
+			}
 		}
 		else
 		{
@@ -61,6 +69,14 @@ void ContactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold
 			{
 				// Player hit the win object, so win the game
 				game->setWon(true);
+			}
+			else if (aName == "Enemy Bullet")
+			{
+				// Player takes damage
+				objectB->GetComponent<HealthComponent>()->TakeDamage(ENEMY_BULLET_DAMAGE);
+
+				// Object get's destroyed
+				objectA->setIsDead(true);
 			}
 		}
 		return;

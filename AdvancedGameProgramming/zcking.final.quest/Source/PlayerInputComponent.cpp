@@ -63,7 +63,8 @@ void PlayerInputComponent::Update()
 			sprite->SetTexture("LinkLeft");*/
 
 		// Adjust Position
-		velocity.x += (-1 * LINK_SPEED);
+		if (pos.x > 0)
+			velocity.x += (-1 * LINK_SPEED);
 	}
 
 	if (iDevice->GetEvent(GAME_RIGHT))
@@ -73,7 +74,8 @@ void PlayerInputComponent::Update()
 			sprite->SetTexture("LinkRight");*/
 
 		// Adjust Position
-		velocity.x += (1 * LINK_SPEED);
+		if (pos.x <= SCREEN_WIDTH - _owner->GetComponent<SpriteComponent>()->getTexture()->getWidth())
+			velocity.x += (1 * LINK_SPEED);
 	}
 
 	if (iDevice->GetEvent(GAME_UP))
@@ -96,7 +98,7 @@ void PlayerInputComponent::Update()
 			sprite->SetTexture("LinkDown");*/
 
 		// Adjust Position
-		if (pos.y <= SCREEN_HEIGHT - 32)
+		if (pos.y <= SCREEN_HEIGHT - _owner->GetComponent<SpriteComponent>()->getTexture()->getHeight())
 			velocity.y += (1 * LINK_SPEED);
 		else
 			velocity.y = 0;
