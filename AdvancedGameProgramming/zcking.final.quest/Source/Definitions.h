@@ -59,11 +59,11 @@ const GAME_FLT PI = 3.14159f;
 
 // Link Constants
 const GAME_FLT LINK_SPEED = 15.0f;
-const GAME_INT ARROW_LIFETIME = 100; // measured in frames.
+const GAME_INT ARROW_LIFETIME = 300; // measured in frames.
 const GAME_INT ARROW_DAMAGE = 100;
-const GAME_INT ARROW_SPEED = 30;
+const GAME_INT ARROW_SPEED = 50;
 const GAME_INT COLLISION_DAMAGE = 30;
-const GAME_INT FIRE_RATE = 90; // my own custom thing so can't machine gun the arrows (measured in frames)
+const GAME_INT FIRE_RATE = 90; // my own custom thing so can't machine gun the bullets
 const GAME_INT PLAYER_ZONE_HEIGHT = 200; // how much y-height the player can move in (vertically), from bottom of screen
 const GAME_INT PLAYER_SIDE_PADDING = 0; // keeps the player's sprite from getting "over" the edge of the screen
 
@@ -95,6 +95,7 @@ struct GAME_OBJECTFACTORY_INITIALIZERS
 	bool bodyIsBullet;
 	bool bodyRotates;
 	std::string category;
+	GAME_VEC force;
 };
 
 // normal vector constants
@@ -108,15 +109,22 @@ const GAME_VEC VEC_ZERO = { 0.0f, 0.0f };
 const GAME_FLT MIN_ASTEROID_SPIN_SPEED = 0.2f;
 const GAME_FLT MAX_ASTEROID_SPIN_SPEED = 3.0f;
 
+// Enemy constants
+const GAME_INT MIN_STRAFE_DISTANCE = 5;
+const GAME_INT MAX_STRAFE_DISTANCE = SCREEN_WIDTH - 5;
+const GAME_FLT ENEMY_BULLET_SPEED = ARROW_SPEED / 2.0f;
+
 // Collision constants
 const short CATEGORY_PLAYER	= 0x0001;
 const short CATEGORY_ENEMY	= 0x0002;
 const short CATEGORY_OBSTACLE = 0x0004;
 const short CATEGORY_PLAYERBULLET = 0x0008;
 const short CATEGORY_GAME		= 0x0010;
+const short CATEGORY_ENEMYBULLET = 0x0020;
 
 const short MASK_PLAYER = CATEGORY_ENEMY | CATEGORY_OBSTACLE | CATEGORY_GAME;
 const short MASK_ENEMY = CATEGORY_PLAYER | CATEGORY_OBSTACLE | CATEGORY_ENEMY | CATEGORY_PLAYERBULLET;
 const short MASK_OBSTACLE = CATEGORY_PLAYER | CATEGORY_OBSTACLE | CATEGORY_ENEMY | CATEGORY_PLAYERBULLET;
 const short MASK_PLAYERBULLET = CATEGORY_ENEMY | CATEGORY_OBSTACLE;
 const short MASK_GAME = CATEGORY_PLAYER;
+const short MASK_ENEMYBULLET = CATEGORY_PLAYER;

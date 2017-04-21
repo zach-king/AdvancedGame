@@ -1,4 +1,12 @@
 <?xml version="1.0" ?>
 <Level1 music="Credits">
-
+  <GameAsset name="Credits">
+    <Component name="Text">
+      Credits:
+      -------------------------
+      Programming: Zachary King
+      Level Design: Zachary King
+      
+    </Component>
+  </GameAsset>
 </Level1>

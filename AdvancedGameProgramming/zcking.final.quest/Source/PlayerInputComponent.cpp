@@ -120,7 +120,9 @@ void PlayerInputComponent::Update()
 		// Set the inits for the arrow components
 		arrowInits.arrow_life = ARROW_LIFETIME;
 		arrowInits.position = pos;
-		arrowInits.angle = fireAngle;
+		arrowInits.angle = 90.0f;
+		arrowInits.force = VEC_DOWN;
+		arrowInits.speed = ARROW_SPEED;
 		
 		// Load other physics stuff from library
 		aLibrary->SearchPhysics("Plasma Bullet", &arrowInits);
@@ -131,6 +133,7 @@ void PlayerInputComponent::Update()
 		compNames.push_back("Sprite");
 		compNames.push_back("Body");
 		compNames.push_back("Projectile");
+		compNames.push_back("DestroyOffScreen");
 
 		// Create the object and add it to the game world
 		std::shared_ptr<Object> arrow = oFactory->create(compNames, arrowInits);

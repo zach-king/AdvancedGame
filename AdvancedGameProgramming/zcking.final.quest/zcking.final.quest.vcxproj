@@ -16,6 +16,7 @@
     <ClCompile Include="Source\BodyComponent.cpp" />
     <ClCompile Include="Source\Component.cpp" />
     <ClCompile Include="Source\ContactListener.cpp" />
+    <ClCompile Include="Source\DestroyOffScreen.cpp" />
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\GraphicsDevice.cpp" />
     <ClCompile Include="Source\HealthComponent.cpp" />
@@ -27,9 +28,11 @@
     <ClCompile Include="Source\PhysicsDevice.cpp" />
     <ClCompile Include="Source\PlayerInputComponent.cpp" />
     <ClCompile Include="Source\ProjectileComponent.cpp" />
+    <ClCompile Include="Source\ShootAIComponent.cpp" />
     <ClCompile Include="Source\Source.cpp" />
     <ClCompile Include="Source\SpinComponent.cpp" />
     <ClCompile Include="Source\SpriteComponent.cpp" />
+    <ClCompile Include="Source\StrafeAIComponent.cpp" />
     <ClCompile Include="Source\Texture.cpp" />
     <ClCompile Include="Source\Timer.cpp" />
     <ClCompile Include="Source\tinyxml\tinystr.cpp" />
@@ -45,6 +48,7 @@
     <ClInclude Include="Source\Component.h" />
     <ClInclude Include="Source\ContactListener.h" />
     <ClInclude Include="Source\Definitions.h" />
+    <ClInclude Include="Source\DestroyOffScreen.h" />
     <ClInclude Include="Source\Game.h" />
     <ClInclude Include="Source\GameFunctions.h" />
     <ClInclude Include="Source\GraphicsDevice.h" />
@@ -57,8 +61,10 @@
     <ClInclude Include="Source\PhysicsDevice.h" />
     <ClInclude Include="Source\PlayerInputComponent.h" />
     <ClInclude Include="Source\ProjectileComponent.h" />
+    <ClInclude Include="Source\ShootAIComponent.h" />
     <ClInclude Include="Source\SpinComponent.h" />
     <ClInclude Include="Source\SpriteComponent.h" />
+    <ClInclude Include="Source\StrafeAIComponent.h" />
     <ClInclude Include="Source\Texture.h" />
     <ClInclude Include="Source\Timer.h" />
     <ClInclude Include="Source\tinyxml\tinystr.h" />
@@ -101,6 +107,7 @@
     <None Include="Assets\Audio\start.ogg" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="Assets\Audio\enemyshoot.wav" />
     <Media Include="Assets\Audio\playershoot.wav" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

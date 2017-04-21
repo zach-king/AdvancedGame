@@ -126,6 +126,11 @@ bool PhysicsDevice::CreateFixture(
 		shapefd.filter.categoryBits = CATEGORY_PLAYERBULLET;
 		shapefd.filter.maskBits = MASK_PLAYERBULLET;
 	}
+	else if (category == "enemybullet")
+	{
+		shapefd.filter.categoryBits = CATEGORY_ENEMYBULLET;
+		shapefd.filter.maskBits = MASK_ENEMYBULLET;
+	}
 	else if (category == "game")
 	{
 		shapefd.filter.categoryBits = CATEGORY_GAME;

@@ -22,4 +22,5 @@ protected:
 	GAME_INT lifetime; // how many frames the projectile lives
 	GAME_INT framesPassed; // basically a health counter based on frames
 	PhysicsDevice* pDevice;
+	GAME_FLT speed;
 };

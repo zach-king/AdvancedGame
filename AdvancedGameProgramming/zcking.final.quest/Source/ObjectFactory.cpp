@@ -3,9 +3,12 @@
 #include "SpriteComponent.h"
 #include "PlayerInputComponent.h"
 #include "ProjectileComponent.h"
+#include "ShootAIComponent.h"	
 #include "LinearMoveComponent.h"
 #include "TriggerNextLevelComponet.h"
+#include "DestroyOffScreen.h"
 #include "HealthComponent.h"
+#include "StrafeAIComponent.h"
 #include "SpinComponent.h"
 #include "Game.h"
 #include "Component.h"
@@ -103,6 +106,10 @@ std::shared_ptr<Object> ObjectFactory::create(TiXmlElement *pObjectXML)
 			pComponentXML->QueryIntAttribute("max", &hp);
 			inits.health = hp;
 		}
+		else if (compName == "StrafeAI")
+		{
+			pComponentXML->QueryFloatAttribute("speed", &inits.speed);
+		}
 
 		// Add component
 		obj->AddComponent(comp);
@@ -162,6 +169,12 @@ std::shared_ptr<Component> ObjectFactory::CreateComponent(std::string compName, 
 		return std::make_shared<HealthComponent>(parent);
 	else if (compName == "TriggerNextLevel")
 		return std::make_shared<TriggerNextLevelComponent>(parent);
+	else if (compName == "DestroyOffScreen")
+		return std::make_shared<DestroyOffScreen>(parent);
+	else if (compName == "StrafeAI")
+		return std::make_shared<StrafeAIComponent>(parent);
+	else if (compName == "ShootAI")
+		return std::make_shared<ShootAIComponent>(parent);
 	else
 		return nullptr; // not in library
 }

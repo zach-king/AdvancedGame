@@ -79,6 +79,15 @@
     <ClCompile Include="Source\TriggerNextLevelComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\DestroyOffScreen.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\StrafeAIComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ShootAIComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\BodyComponent.h">
@@ -154,6 +163,15 @@
       <Filter>Headers\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\TriggerNextLevelComponet.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\DestroyOffScreen.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\StrafeAIComponent.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ShootAIComponent.h">
       <Filter>Headers\Components</Filter>
     </ClInclude>
   </ItemGroup>
@@ -278,6 +296,9 @@
   </ItemGroup>
   <ItemGroup>
     <Media Include="Assets\Audio\playershoot.wav">
+      <Filter>Resources\Audio</Filter>
+    </Media>
+    <Media Include="Assets\Audio\enemyshoot.wav">
       <Filter>Resources\Audio</Filter>
     </Media>
   </ItemGroup>

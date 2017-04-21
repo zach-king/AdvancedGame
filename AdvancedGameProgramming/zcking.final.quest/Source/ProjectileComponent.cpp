@@ -24,24 +24,22 @@ bool ProjectileComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
 	lifetime = inits.arrow_life;
 	pDevice = inits.game->getPhysicsDevice();
 	framesPassed = 0;
+	speed = inits.speed;
 
 	// Get the body component for moving the projectile forward
 	std::shared_ptr<BodyComponent> body = _owner->GetComponent<BodyComponent>();
-	GAME_VEC pos = body->getPosition();
 	GAME_FLT ang = body->getAngle();
 
 	// Force vector
-	GAME_VEC force = VEC_DOWN;
-	//pos.y -= 60; // position in front of player
+	GAME_VEC force = inits.force;
 
 	// Magnify the force vector by arrow speed
-	force.x *= ARROW_SPEED;
-	force.y *= ARROW_SPEED;
+	force.x *= speed;
+	force.y *= speed;
 
 	// Apply the linear force (but first position the arrow "in front" of spawner)
 	// Make sure the angle is also pointing up
-	body->setAngle(270);
-	body->setPosition(pos);
+	body->setAngle(inits.angle);
 	pDevice->SetLinearVelocity(_owner.get(), force);
 
 	return true;

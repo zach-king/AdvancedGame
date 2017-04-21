@@ -20,6 +20,10 @@
   <BodyInfo object="Plasma Bullet" type="dynamic" shape="rectangle" density="0.5f" friction="0.0f" 
             restitution="1.0f" angular_damping="100.0f" linear_damping="0.0f" 
             bullet="true" rotate="false" category="playerbullet"/>
+
+  <BodyInfo object="Enemy Bullet" type="dynamic" shape="rectangle" density="0.5f" friction="0.0f"
+          restitution="1.0f" angular_damping="100.0f" linear_damping="0.0f"
+          bullet="true" rotate="false" category="enemybullet"/>
   
   <BodyInfo object="Win" type="kinematic" shape="rectangle" density="30.0f" friction="0.0f" 
             restitution="0.0f" angular_damping="0.0f" linear_damping="0.0f" 
