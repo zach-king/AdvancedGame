@@ -89,6 +89,7 @@
   <ItemGroup>
     <Image Include="Assets\Images\asteroid.png" />
     <Image Include="Assets\Images\black_enemy.png" />
+    <Image Include="Assets\Images\boss.png" />
     <Image Include="Assets\Images\plasma_bullet.png" />
     <Image Include="Assets\Images\playership.png" />
     <Image Include="Assets\Images\playership_left.png" />

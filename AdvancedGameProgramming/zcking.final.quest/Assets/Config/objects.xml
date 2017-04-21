@@ -9,4 +9,5 @@
   <ArtAsset name="PlayerRight" sprite="./Assets/Images/playership_right.png" />
   <ArtAsset name="PlayerUp" sprite="./Assets/Images/playership_up.png" />
   <ArtAsset name="Win" sprite="./Assets/Images/station.png"/>
+  <ArtAsset name="Boss" sprite="./Assets/Images/boss.png" />
 </Objects>

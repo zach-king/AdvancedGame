@@ -98,7 +98,8 @@ void ContactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold
 
 		// Apply damage to the target object (leever or octorok)
 		if (targetName.find("Pirate") != std::string::npos ||
-			targetName.find("Asteroid") != std::string::npos)
+			targetName.find("Asteroid") != std::string::npos ||
+			targetName.find("Boss") != std::string::npos)
 		{
 			target->GetComponent<HealthComponent>()->TakeDamage(ARROW_DAMAGE);
 		}
