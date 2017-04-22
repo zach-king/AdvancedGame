@@ -71,8 +71,10 @@ const GAME_INT PLAYER_SIDE_PADDING = 0; // keeps the player's sprite from gettin
 const GAME_INT UI_HEALTH_PADDING = 25;
 
 // Score constants
-const GAME_INT RED_PIRATE_SCORE = 100;
-const GAME_INT BLACK_PIRATE_SCORE = 50;
+const GAME_INT RED_PIRATE_SCORE = 90;
+const GAME_INT BLACK_PIRATE_SCORE = 30;
+const GAME_INT BOSS_SCORE = 200;
+const GAME_INT HIT_SCORE = 10;
 
 // Object Factory Initializers for easy setting of parameters with components
 struct GAME_OBJECTFACTORY_INITIALIZERS
@@ -120,6 +122,7 @@ const GAME_INT ENEMY_BULLET_DAMAGE = 25.0f;
 // Boss constants
 const GAME_FLT BOSS_XMOD = 100.0f;
 const GAME_FLT BOSS_YMOD = 100.0f;
+const GAME_FLT BOSS_BULLET_SPEED = ENEMY_BULLET_SPEED * 1.5f;
 
 // Collision constants
 const short CATEGORY_PLAYER	= 0x0001;

@@ -21,7 +21,7 @@
   </GameAsset>
 
   <GameAsset name="Credits">
-    <Component name="Text" line="8">Space Station Sprite: MillionthVector"</Component>
+    <Component name="Text" line="8">Space Station Sprite: "MillionthVector"</Component>
   </GameAsset>
 
   <GameAsset name="Credits">
@@ -29,6 +29,6 @@
   </GameAsset>
 
   <GameAsset name="Credits">
-    <Component name="Text" line="10">Music: Jan21"</Component>
+    <Component name="Text" line="10">Music: "Jan21"</Component>
   </GameAsset>
 </Level>

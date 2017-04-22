@@ -101,6 +101,7 @@ void ContactListener::PreSolve(b2Contact* contact, const b2Manifold* oldManifold
 			targetName.find("Asteroid") != std::string::npos ||
 			targetName.find("Boss") != std::string::npos)
 		{
+			game->AddScore(HIT_SCORE);
 			target->GetComponent<HealthComponent>()->TakeDamage(ARROW_DAMAGE);
 		}
 

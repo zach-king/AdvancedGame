@@ -40,6 +40,7 @@ void BossAIComponent::Update()
 
 bool BossAIComponent::Finish()
 {
+	game->AddScore(BOSS_SCORE);
 	game->setProgress(true);
 	return true;
 }
@@ -63,7 +64,7 @@ void BossAIComponent::Shoot(GAME_VEC posMod)
 
 	inits.angle = 90.0f;
 	inits.force = VEC_UP;
-	inits.speed = ENEMY_BULLET_SPEED;
+	inits.speed = BOSS_BULLET_SPEED;
 	inits.game = game;
 
 	// Load other physics stuff from library
