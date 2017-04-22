@@ -424,6 +424,18 @@ void Game::DrawUI()
 	}
 
 
+	//-----------------------------------------------------------------------------------------
+	//				SCORE UI
+	//-----------------------------------------------------------------------------------------
+	char scoreText[50];
+	snprintf(scoreText, sizeof(scoreText), "Score: %d", score);
+
+	SDL_Texture* scoreTex = SDL_CreateTextureFromSurface(gDevice->getRenderer(), TTF_RenderText_Solid(font, scoreText, textColor));
+	SDL_QueryTexture(scoreTex, NULL, NULL, &width, &height);
+	SDL_Rect renderQuad = { UI_HEALTH_PADDING, UI_HEALTH_PADDING, width, height };
+	SDL_RenderCopy(gDevice->getRenderer(), scoreTex, NULL, &renderQuad);
+
+
 	//---------------------------------------------------------------------------------------
 	//				HEALTH UI
 	//---------------------------------------------------------------------------------------
@@ -441,20 +453,9 @@ void Game::DrawUI()
 	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(gDevice->getRenderer(), TTF_RenderText_Solid(font, hpText, textColor));
 
 	SDL_QueryTexture(textTexture, NULL, NULL, &width, &height);
-	SDL_Rect renderQuad = { ((int)SCREEN_WIDTH - width) - (int)UI_HEALTH_PADDING, UI_HEALTH_PADDING, width, height };
+	renderQuad = { ((int)SCREEN_WIDTH - width) - (int)UI_HEALTH_PADDING, UI_HEALTH_PADDING, width, height };
 
 	SDL_RenderCopy(gDevice->getRenderer(), textTexture, NULL, &renderQuad);
-
-	//-----------------------------------------------------------------------------------------
-	//				SCORE UI
-	//-----------------------------------------------------------------------------------------
-	char scoreText[50];
-	snprintf(scoreText, sizeof(scoreText), "Score: %d", score);
-
-	SDL_Texture* scoreTex = SDL_CreateTextureFromSurface(gDevice->getRenderer(), TTF_RenderText_Solid(font, scoreText, textColor));
-	SDL_QueryTexture(scoreTex, NULL, NULL, &width, &height);
-	renderQuad = { UI_HEALTH_PADDING, UI_HEALTH_PADDING, width, height };
-	SDL_RenderCopy(gDevice->getRenderer(), scoreTex, NULL, &renderQuad);
 }
 
 

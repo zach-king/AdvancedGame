@@ -4,12 +4,22 @@
     <Component name="Sprite" animated="false"></Component>
     <Component name="Body" x="0.0f" y="-1500.0f" angle="0.0f"/>
     <Component name="LinearMove" speed="2.5f"/>
+    <Component name="TriggerNextLevel" />
   </GameAsset>
   
   
+  <GameAsset name="Black Pirate">
+    <Component name="Sprite" animated="false"></Component>
+    <Component name="Body" x="175.0f" y="-1000.0f" angle="180.0f"/>
+    <Component name="LinearMove" speed="6.0f"/>
+    <Component name="Health" max="100"/>
+    <Component name="DestroyOffScreen" />
+  </GameAsset>
+
+
   <GameAsset name="Red Pirate">
     <Component name="Sprite" animated="false"></Component>
-    <Component name="Body" x="175.0f" y="-1000.0f" angle="0.0f"/>
+    <Component name="Body" x="325.0f" y="-900.0f" angle="0.0f"/>
     <Component name="LinearMove" speed="6.0f"/>
     <Component name="Health" max="100"/>
     <Component name="DestroyOffScreen" />
@@ -18,7 +28,7 @@
 
   <GameAsset name="Asteroid">
     <Component name="Sprite" animated="false" />
-    <Component name="Body" x="100.0f" y="-950.0f" angle="0.0f" />
+    <Component name="Body" x="90.0f" y="-850.0f" angle="0.0f" />
     <Component name="LinearMove" speed="2.5f"/>
     <Component name="Spin" />
     <Component name="Health" max="400"/>
@@ -28,17 +38,7 @@
 
   <GameAsset name="Asteroid">
     <Component name="Sprite" animated="false" />
-    <Component name="Body" x="320.0f" y="-1100.0f" angle="0.0f" />
-    <Component name="LinearMove" speed="2.5f"/>
-    <Component name="Spin" />
-    <Component name="Health" max="400"/>
-    <Component name="DestroyOffScreen" />
-  </GameAsset>
-
-
-  <GameAsset name="Asteroid">
-    <Component name="Sprite" animated="false" />
-    <Component name="Body" x="520.0f" y="-600.0f" angle="0.0f" />
+    <Component name="Body" x="200.0f" y="-750.0f" angle="0.0f" />
     <Component name="LinearMove" speed="2.5f"/>
     <Component name="Spin" />
     <Component name="Health" max="400"/>
@@ -48,25 +48,45 @@
 
   <GameAsset name="Red Pirate">
     <Component name="Sprite" animated="false"></Component>
-    <Component name="Body" x="175.0f" y="-50.0f" angle="0.0f"/>
+    <Component name="Body" x="325.0f" y="-700.0f" angle="0.0f"/>
     <Component name="LinearMove" speed="6.0f"/>
     <Component name="Health" max="100"/>
     <Component name="DestroyOffScreen" />
   </GameAsset>
-  
-  
-  <GameAsset name="Black Pirate" >
-    <Component name="Sprite" animated="false"></Component>
-    <Component name="Body" x="125.0f" y="-700.0f" angle="180.0f"/>
-    <Component name="LinearMove" speed="5.0f"/>
-    <Component name="Health" max="200"/>
+
+
+  <GameAsset name="Asteroid">
+    <Component name="Sprite" animated="false" />
+    <Component name="Body" x="400.0f" y="-600.0f" angle="0.0f" />
+    <Component name="LinearMove" speed="2.5f"/>
+    <Component name="Spin" />
+    <Component name="Health" max="400"/>
     <Component name="DestroyOffScreen" />
   </GameAsset>
   
   
   <GameAsset name="Black Pirate" >
     <Component name="Sprite" animated="false"></Component>
-    <Component name="Body" x="425.0f" y="-550.0f" angle="180.0f"/>
+    <Component name="Body" x="125.0f" y="-510.0f" angle="180.0f"/>
+    <Component name="LinearMove" speed="5.0f"/>
+    <Component name="Health" max="200"/>
+    <Component name="DestroyOffScreen" />
+  </GameAsset>
+
+
+  <GameAsset name="Asteroid">
+    <Component name="Sprite" animated="false" />
+    <Component name="Body" x="150.0f" y="-450.0f" angle="0.0f" />
+    <Component name="LinearMove" speed="2.5f"/>
+    <Component name="Spin" />
+    <Component name="Health" max="400"/>
+    <Component name="DestroyOffScreen" />
+  </GameAsset>
+  
+  
+  <GameAsset name="Black Pirate" >
+    <Component name="Sprite" animated="false"></Component>
+    <Component name="Body" x="250.0f" y="-410.0f" angle="180.0f"/>
     <Component name="LinearMove" speed="5.0f"/>
     <Component name="Health" max="200"/>
     <Component name="DestroyOffScreen" />
@@ -75,9 +95,19 @@
   
   <GameAsset name="Black Pirate" >
     <Component name="Sprite" animated="false"></Component>
-    <Component name="Body" x="425.0f" y="-400.0f" angle="180.0f"/>
+    <Component name="Body" x="425.0f" y="-350.0f" angle="180.0f"/>
     <Component name="LinearMove" speed="5.0f"/>
     <Component name="Health" max="200"/>
+    <Component name="DestroyOffScreen" />
+  </GameAsset>
+
+
+  <GameAsset name="Asteroid">
+    <Component name="Sprite" animated="false" />
+    <Component name="Body" x="230.0f" y="-250.0f" angle="0.0f" />
+    <Component name="LinearMove" speed="2.5f"/>
+    <Component name="Spin" />
+    <Component name="Health" max="400"/>
     <Component name="DestroyOffScreen" />
   </GameAsset>
 
@@ -92,13 +122,30 @@
   </GameAsset>
 
 
+  <GameAsset name="Black Pirate" >
+    <Component name="Sprite" animated="false"></Component>
+    <Component name="Body" x="425.0f" y="-130.0f" angle="180.0f"/>
+    <Component name="LinearMove" speed="5.0f"/>
+    <Component name="Health" max="200"/>
+    <Component name="DestroyOffScreen" />
+  </GameAsset>
+
+
   <GameAsset name="Red Pirate">
     <Component name="Sprite" animated="false"></Component>
-    <Component name="Body" x="195.0f" y="0.0f" angle="0.0f"/>
+    <Component name="Body" x="175.0f" y="-80.0f" angle="0.0f"/>
     <Component name="LinearMove" speed="6.0f"/>
     <Component name="Health" max="100"/>
     <Component name="DestroyOffScreen" />
-    <Component name="ShootAI" />
+  </GameAsset>
+  
+
+  <GameAsset name="Red Pirate">
+    <Component name="Sprite" animated="false"></Component>
+    <Component name="Body" x="430.0f" y="0.0f" angle="0.0f"/>
+    <Component name="LinearMove" speed="6.0f"/>
+    <Component name="Health" max="100"/>
+    <Component name="DestroyOffScreen" />
   </GameAsset>
   
   
@@ -112,7 +159,6 @@
     <Component name="Body" x="300.0f" y="400.0f" angle="0.0f"/>
     <Component name="Input"/>
     <Component name="Health" max="100" />
-    <Component name="TriggerNextLevel" />
   </GameAsset>
 
 </Level1>

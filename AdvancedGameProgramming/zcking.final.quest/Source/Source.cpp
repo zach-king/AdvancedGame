@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
 	//Load Level
 	//========================================
 	//game->Reset();
-	std::string levelConfigFile= "./Assets/Config/boss.xml";
+	std::string levelConfigFile= "./Assets/Config/level1.xml";
 	std::string objectConfigFile = "./Assets/Config/objects.xml";
 	std::string physicsConfigFile = "./Assets/Config/physics.xml";
 	std::string audioConfigFile = "./Assets/Config/audio.xml";

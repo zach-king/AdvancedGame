@@ -5,6 +5,7 @@
     <Component name="Sprite" animated="false"></Component>
     <Component name="Body" x="0.0f" y="-100.0f" angle="0.0f"/>
     <Component name="LinearMove" speed="2.5f"/>
+    <Component name="TriggerNextLevel" />
   </GameAsset>
   
   
