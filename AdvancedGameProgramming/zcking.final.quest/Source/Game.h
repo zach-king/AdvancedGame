@@ -52,8 +52,6 @@ public:
 	void setWon(bool);
 	void setProgress(bool);
 
-	void NextLevel();
-
 private:
 	// Devices and libraries
 	std::unique_ptr<AssetLibrary> aLibrary;
@@ -76,6 +74,8 @@ private:
 	
 	// Helper queue for adding new objects at runtime without screwing with iterators
 	std::vector<std::shared_ptr<Object>> newObjects;
+
+	void NextLevel();
 
 	// Is game over?
 	bool gameOver;

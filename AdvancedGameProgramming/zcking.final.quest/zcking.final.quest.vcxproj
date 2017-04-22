@@ -14,6 +14,7 @@
     <ClCompile Include="Source\AssetLibrary.cpp" />
     <ClCompile Include="Source\AudioDevice.cpp" />
     <ClCompile Include="Source\BodyComponent.cpp" />
+    <ClCompile Include="Source\BossAIComponent.cpp" />
     <ClCompile Include="Source\Component.cpp" />
     <ClCompile Include="Source\ContactListener.cpp" />
     <ClCompile Include="Source\DestroyOffScreen.cpp" />
@@ -46,6 +47,7 @@
     <ClInclude Include="Source\AssetLibrary.h" />
     <ClInclude Include="Source\AudioDevice.h" />
     <ClInclude Include="Source\BodyComponent.h" />
+    <ClInclude Include="Source\BossAIComponent.h" />
     <ClInclude Include="Source\Component.h" />
     <ClInclude Include="Source\ContactListener.h" />
     <ClInclude Include="Source\Definitions.h" />

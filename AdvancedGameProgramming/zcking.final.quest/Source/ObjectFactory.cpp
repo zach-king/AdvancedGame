@@ -10,6 +10,7 @@
 #include "HealthComponent.h"
 #include "TextComponent.h"
 #include "StrafeAIComponent.h"
+#include "BossAIComponent.h"
 #include "SpinComponent.h"
 #include "Game.h"
 #include "Component.h"
@@ -183,6 +184,8 @@ std::shared_ptr<Component> ObjectFactory::CreateComponent(std::string compName, 
 		return std::make_shared<ShootAIComponent>(parent);
 	else if (compName == "Text")
 		return std::make_shared<TextComponent>(parent);
+	else if (compName == "BossAI")
+		return std::make_shared<BossAIComponent>(parent);
 	else
 		return nullptr; // not in library
 }

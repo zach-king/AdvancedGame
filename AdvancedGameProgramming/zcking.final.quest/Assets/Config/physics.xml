@@ -13,8 +13,8 @@
             restitution="4.0f" angular_damping="5.0f" linear_damping="0.0f" bullet="false" 
             rotate="false" category="enemy"/>
 
-  <BodyInfo object="Boss" type="dynamic" shape="circle" density="60.0f" friction="0.9f"
-            restitution="0.0f" angular_damping="100.0f" linear_damping="100.0f" bullet="false"
+  <BodyInfo object="Boss" type="dynamic" shape="rectangle" density="60.0f" friction="0.9f"
+            restitution="0.0f" angular_damping="100.0f" linear_damping="10.0f" bullet="false"
             rotate="false" category="enemy"/>
   
   <BodyInfo object="Asteroid" type="kinematic" shape="circle" density="25.0f" friction="0.0f" 

@@ -1,22 +1,29 @@
-#include "ShootAIComponent.h"
+#include "BossAIComponent.h"
 #include "BodyComponent.h"
-#include "Object.h"
 
-ShootAIComponent::ShootAIComponent() : Component() {}
+#include <random>
 
-ShootAIComponent::ShootAIComponent(std::shared_ptr<Object> owner) : Component(owner) {}
+BossAIComponent::BossAIComponent() : Component() {}
 
-ShootAIComponent::~ShootAIComponent() {}
+BossAIComponent::BossAIComponent(std::shared_ptr<Object> owner) : Component(owner) {}
 
-bool ShootAIComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
+BossAIComponent::~BossAIComponent() {}
+
+bool BossAIComponent::Initialize(GAME_OBJECTFACTORY_INITIALIZERS inits)
 {
-	canFire = true;
 	game = inits.game;
+	canFire = true;
+	reloadFrames = 0;
 	return true;
 }
 
-void ShootAIComponent::Update()
+void BossAIComponent::Update()
 {
+	// Setup the RNG (Random Number Generator)
+	/*static std::random_device rDev;
+	static std::default_random_engine e(rDev());
+	static std::uniform_int_distribution<GAME_INT> ud(MIN_STRAFE_DISTANCE, MAX_STRAFE_DISTANCE + 1);*/
+
 	// Handle reloading flag and timing
 	if (!canFire)
 	{
@@ -26,16 +33,18 @@ void ShootAIComponent::Update()
 	}
 	else
 	{
-		Shoot();
+		Shoot({ 0, BOSS_YMOD });
+		Shoot({ BOSS_XMOD, BOSS_YMOD });
 	}
 }
 
-bool ShootAIComponent::Finish()
+bool BossAIComponent::Finish()
 {
+	game->setProgress(true);
 	return true;
 }
 
-void ShootAIComponent::Shoot()
+void BossAIComponent::Shoot(GAME_VEC posMod)
 {
 	// Initiate need for reload
 	canFire = false;
@@ -49,6 +58,9 @@ void ShootAIComponent::Shoot()
 	// Set the inits for the arrow components
 	inits.arrow_life = ARROW_LIFETIME;
 	inits.position = _owner->GetComponent<BodyComponent>()->getPosition();
+	inits.position.x += posMod.x;
+	inits.position.y += posMod.y;
+
 	inits.angle = 90.0f;
 	inits.force = VEC_UP;
 	inits.speed = ENEMY_BULLET_SPEED;

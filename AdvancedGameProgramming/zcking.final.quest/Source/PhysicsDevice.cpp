@@ -89,8 +89,8 @@ bool PhysicsDevice::CreateFixture(
 	{
 	case GAME_RECTANGLE:
 		pShape.SetAsBox(
-			RW2PW(tex->getWidth()),
-			RW2PW(tex->getHeight())
+			RW2PW(tex->getWidth()/2.0f),
+			RW2PW(tex->getHeight()/2.0f)
 		);
 		shapefd.shape = &pShape;
 		break;

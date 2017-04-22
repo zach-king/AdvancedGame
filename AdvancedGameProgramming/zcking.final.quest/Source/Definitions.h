@@ -117,6 +117,10 @@ const GAME_INT MAX_STRAFE_DISTANCE = SCREEN_WIDTH - 5;
 const GAME_FLT ENEMY_BULLET_SPEED = ARROW_SPEED / 2.0f;
 const GAME_INT ENEMY_BULLET_DAMAGE = 25.0f;
 
+// Boss constants
+const GAME_FLT BOSS_XMOD = 100.0f;
+const GAME_FLT BOSS_YMOD = 100.0f;
+
 // Collision constants
 const short CATEGORY_PLAYER	= 0x0001;
 const short CATEGORY_ENEMY	= 0x0002;

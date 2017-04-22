@@ -28,6 +28,7 @@ void StrafeAIComponent::Update()
 	if (!switched && pos.x >= fminf((startPosition.x + distance), SCREEN_WIDTH - 32.0f))
 	{
 		switched = true;
+
 		// Setup the RNG (Random Number Generator)
 		static std::random_device rDev;
 		static std::default_random_engine e(rDev());
@@ -39,6 +40,7 @@ void StrafeAIComponent::Update()
 	else if (switched && pos.x <= fmaxf((startPosition.x - distance), 32.0f))
 	{
 		switched = false;
+
 		// Setup the RNG (Random Number Generator)
 		static std::random_device rDev;
 		static std::default_random_engine e(rDev());

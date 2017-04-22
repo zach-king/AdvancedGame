@@ -3,8 +3,10 @@
 
   <GameAsset name="Boss">
     <Component name="Sprite" animated="false"></Component>
-    <Component name="Body" x="200.0f" y="0.0f" angle="0.0f"/>
+    <Component name="Body" x="200.0f" y="20.0f" angle="0.0f"/>
     <Component name="Health" max="1000"/>
+    <Component name="BossAI" />
+    <Component name="StrafeAI" speed="40.0f"/>
   </GameAsset>
 
   <GameAsset name="Player">
@@ -18,4 +20,5 @@
     <Component name="Input"/>
     <Component name="Health" max="100" />
   </GameAsset>
+  
 </Level1>

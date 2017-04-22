@@ -15,6 +15,7 @@
     <Component name="Health" max="100"/>
     <Component name="DestroyOffScreen" />
     <Component name="StrafeAI" speed="10.0f"/>
+    <Component name="ShootAI" />
   </GameAsset>
 
 

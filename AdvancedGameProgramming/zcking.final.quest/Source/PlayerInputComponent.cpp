@@ -124,7 +124,7 @@ void PlayerInputComponent::Update()
 		// Set the inits for the arrow components
 		arrowInits.arrow_life = ARROW_LIFETIME;
 		arrowInits.position = pos;
-		arrowInits.angle = 90.0f;
+		arrowInits.angle = 270.0f;
 		arrowInits.force = VEC_DOWN;
 		arrowInits.speed = ARROW_SPEED;
 		

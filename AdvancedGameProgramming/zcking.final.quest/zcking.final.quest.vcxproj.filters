@@ -91,6 +91,9 @@
     <ClCompile Include="Source\TextComponent.cpp">
       <Filter>Source\Components</Filter>
     </ClCompile>
+    <ClCompile Include="Source\BossAIComponent.cpp">
+      <Filter>Source\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Source\BodyComponent.h">
@@ -178,6 +181,9 @@
       <Filter>Headers\Components</Filter>
     </ClInclude>
     <ClInclude Include="Source\TextComponent.h">
+      <Filter>Headers\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BossAIComponent.h">
       <Filter>Headers\Components</Filter>
     </ClInclude>
   </ItemGroup>
