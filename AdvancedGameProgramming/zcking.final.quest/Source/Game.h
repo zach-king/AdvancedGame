@@ -11,6 +11,7 @@
 #include "Timer.h"
 #include "PhysicsDevice.h"
 #include "AudioDevice.h"
+#include "SDL.h"
 
 #include <memory>
 #include <vector>
@@ -88,4 +89,8 @@ private:
 	// Level to go to after current one is complete
 	std::string nextLevelPath;
 	std::string artFile, gameFile, physicsFile, audioFile;
+
+	// Texture pointers for health and score UI
+	SDL_Texture* scoreTex;
+	SDL_Texture* healthTex;
 };

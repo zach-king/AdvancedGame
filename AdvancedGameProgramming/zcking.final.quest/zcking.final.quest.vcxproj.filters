@@ -209,6 +209,9 @@
     <Xml Include="Assets\Config\credits.xml">
       <Filter>Resources\Config</Filter>
     </Xml>
+    <Xml Include="Assets\Config\level3.xml">
+      <Filter>Resources\Config</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Headers">
@@ -303,12 +306,6 @@
       <Filter>Resources\Audio</Filter>
     </None>
     <None Include="Assets\Audio\level3.ogg">
-      <Filter>Resources\Audio</Filter>
-    </None>
-    <None Include="Assets\Audio\level4.ogg">
-      <Filter>Resources\Audio</Filter>
-    </None>
-    <None Include="Assets\Audio\level5.ogg">
       <Filter>Resources\Audio</Filter>
     </None>
     <None Include="Assets\Audio\start.ogg">

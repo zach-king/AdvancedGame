@@ -46,4 +46,7 @@ private:
 
 	// Renderers
 	std::vector<SpriteComponent *> sprites;
+
+	// Tmp texture for drawing UI text
+	SDL_Texture* tmpTex;
 };

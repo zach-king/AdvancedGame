@@ -430,7 +430,8 @@ void Game::DrawUI()
 	char scoreText[50];
 	snprintf(scoreText, sizeof(scoreText), "Score: %d", score);
 
-	SDL_Texture* scoreTex = SDL_CreateTextureFromSurface(gDevice->getRenderer(), TTF_RenderText_Solid(font, scoreText, textColor));
+	SDL_DestroyTexture(scoreTex);
+	scoreTex = SDL_CreateTextureFromSurface(gDevice->getRenderer(), TTF_RenderText_Solid(font, scoreText, textColor));
 	SDL_QueryTexture(scoreTex, NULL, NULL, &width, &height);
 	SDL_Rect renderQuad = { UI_HEALTH_PADDING, UI_HEALTH_PADDING, width, height };
 	SDL_RenderCopy(gDevice->getRenderer(), scoreTex, NULL, &renderQuad);
@@ -450,12 +451,13 @@ void Game::DrawUI()
 	char hpText[50];
 	snprintf(hpText, sizeof(hpText), "Health: %d", health);
 
-	SDL_Texture* textTexture = SDL_CreateTextureFromSurface(gDevice->getRenderer(), TTF_RenderText_Solid(font, hpText, textColor));
+	SDL_DestroyTexture(healthTex);
+	healthTex = SDL_CreateTextureFromSurface(gDevice->getRenderer(), TTF_RenderText_Solid(font, hpText, textColor));
 
-	SDL_QueryTexture(textTexture, NULL, NULL, &width, &height);
+	SDL_QueryTexture(healthTex, NULL, NULL, &width, &height);
 	renderQuad = { ((int)SCREEN_WIDTH - width) - (int)UI_HEALTH_PADDING, UI_HEALTH_PADDING, width, height };
 
-	SDL_RenderCopy(gDevice->getRenderer(), textTexture, NULL, &renderQuad);
+	SDL_RenderCopy(gDevice->getRenderer(), healthTex, NULL, &renderQuad);
 }
 
 

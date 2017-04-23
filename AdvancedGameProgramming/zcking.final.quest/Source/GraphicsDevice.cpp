@@ -144,11 +144,12 @@ void GraphicsDevice::DrawText(std::string text, int yMod)
 	SDL_Color textColor = { 255, 255, 255, 255 };
 
 	int width, height;
-	SDL_Texture* tex = SDL_CreateTextureFromSurface(renderer, TTF_RenderText_Solid(font, text.c_str(), textColor));
-	SDL_QueryTexture(tex, NULL, NULL, &width, &height);
+	SDL_DestroyTexture(tmpTex);
+	tmpTex = SDL_CreateTextureFromSurface(renderer, TTF_RenderText_Solid(font, text.c_str(), textColor));
+	SDL_QueryTexture(tmpTex, NULL, NULL, &width, &height);
 
 	SDL_Rect renderQuad = { (SCREEN_WIDTH / 2) - (width / 2), (SCREEN_HEIGHT / 3) + (height * yMod), width, height };
-	SDL_RenderCopy(renderer, tex, NULL, &renderQuad);
+	SDL_RenderCopy(renderer, tmpTex, NULL, &renderQuad);
 }
 
 void GraphicsDevice::setFont(std::string path, int size)

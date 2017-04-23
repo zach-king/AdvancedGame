@@ -2,6 +2,9 @@
 <Audio>
   <Clip name="Level1" bg="true" path="./Assets/Audio/level1.ogg" />
   <Clip name="Level2" bg="true" path="./Assets/Audio/level2.ogg" />
+  <Clip name="Level3" bg="true" path="./Assets/Audio/level3.ogg" />
+  <Clip name="Level4" bg="true" path="./Assets/Audio/level4.ogg" />
+  <Clip name="Level5" bg="true" path="./Assets/Audio/level5.ogg" />
   <Clip name="Death" bg="true" path="./Assets/Audio/death.ogg" />
   <Clip name="PlayerShoot" bg="false" path="./Assets/Audio/playershoot.wav" />
   <Clip name="EnemyShoot" bg="false" path="./Assets/Audio/enemyshoot.wav" />

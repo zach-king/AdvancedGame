@@ -6,11 +6,11 @@
     linear_damping="1.0f" bullet="false" rotate="false" category="player"/>
   
   <BodyInfo object="Black Pirate" type="dynamic" shape="circle" density="2.0f" 
-            friction="0.9f" restitution="4.0f" angular_damping="5.0f" linear_damping="0.0f" 
+            friction="0.9f" restitution="4.0f" angular_damping="100.0f" linear_damping="0.0f" 
             bullet="false" rotate="false" category="enemy"/>
   
   <BodyInfo object="Red Pirate" type="dynamic" shape="circle" density="2.0f" friction="0.9f" 
-            restitution="4.0f" angular_damping="5.0f" linear_damping="0.0f" bullet="false" 
+            restitution="4.0f" angular_damping="100.0f" linear_damping="0.0f" bullet="false" 
             rotate="false" category="enemy"/>
 
   <BodyInfo object="Boss" type="dynamic" shape="rectangle" density="60.0f" friction="0.9f"
