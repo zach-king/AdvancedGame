@@ -12,7 +12,7 @@
     <Component name="Sprite" animated="false"></Component>
     <Component name="Body" x="175.0f" y="-1000.0f" angle="180.0f"/>
     <Component name="LinearMove" speed="6.0f"/>
-    <Component name="Health" max="100"/>
+    <Component name="Health" max="200"/>
     <Component name="DestroyOffScreen" />
   </GameAsset>
 
